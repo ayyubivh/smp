@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/views/Profile/edit_profile.dart';
@@ -23,6 +25,15 @@ class HomePageview extends StatefulWidget {
 }
 
 class _HomePageviewState extends State<HomePageview> {
+  @override
+  void initState() {
+    BlocProvider.of<ApiBloc>(context)
+      ..add(const ApiEvent.fetchBanner())
+      ..add(const ApiEvent.fetchCategory());
+
+    super.initState();
+  }
+
   final List<Product> item = [
     Product(
       name: 'Product 1',
@@ -77,14 +88,14 @@ class _HomePageviewState extends State<HomePageview> {
                       color: const Color(0xff1A3848),
                       borderRadius: BorderRadius.circular(20)),
                   child: Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.location_on,
                           color: Colors.red,
                         ),
-                        Text("My Flat",
+                        const Text("My Flat",
                             style:
                                 TextStyle(fontSize: 17, color: Colors.white)),
                         IconButton(
@@ -93,9 +104,10 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AddAddressView()));
+                                    builder: (context) =>
+                                        const AddAddressView()));
                           },
-                          icon: Icon(Icons.keyboard_arrow_down_outlined),
+                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
                         ),
                       ],
                     ),
@@ -135,7 +147,7 @@ class _HomePageviewState extends State<HomePageview> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    SubscriptionCelenderView()));
+                                    const SubscriptionCelenderView()));
                       },
                       child: Container(
                           height: 30,
@@ -284,7 +296,9 @@ class _HomePageviewState extends State<HomePageview> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Categories()));
+                                builder: (context) => Categories(
+                                      id: "",
+                                    )));
                       },
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
@@ -352,7 +366,9 @@ class _HomePageviewState extends State<HomePageview> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Categories()));
+                              builder: (context) => Categories(
+                                    id: "",
+                                  )));
                     },
                     child: Container(
                       height: height * 0.2,
@@ -405,7 +421,9 @@ class _HomePageviewState extends State<HomePageview> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Categories()));
+                                      builder: (context) => Categories(
+                                            id: "",
+                                          )));
                             },
                             child: Image.asset("assets/related_product.png")),
                         Image.asset("assets/related_product.png"),
@@ -474,7 +492,7 @@ class _HomePageviewState extends State<HomePageview> {
                     onTap: () {
                       showModalBottomSheet(
                         context: context,
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.vertical(
                                 top: Radius.circular(20))),
                         builder: (BuildContext context) {
@@ -613,7 +631,9 @@ class _HomePageviewState extends State<HomePageview> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Categories()));
+                              builder: (context) => const Categories(
+                                    id: "",
+                                  )));
                     },
                     child: Container(
                       height: height * 0.35,
@@ -889,7 +909,7 @@ class _HomePageviewState extends State<HomePageview> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -1460,18 +1480,18 @@ class _HomePageviewState extends State<HomePageview> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new_outlined,
                 color: Colors.black,
               ),
             ),
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Popular Deals',
               style: TextStyle(color: Colors.black),
             ),
             actions: [
-              Icon(
+              const Icon(
                 Icons.question_mark_sharp,
                 color: Colors.black,
               )
@@ -1484,8 +1504,8 @@ class _HomePageviewState extends State<HomePageview> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                  margin: EdgeInsets.only(left: 20, top: 20),
-                  child: Text(
+                  margin: const EdgeInsets.only(left: 20, top: 20),
+                  child: const Text(
                     'Select Your Plan Type',
                     style: TextStyle(
                         color: Colors.black,
@@ -1495,7 +1515,7 @@ class _HomePageviewState extends State<HomePageview> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 20),
                 child: Center(
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal, // Horizontal scrolling
@@ -1506,23 +1526,23 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => daily()));
+                                    builder: (context) => const daily()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            primary: const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Daily',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1531,23 +1551,23 @@ class _HomePageviewState extends State<HomePageview> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        weekly())); // Add your button click logic here
+                                        const weekly())); // Add your button click logic here
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            primary: const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Weekly',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1555,23 +1575,23 @@ class _HomePageviewState extends State<HomePageview> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => weekend()));
+                                    builder: (context) => const weekend()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            primary: const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Weekends',
                             style: TextStyle(
                               color: Colors.white, // Text color
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         ElevatedButton(
@@ -1580,16 +1600,16 @@ class _HomePageviewState extends State<HomePageview> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        alternativeday())); // Add your button click logic here
+                                        const alternativeday())); // Add your button click logic here
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
-                            primary: Color(0xFF90ABEF), // Button color
+                            primary: const Color(0xFF90ABEF), // Button color
                             elevation: 5.0, // Elevation
                           ),
-                          child: Text(
+                          child: const Text(
                             'Alternative days',
                             style: TextStyle(
                               color: Colors.white, // Text color

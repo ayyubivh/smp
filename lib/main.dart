@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/domain/core/di/injectable.dart';
 import 'package:mr_ambarisha_frontend_new/views/Holidays/holiday.dart';
 import 'package:mr_ambarisha_frontend_new/views/splash_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureInjection();
+
+  runApp(BlocProvider(
+    create: (context) => getIt<ApiBloc>(),
+    child: const MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -28,7 +39,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: SplashView(),
+      child: const SplashView(),
     );
   }
 }

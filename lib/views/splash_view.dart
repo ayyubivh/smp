@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/views/onboarding/onboarding_view.dart';
@@ -18,9 +20,10 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     Timer(Duration(seconds: 2), () {
       Get.to(IntroScreen());
-     });
+    });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,13 +72,15 @@ class _SplashViewState extends State<SplashView> {
               ),
             ),
             kbox30(),
-            Container(width: 300,
+            Container(
+              width: 300,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: const Color(0xff2ED297)),
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       "Let’s Get Started",
@@ -86,12 +91,14 @@ class _SplashViewState extends State<SplashView> {
                       ),
                     ),
                     kboxw10(),
-                    const Icon(Icons.arrow_forward_ios,color: Colors.white,)
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.white,
+                    )
                   ],
                 ),
               ),
             ),
-           
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: const Text(

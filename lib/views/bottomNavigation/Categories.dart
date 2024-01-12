@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
 import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/homePage.dart';
 
@@ -24,13 +27,22 @@ class Product {
 }
 
 class Categories extends StatefulWidget {
-  const Categories({Key? key}) : super(key: key);
+  final String id;
+  const Categories({Key? key, required this.id}) : super(key: key);
 
   @override
   State<Categories> createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
+  @override
+  void initState() {
+    BlocProvider.of<ApiBloc>(context)
+      ..add(ApiEvent.fetchProductByCategory(widget.id))
+      ..add(ApiEvent.fetchSubCategoryByCategory(widget.id));
+    super.initState();
+  }
+
   int _selectedTabIndex = 0;
 
   final List<Map<String, dynamic>> tabItems = [
@@ -52,26 +64,26 @@ class _CategoriesState extends State<Categories> {
     },
   ];
 
-  final List<Map<String, dynamic>> products = [
-    {
-      'name': 'Product 1',
-      'image': 'https://picsum.photos/200',
-      'size': '1kg',
-      'price': "200"
-    },
-    {
-      'name': 'Product 2',
-      'image': 'https://picsum.photos/201',
-      'size': '500ML',
-      'price': "200"
-    },
-    {
-      'name': 'Product 3',
-      'image': 'https://picsum.photos/202',
-      'size': '2kg',
-      'price': "200"
-    },
-  ];
+  // final List<Map<String, dynamic>> products = [
+  //   {
+  //     'name': 'Product 1',
+  //     'image': 'https://picsum.photos/200',
+  //     'size': '1kg',
+  //     'price': "200"
+  //   },
+  //   {
+  //     'name': 'Product 2',
+  //     'image': 'https://picsum.photos/201',
+  //     'size': '500ML',
+  //     'price': "200"
+  //   },
+  //   {
+  //     'name': 'Product 3',
+  //     'image': 'https://picsum.photos/202',
+  //     'size': '2kg',
+  //     'price': "200"
+  //   },
+  // ];
   final List<String> imageList = [
     'https://picsum.photos/200/300',
     'https://picsum.photos/200/300',
@@ -154,46 +166,66 @@ class _CategoriesState extends State<Categories> {
         ),
         body: Row(
           children: [
-            Container(
-              width: 100,
-              color: Colors.white,
-              child: ListView.builder(
-                itemCount: tabItems.length,
-                itemBuilder: (context, index) {
-                  final item = tabItems[index];
-                  final isSelected = index == _selectedTabIndex;
+            BlocBuilder<ApiBloc, ApiState>(
+              builder: (context, state) =>
+                  state.isLoading || state.subCategoryByCategoryModel == null
+                      ? CircularProgressIndicator()
+                      : Container(
+                          width: 100,
+                          color: Colors.white,
+                          child: ListView.builder(
+                            itemCount: state.subCategoryByCategoryModel
+                                ?.subcategories?.length,
+                            itemBuilder: (context, index) {
+                              final item = state.subCategoryByCategoryModel
+                                  ?.subcategories?[index];
+                              final isSelected = index == _selectedTabIndex;
 
-                  return InkWell(
-                    onTap: () {
-                      setState(() {
-                        _selectedTabIndex = index;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 10),
-                      padding: EdgeInsets.all(10),
-                      color: isSelected ? Colors.lightGreen[200] : Colors.white,
-                      child: Column(
-                        children: [
-                          ClipOval(
-                            child: Image.network(item['image'],
-                                width: 80, height: 80, fit: BoxFit.cover),
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedTabIndex = index;
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(top: 10),
+                                  padding: EdgeInsets.all(10),
+                                  color: isSelected
+                                      ? Colors.lightGreen[200]
+                                      : Colors.white,
+                                  child: Column(
+                                    children: [
+                                      ClipOval(
+                                        child: Image.network(
+                                          item?.image ?? "",
+                                          width: 80,
+                                          height: 80,
+                                          fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                            // Handle image load errors, e.g., display an icon
+                                            return Icon(Icons
+                                                .error); // You can use a different icon
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        item?.name ?? '',
+                                        style: TextStyle(
+                                          color: isSelected
+                                              ? Colors.black
+                                              : Colors.grey[500],
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                          SizedBox(height: 5),
-                          Text(
-                            item['text'],
-                            style: TextStyle(
-                              color:
-                                  isSelected ? Colors.black : Colors.grey[500],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
+                        ),
             ),
             Expanded(
               child: Column(
@@ -273,9 +305,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                   ),
                   Expanded(
-                    child: _isGridView
-                        ? GridViewWidget(products)
-                        : ListViewWidget(products),
+                    child: ListViewWidget(),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -324,122 +354,124 @@ class _CategoriesState extends State<Categories> {
 }
 
 class ListViewWidget extends StatefulWidget {
-  final List<Map<String, dynamic>> products;
-
-  ListViewWidget(this.products);
+  ListViewWidget();
 
   @override
   State<ListViewWidget> createState() => _ListViewWidgetState();
 }
 
 class _ListViewWidgetState extends State<ListViewWidget> {
-  final List<Product> item = [
-    Product(
-      name: 'Product 1',
-      image: 'https://picsum.photos/200/300',
-      rating: 4.5,
-      price: 25.0,
-      discount: 10.0,
-      description: 'Description of Product 1',
-    ),
-    // Add more products here
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
-          builder: (BuildContext context) {
-            return ProductDetailsSheet(
-                item[0]); // Show details for the first product
-          },
-        );
+    return BlocBuilder<ApiBloc, ApiState>(
+      builder: (context, state) {
+        final data = state.productByCategoryModel?.data;
+
+        return data == null
+            ? SizedBox()
+            : GestureDetector(
+                onTap: () {
+                  // showModalBottomSheet(
+                  //   context: context,
+                  //   shape: RoundedRectangleBorder(
+                  //       borderRadius:
+                  //           BorderRadius.vertical(top: Radius.circular(20))),
+                  //   builder: (BuildContext context) {
+                  //     return ProductDetailsSheet(
+                  //         data.first!); // Show details for the first product
+                  //   },
+                  // );
+                },
+                child: ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    final product = data[index];
+                    return Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          ClipOval(
+                            child: Image.network(
+                              product?.images.first ?? "",
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                // Handle image load errors, e.g., display an icon
+                                return Icon(Icons
+                                    .error); // You can use a different icon
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 16.0),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  product?.name ?? "",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                Text(
+                                  'Size: ${product?.quantity}',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                                Text(
+                                  'price: ${product?.price}',
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                width: 40,
+                                child: IconButton(
+                                  icon: Icon(Icons.calendar_today),
+                                  onPressed: () {
+                                    // Handle calendar button press here
+                                  },
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: 40,
+                                    child: IconButton(
+                                      icon: Icon(Icons.remove),
+                                      onPressed: () {
+                                        // Handle quantity decrease here
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    '1',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                  // Quantity
+                                  Container(
+                                    width: 40,
+                                    child: IconButton(
+                                      icon: Icon(Icons.add),
+                                      onPressed: () {
+                                        // Handle quantity increase here
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              );
       },
-      child: ListView.builder(
-        itemCount: widget.products.length,
-        itemBuilder: (context, index) {
-          final product = widget.products[index];
-          return Container(
-            padding: EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                ClipOval(
-                  child: Image.network(
-                    product['image'],
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 16.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        product['name'],
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        'Size: ${product['size']}',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
-                      ),
-                      Text(
-                        'price: ${product['price']}',
-                        style: TextStyle(color: Colors.black, fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 40,
-                      child: IconButton(
-                        icon: Icon(Icons.calendar_today),
-                        onPressed: () {
-                          // Handle calendar button press here
-                        },
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: Icon(Icons.remove),
-                            onPressed: () {
-                              // Handle quantity decrease here
-                            },
-                          ),
-                        ),
-                        Text(
-                          '1',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        // Quantity
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: Icon(Icons.add),
-                            onPressed: () {
-                              // Handle quantity increase here
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
     );
   }
 }

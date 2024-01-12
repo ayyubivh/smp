@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
 
 import '../Categories.dart';
@@ -8,37 +10,46 @@ class ExploreCategoryView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      scrollDirection: Axis.horizontal,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        mainAxisExtent: 100,
-        childAspectRatio: 2 / 3.7,
+    return BlocBuilder<ApiBloc, ApiState>(
+      builder: (context, state) => GridView.builder(
+        scrollDirection: Axis.horizontal,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          mainAxisExtent: 100,
+          childAspectRatio: 2 / 3.7,
+        ),
+        itemCount: state.categoryModel?.categories?.length ?? 0,
+        itemBuilder: (context, index) {
+          final data = state.categoryModel?.categories?[index];
+          return state.isLoading
+              ? const SizedBox()
+              : InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Categories(
+                                  id: data?.id ?? "",
+                                )));
+                  },
+                  child: Column(
+                    children: [
+                      Image.network(data?.image ?? ""),
+                      const SizedBox(height: 10),
+                      Text(
+                        data?.name ?? "",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+        },
       ),
-      itemCount: shopbycategory.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Categories()));
-          },
-          child: Column(
-            children: [
-              Image.asset(shopbycategory[index]),
-              const SizedBox(height: 10),
-              Text(
-                shopbycategorytext[index],
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 

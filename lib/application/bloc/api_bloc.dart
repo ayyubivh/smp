@@ -1,0 +1,91 @@
+import 'dart:async';
+
+import 'package:bloc/bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:mr_ambarisha_frontend_new/domain/api_repository.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/banner/banner_model.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/category/category_model.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/sub_category_by_category/sub_category_by_category_model.dart';
+
+part 'api_event.dart';
+part 'api_state.dart';
+part 'api_bloc.freezed.dart';
+
+@injectable
+class ApiBloc extends Bloc<ApiEvent, ApiState> {
+  final ApiRepository _apiRepository;
+  ApiBloc(this._apiRepository) : super(ApiState.initial()) {
+    on<_FetchBanner>(_fetchBanner);
+    on<_FetchCategory>(_fetchCategory);
+    on<_FetchProductByCategory>(_fetchProductByCategory);
+    on<_FetchSubCategoryByCategory>(_fetchSubCategoryByCategory);
+  }
+
+  _fetchBanner(_FetchBanner event, Emitter<ApiState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final res = await _apiRepository.fetchBanner();
+
+      res.fold(
+        (failure) => emit(state.copyWith(isLoading: false)),
+        (data) => emit(
+          state.copyWith(bannerModel: data, isLoading: false),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  _fetchCategory(_FetchCategory event, Emitter<ApiState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final res = await _apiRepository.fetchCategories();
+
+      res.fold(
+        (failure) => emit(state.copyWith(isLoading: false)),
+        (data) => emit(
+          state.copyWith(categoryModel: data, isLoading: false),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  _fetchProductByCategory(
+      _FetchProductByCategory event, Emitter<ApiState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final res = await _apiRepository.fetchProductByCategory(event.id);
+
+      res.fold(
+        (failure) => emit(state.copyWith(isLoading: false)),
+        (data) => emit(
+          state.copyWith(productByCategoryModel: data, isLoading: false),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  _fetchSubCategoryByCategory(
+      _FetchSubCategoryByCategory event, Emitter<ApiState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final res = await _apiRepository.fetchSubCategoryByCategory(event.id);
+
+      res.fold(
+        (failure) => emit(state.copyWith(isLoading: false)),
+        (data) => emit(
+          state.copyWith(subCategoryByCategoryModel: data, isLoading: false),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+}

@@ -1,80 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
 
 class MainBanner extends StatelessWidget {
-  const MainBanner({super.key});
+  const MainBanner({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return ImageSlideshow(
-      indicatorRadius: 5,
-
-      /// Width of the [ImageSlideshow].
-      width: double.infinity,
-
-      /// Height of the [ImageSlideshow].
-      height: 150,
-
-      /// The page to show when first creating the [ImageSlideshow].
-      initialPage: 0,
-
-      /// The color to paint the indicator.
-      indicatorColor: Colors.blue,
-
-      /// The color to paint behind th indicator.
-      indicatorBackgroundColor: Colors.grey,
-
-      /// Called whenever the page in the center of the viewport changes.
-      onPageChanged: (value) {
-        print('Page changed: $value');
+    return BlocBuilder<ApiBloc, ApiState>(
+      builder: (context, state) {
+        if (state.bannerModel != null && state.bannerModel!.banners != null) {
+          return ImageSlideshow(
+            indicatorRadius: 5,
+            width: double.infinity,
+            height: 150,
+            initialPage: 0,
+            indicatorColor: Colors.blue,
+            indicatorBackgroundColor: Colors.grey,
+            onPageChanged: (value) {
+              print('Page changed: $value');
+            },
+            autoPlayInterval: 3000,
+            isLoop: true,
+            children: state.bannerModel!.banners!
+                .map(
+                  (banner) => ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      banner.image ??
+                          "", // Use the image URL or an empty string
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Handle image load errors, e.g., display an icon
+                        return Icon(
+                            Icons.error); // You can use a different icon
+                      },
+                    ),
+                  ),
+                )
+                .toList(),
+          );
+        } else {
+          // Return some default widget or loading indicator if needed
+          return CircularProgressIndicator();
+        }
       },
-
-      /// Auto scroll interval.
-      /// Do not auto scroll with null or 0.
-      autoPlayInterval: 3000,
-
-      /// Loops back to first slide.
-      isLoop: true,
-
-      /// The widgets to display in the [ImageSlideshow].
-      /// Add the sample image file into the images folder
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/banner.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/banner.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/banner.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/banner.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.asset(
-            'assets/banner.png',
-            fit: BoxFit.cover,
-          ),
-        ),
-      ],
     );
   }
 }

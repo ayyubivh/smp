@@ -18,7 +18,7 @@ import 'package:mr_ambarisha_frontend_new/views/wallet/wallet_history.dart';
 
 import '../Basket/Basket.dart';
 import '../Profile/edit_profile.dart';
-import '../Rewards/Rewards(coins).dart';
+import '../Rewards/Rewards_coins.dart';
 import '../needhelp/needhelp.dart';
 
 class MenuScreenView extends StatefulWidget {
@@ -270,7 +270,10 @@ class _MenuScreenViewState extends State<MenuScreenView> {
                     ),
                     kbox5(),
                     InkWell(
-                      child: kcard1(Icons.money,"Post paid Plan",),
+                      child: kcard1(
+                        Icons.money,
+                        "Post paid Plan",
+                      ),
                       onTap: () {
                         // Get.to(const TermAndConditionView());
                       },
@@ -399,6 +402,7 @@ class _MenuScreenViewState extends State<MenuScreenView> {
       ),
     );
   }
+
   kroitem(icon, text) {
     return GestureDetector(
       onTap: () {
