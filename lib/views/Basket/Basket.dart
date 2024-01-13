@@ -402,216 +402,234 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                               //   },
                               // ),
                               if (tabIndex == 0)
-                                Container(
-                                    width: double.infinity,
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          width: double.infinity,
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------  Bill Details  ----------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                        Container(
-                                            child: Row(
+                                BlocBuilder<ApiBloc, ApiState>(
+                                  builder: (context, state) {
+                                    final data = state.cartModel;
+                                    final subTotal = data?.totals?.subtotal;
+                                    return Container(
+                                        width: double.infinity,
+                                        child: Column(
                                           children: [
                                             Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: const Text(
-                                                'Sub-Total',
+                                              width: double.infinity,
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------  Bill Details  ----------------------------',
                                                 style: TextStyle(
                                                     color: Colors.black),
-                                              ),
+                                              )),
+                                            ),
+                                            Container(
+                                                child: Row(
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: const Text(
+                                                    'Sub-Total',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 240),
+                                                  child: Text(
+                                                    '$subTotal',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                )
+                                              ],
+                                            )),
+                                            Container(
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------------------------------------------------------',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  margin: const EdgeInsets.only(
+                                                      left: 10),
+                                                  child: const Text(
+                                                    'Delivery Fees',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                // This widget will push the text to the right
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 10),
+                                                  child: const Text(
+                                                    '\.00',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                             Container(
                                               padding: const EdgeInsets.only(
-                                                  left: 240),
+                                                  left: 2),
                                               child: const Text(
-                                                '\$80.00',
+                                                'Add items worth ₹500.00 more to get free delivery',
+                                                style: TextStyle(
+                                                    color: Colors.grey),
+                                                textAlign: TextAlign.right,
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 5),
+                                                  child: const Text(
+                                                    'Get free delivery with membership',
+                                                    style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 12),
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 5),
+                                                  child: const Text(
+                                                    'Add Membership',
+                                                    style: TextStyle(
+                                                        color: Colors.blue,
+                                                        fontSize: 12),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------------------------------------------------------',
                                                 style: TextStyle(
                                                     color: Colors.black),
-                                              ),
-                                            )
+                                              )),
+                                            ),
+                                            Container(
+                                                child: Row(
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: const Text(
+                                                    'GST 18 %',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 240),
+                                                  child: const Text(
+                                                    '\.00',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                )
+                                              ],
+                                            )),
+                                            Container(
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------------------------------------------------------',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                            ),
+                                            Container(
+                                                child: Row(
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: const Text(
+                                                    'Packing Charges',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 10),
+                                                  child: const Text(
+                                                    '\.00',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                )
+                                              ],
+                                            )),
+                                            Container(
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------------------------------------------------------',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                            ),
+                                            Container(
+                                                child: Row(
+                                              children: [
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 10),
+                                                  child: const Text(
+                                                    'Total Amount',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                const Spacer(),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 10),
+                                                  child: const Text(
+                                                    '\.00',
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
+                                                )
+                                              ],
+                                            )),
+                                            Container(
+                                              child: const Center(
+                                                  child: Text(
+                                                '----------------------------------------------------------------------------',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )),
+                                            ),
                                           ],
-                                        )),
-                                        Container(
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------------------------------------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              margin: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: const Text(
-                                                'Delivery Fees',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            // This widget will push the text to the right
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  right: 10),
-                                              child: const Text(
-                                                '\$20.00',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Container(
-                                          padding:
-                                              const EdgeInsets.only(left: 2),
-                                          child: const Text(
-                                            'Add items worth ₹500.00 more to get free delivery',
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                            textAlign: TextAlign.right,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              padding: const EdgeInsets.only(
-                                                  left: 5),
-                                              child: const Text(
-                                                'Get free delivery with membership',
-                                                style: TextStyle(
-                                                    color: Colors.blue,
-                                                    fontSize: 12),
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  right: 5),
-                                              child: const Text(
-                                                'Add Membership',
-                                                style: TextStyle(
-                                                    color: Colors.blue,
-                                                    fontSize: 12),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        Container(
-                                          width: double.infinity,
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------------------------------------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                        Container(
-                                            child: Row(
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: const Text(
-                                                'GST 18 %',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 240),
-                                              child: const Text(
-                                                '\$10.00',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                        Container(
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------------------------------------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                        Container(
-                                            child: Row(
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: const Text(
-                                                'Packing Charges',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  right: 10),
-                                              child: const Text(
-                                                '\$10.00',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                        Container(
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------------------------------------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                        Container(
-                                            child: Row(
-                                          children: [
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: const Text(
-                                                'Total Amount',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                            const Spacer(),
-                                            Container(
-                                              padding: const EdgeInsets.only(
-                                                  right: 10),
-                                              child: const Text(
-                                                '\$120.00',
-                                                style: TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            )
-                                          ],
-                                        )),
-                                        Container(
-                                          child: const Center(
-                                              child: Text(
-                                            '----------------------------------------------------------------------------',
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                          )),
-                                        ),
-                                      ],
-                                    )),
+                                        ));
+                                  },
+                                ),
                           ],
                         ),
                       if (tabIndex == 1)

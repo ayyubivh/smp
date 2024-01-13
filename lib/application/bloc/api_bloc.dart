@@ -104,7 +104,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       res.fold(
         (failure) => emit(state.copyWith(isLoading: false)),
         (data) {
-          print(" on the bloc $data");
+          print(" on the bloc ${data?.cart?.subtotal}");
           emit(
             state.copyWith(
               cartModel: data,
