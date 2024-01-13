@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
 
 import '../wallet/wallet_history.dart';
 import 'basketmodel.dart';
@@ -13,83 +15,55 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
 
   // Define your tabs and their names
   final List<String> _tabs = ["Tomorrow's Order", "Rest of the Month"];
-  final List<Map<String, dynamic>> products = [
-    {
-      'image':
-          'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
-      'name': 'Product 3',
-      'size': 'S',
-      'price': '999',
-    },
-    {
-      'image':
-          'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
-      'name': 'Product 3',
-      'size': 'S',
-      'price': '999',
-    },
-    {
-      'image':
-          'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
-      'name': 'Product 3',
-      'size': 'S',
-      'price': '999',
-    },
-    {
-      'image':
-          'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
-      'name': 'Product 3',
-      'size': 'S',
-      'price': '999',
-    },
-    {
-      'image':
-          'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
-      'name': 'Product 3',
-      'size': 'S',
-      'price': '999',
-    },
-  ];
+  // final List<Map<String, dynamic>> products = [
+  //   {
+  //     'image':
+  //         'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
+  //     'name': 'Product 3',
+  //     'size': 'S',
+  //     'price': '999',
+  //   },
+  //   {
+  //     'image':
+  //         'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
+  //     'name': 'Product 3',
+  //     'size': 'S',
+  //     'price': '999',
+  //   },
+  //   {
+  //     'image':
+  //         'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
+  //     'name': 'Product 3',
+  //     'size': 'S',
+  //     'price': '999',
+  //   },
+  //   {
+  //     'image':
+  //         'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
+  //     'name': 'Product 3',
+  //     'size': 'S',
+  //     'price': '999',
+  //   },
+  //   {
+  //     'image':
+  //         'https://thumbs.dreamstime.com/b/pineapple-slices-isolated-white-30985039.jpg',
+  //     'name': 'Product 3',
+  //     'size': 'S',
+  //     'price': '999',
+  //   },
+  // ];
 
   // Define product data for each tab
-  final List<List<ProductData>> _productData = [
-    [
-      ProductData(
-        imageUrl: 'https://picsum.photos/200',
-        productName: 'Product 1',
-        price: 19.99,
-        size: 'M',
-        quantity: 2,
-      ),
-      ProductData(
-        imageUrl: 'https://picsum.photos/200',
-        productName: 'Product 2',
-        price: 29.99,
-        size: 'L',
-        quantity: 1,
-      ),
-      ProductData(
-        imageUrl: 'https://picsum.photos/200',
-        productName: 'Product 2',
-        price: 29.99,
-        size: 'L',
-        quantity: 1,
-      ),
-      ProductData(
-        imageUrl: 'https://picsum.photos/200',
-        productName: 'Product 2',
-        price: 29.99,
-        size: 'L',
-        quantity: 1,
-      ),
-    ],
-    [], // Add product data for the second tab here
-  ];
 
   @override
   void initState() {
+    BlocProvider.of<ApiBloc>(context).add(const ApiEvent.fetchCart());
+
     super.initState();
-    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController = TabController(
+      length: _tabs.length,
+      vsync: this,
+    );
     _tabController.addListener(() {
       setState(() {}); // Update the UI when the tab changes
     });
@@ -195,390 +169,449 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                       if (tabIndex == 0)
                         Column(
                           children: [
-                            Container(
-                              height: 300,
-                              child: SizedBox(
-                                child: ListView.builder(
-                                  itemCount: _productData[tabIndex].length,
-                                  itemBuilder: (context, index) {
-                                    final product =
-                                        _productData[tabIndex][index];
-                                    return ProductTile(product: product);
-                                  },
-                                ),
-                              ),
+                            BlocBuilder<ApiBloc, ApiState>(
+                              builder: (context, state) {
+                                return Container(
+                                  height: 300,
+                                  child: SizedBox(
+                                    child: ListView.builder(
+                                      itemCount: state
+                                          .cartModel?.cart?.products?.length,
+                                      itemBuilder: (context, index) {
+                                        if (state.cartModel == null) {
+                                          return SizedBox();
+                                        }
+                                        final product = state.cartModel?.cart
+                                            ?.products?[index].productId;
+                                        if (product == null) {
+                                          return SizedBox();
+                                        }
+                                        return ProductTile(
+                                          product: product,
+                                          quantity: state.cartModel?.cart
+                                                  ?.products?[index].quantity ??
+                                              0,
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                             if (tabIndex == 0)
-                              Container(
-                                color: Colors.cyan,
-                                height: 270,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: products.length,
-                                  itemBuilder: (context, index) {
-                                    final product = products[index];
-                                    return Container(
-                                        width: 200,
-                                        // Specify a fixed width here
-                                        child: Card(
-                                          elevation: 3,
-                                          child: Column(
-                                            children: [
-                                              ClipRRect(
-                                                  child: Stack(
-                                                children: [
-                                                  Image.network(
-                                                    product['image'],
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  Container(
-                                                      height: 35,
-                                                      width: double.infinity,
-                                                      child: Container(
-                                                          child: Row(
-                                                        children: [
-                                                          Container(
-                                                            child: Container(
-                                                              height: 30,
-                                                              width: 50,
-                                                              color: Colors
-                                                                  .red[100],
-                                                              child:
-                                                                  const Center(
-                                                                child: Text(
-                                                                  "16%",
-                                                                  style: TextStyle(
-                                                                      color: Colors
-                                                                          .black),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          const Spacer(),
-                                                          Container(
-                                                            child: IconButton(
-                                                              icon: const Icon(
-                                                                Icons
-                                                                    .favorite_border,
-                                                                color:
-                                                                    Colors.red,
-                                                              ),
-                                                              onPressed: () {},
-                                                            ),
-                                                          )
-                                                        ],
-                                                      ))),
-                                                  Center(
-                                                    child: Container(
-                                                      margin:
-                                                          const EdgeInsets.only(
-                                                              top: 140),
-                                                      height: 50,
-                                                      child: Column(
-                                                        children: [
-                                                          Text(
-                                                            product['name'],
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 12),
-                                                          ),
-                                                          Text(
-                                                            product['price'],
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 12),
-                                                          ),
-                                                          Text(
-                                                            product['size'],
-                                                            style: const TextStyle(
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 12),
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              )),
-                                              Container(
-                                                  color: Colors.white,
-                                                  // Outer Container: White background
-                                                  child: Stack(
-                                                    children: [
-                                                      Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                                left: 140),
-                                                        height: 50,
-                                                        width: double.infinity,
-                                                        decoration:
-                                                            const BoxDecoration(),
-                                                        child: Container(
-                                                          height: 30,
-                                                          width: 30,
-                                                          alignment: Alignment
-                                                              .centerRight,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100),
-                                                            color: Colors
-                                                                .green, // Makes the container circular
-                                                          ),
-                                                          child: IconButton(
-                                                            onPressed: () {},
-                                                            icon: const Icon(Icons
-                                                                .add_shopping_cart),
-                                                            color: Colors
-                                                                .white, // You can set the icon color here
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned.fill(
-                                                          child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(top: 15),
-                                                        child: const Text(
-                                                          '-----------------------------',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.black),
-                                                        ),
-                                                      )),
-                                                      Center(
-                                                        child: Container(
-                                                          margin:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  top: 22),
-                                                          child: TextButton(
-                                                              onPressed: () {},
-                                                              child: const Text(
-                                                                'Add to Cart',
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .green),
-                                                              )),
-                                                        ),
-                                                      )
-                                                    ],
-                                                  ))
-                                            ],
-                                          ),
-                                        ));
-                                  },
-                                ),
-                              ),
-                            if (tabIndex == 0)
-                              Container(
-                                  width: double.infinity,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: double.infinity,
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------  Bill Details  ----------------------------',
-                                          style: TextStyle(color: Colors.black),
-                                        )),
-                                      ),
-                                      Container(
-                                          child: Row(
-                                        children: [
-                                          Container(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: const Text(
-                                              'Sub-Total',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                left: 240),
-                                            child: const Text(
-                                              '\$80.00',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                      Container(
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------------------------------------------------------',
-                                          style: TextStyle(color: Colors.black),
-                                        )),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 10),
-                                            child: const Text(
-                                              'Delivery Fees',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                          // This widget will push the text to the right
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                right: 10),
-                                            child: const Text(
-                                              '\$20.00',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.only(left: 2),
-                                        child: const Text(
-                                          'Add items worth ₹500.00 more to get free delivery',
-                                          style: TextStyle(color: Colors.grey),
-                                          textAlign: TextAlign.right,
+                              // BlocBuilder<ApiBloc, ApiState>(
+                              //   builder: (context, state) {
+                              //     final products =
+                              //         state.cartModel?.cart?.products;
+                              //     if (products == null) {
+                              //       return CircularProgressIndicator();
+                              //     }
+                              //     return Container(
+                              //       color: Colors.cyan,
+                              //       height: 270,
+                              //       child: ListView.builder(
+                              //         scrollDirection: Axis.horizontal,
+                              //         itemCount: products.length,
+                              //         itemBuilder: (context, index) {
+                              //           return Container(
+                              //               width: 200,
+                              //               // Specify a fixed width here
+                              //               child: Card(
+                              //                 elevation: 3,
+                              //                 child: Column(
+                              //                   children: [
+                              //                     ClipRRect(
+                              //                         child: Stack(
+                              //                       children: [
+                              //                         Image.network(
+                              //                           products[index]
+                              //                                   .productId
+                              //                                   ?.images
+                              //                                   ?.first ??
+                              //                               "",
+                              //                           fit: BoxFit.cover,
+                              //                         ),
+                              //                         Container(
+                              //                             height: 35,
+                              //                             width:
+                              //                                 double.infinity,
+                              //                             child: Container(
+                              //                                 child: Row(
+                              //                               children: [
+                              //                                 Container(
+                              //                                   child:
+                              //                                       Container(
+                              //                                     height: 30,
+                              //                                     width: 50,
+                              //                                     color: Colors
+                              //                                         .red[100],
+                              //                                     child:
+                              //                                         const Center(
+                              //                                       child: Text(
+                              //                                         "16%",
+                              //                                         style: TextStyle(
+                              //                                             color:
+                              //                                                 Colors.black),
+                              //                                       ),
+                              //                                     ),
+                              //                                   ),
+                              //                                 ),
+                              //                                 const Spacer(),
+                              //                                 Container(
+                              //                                   child:
+                              //                                       IconButton(
+                              //                                     icon:
+                              //                                         const Icon(
+                              //                                       Icons
+                              //                                           .favorite_border,
+                              //                                       color: Colors
+                              //                                           .red,
+                              //                                     ),
+                              //                                     onPressed:
+                              //                                         () {},
+                              //                                   ),
+                              //                                 )
+                              //                               ],
+                              //                             ))),
+                              //                         Center(
+                              //                           child: Container(
+                              //                             margin:
+                              //                                 const EdgeInsets
+                              //                                     .only(
+                              //                                     top: 140),
+                              //                             height: 50,
+                              //                             child: Column(
+                              //                               children: [
+                              //                                 Text(
+                              //                                   products[index]
+                              //                                           .productId
+                              //                                           ?.name ??
+                              //                                       "",
+                              //                                   style: const TextStyle(
+                              //                                       color: Colors
+                              //                                           .white,
+                              //                                       fontSize:
+                              //                                           12),
+                              //                                 ),
+                              //                                 Text(
+                              //                                   products[index]
+                              //                                       .price
+                              //                                       .toString(),
+                              //                                   style: const TextStyle(
+                              //                                       color: Colors
+                              //                                           .white,
+                              //                                       fontSize:
+                              //                                           12),
+                              //                                 ),
+                              //                                 Text(
+                              //                                   products[index]
+                              //                                       .productId!
+                              //                                       .quantity
+                              //                                       .toString(),
+                              //                                   style: const TextStyle(
+                              //                                       color: Colors
+                              //                                           .white,
+                              //                                       fontSize:
+                              //                                           12),
+                              //                                 )
+                              //                               ],
+                              //                             ),
+                              //                           ),
+                              //                         )
+                              //                       ],
+                              //                     )),
+                              //                     Container(
+                              //                         color: Colors.white,
+                              //                         // Outer Container: White background
+                              //                         child: Stack(
+                              //                           children: [
+                              //                             Container(
+                              //                               padding:
+                              //                                   const EdgeInsets
+                              //                                       .only(
+                              //                                       left: 140),
+                              //                               height: 50,
+                              //                               width:
+                              //                                   double.infinity,
+                              //                               decoration:
+                              //                                   const BoxDecoration(),
+                              //                               child: Container(
+                              //                                 height: 30,
+                              //                                 width: 30,
+                              //                                 alignment: Alignment
+                              //                                     .centerRight,
+                              //                                 decoration:
+                              //                                     BoxDecoration(
+                              //                                   borderRadius:
+                              //                                       BorderRadius
+                              //                                           .circular(
+                              //                                               100),
+                              //                                   color: Colors
+                              //                                       .green, // Makes the container circular
+                              //                                 ),
+                              //                                 child: IconButton(
+                              //                                   onPressed:
+                              //                                       () {},
+                              //                                   icon: const Icon(
+                              //                                       Icons
+                              //                                           .add_shopping_cart),
+                              //                                   color: Colors
+                              //                                       .white, // You can set the icon color here
+                              //                                 ),
+                              //                               ),
+                              //                             ),
+                              //                             Positioned.fill(
+                              //                                 child: Container(
+                              //                               padding:
+                              //                                   const EdgeInsets
+                              //                                       .only(
+                              //                                       top: 15),
+                              //                               child: const Text(
+                              //                                 '-----------------------------',
+                              //                                 style: TextStyle(
+                              //                                     color: Colors
+                              //                                         .black),
+                              //                               ),
+                              //                             )),
+                              //                             Center(
+                              //                               child: Container(
+                              //                                 margin:
+                              //                                     const EdgeInsets
+                              //                                         .only(
+                              //                                         top: 22),
+                              //                                 child: TextButton(
+                              //                                     onPressed:
+                              //                                         () {},
+                              //                                     child:
+                              //                                         const Text(
+                              //                                       'Add to Cart',
+                              //                                       style: TextStyle(
+                              //                                           color: Colors
+                              //                                               .green),
+                              //                                     )),
+                              //                               ),
+                              //                             )
+                              //                           ],
+                              //                         ))
+                              //                   ],
+                              //                 ),
+                              //               ));
+                              //         },
+                              //       ),
+                              //     );
+                              //   },
+                              // ),
+                              if (tabIndex == 0)
+                                Container(
+                                    width: double.infinity,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: double.infinity,
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------  Bill Details  ----------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
                                         ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding:
-                                                const EdgeInsets.only(left: 5),
-                                            child: const Text(
-                                              'Get free delivery with membership',
-                                              style: TextStyle(
-                                                  color: Colors.blue,
-                                                  fontSize: 12),
+                                        Container(
+                                            child: Row(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: const Text(
+                                                'Sub-Total',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                             ),
-                                          ),
-                                          const Spacer(),
-                                          Container(
-                                            padding:
-                                                const EdgeInsets.only(right: 5),
-                                            child: const Text(
-                                              'Add Membership',
-                                              style: TextStyle(
-                                                  color: Colors.blue,
-                                                  fontSize: 12),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      Container(
-                                        width: double.infinity,
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------------------------------------------------------',
-                                          style: TextStyle(color: Colors.black),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 240),
+                                              child: const Text(
+                                                '\$80.00',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            )
+                                          ],
                                         )),
-                                      ),
-                                      Container(
-                                          child: Row(
-                                        children: [
-                                          Container(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: const Text(
-                                              'GST 18 %',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                        Container(
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------------------------------------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: const Text(
+                                                'Delivery Fees',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                             ),
+                                            const Spacer(),
+                                            // This widget will push the text to the right
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: const Text(
+                                                '\$20.00',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          padding:
+                                              const EdgeInsets.only(left: 2),
+                                          child: const Text(
+                                            'Add items worth ₹500.00 more to get free delivery',
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            textAlign: TextAlign.right,
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                left: 240),
-                                            child: const Text(
-                                              '\$10.00',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                        ),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              alignment: Alignment.centerLeft,
+                                              padding: const EdgeInsets.only(
+                                                  left: 5),
+                                              child: const Text(
+                                                'Get free delivery with membership',
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontSize: 12),
+                                              ),
                                             ),
-                                          )
-                                        ],
-                                      )),
-                                      Container(
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------------------------------------------------------',
-                                          style: TextStyle(color: Colors.black),
+                                            const Spacer(),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 5),
+                                              child: const Text(
+                                                'Add Membership',
+                                                style: TextStyle(
+                                                    color: Colors.blue,
+                                                    fontSize: 12),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------------------------------------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
+                                        ),
+                                        Container(
+                                            child: Row(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: const Text(
+                                                'GST 18 %',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 240),
+                                              child: const Text(
+                                                '\$10.00',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            )
+                                          ],
                                         )),
-                                      ),
-                                      Container(
-                                          child: Row(
-                                        children: [
-                                          Container(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: const Text(
-                                              'Packing Charges',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                        Container(
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------------------------------------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
+                                        ),
+                                        Container(
+                                            child: Row(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: const Text(
+                                                'Packing Charges',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                             ),
-                                          ),
-                                          const Spacer(),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                right: 10),
-                                            child: const Text(
-                                              '\$10.00',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                      Container(
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------------------------------------------------------',
-                                          style: TextStyle(color: Colors.black),
+                                            const Spacer(),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: const Text(
+                                                '\$10.00',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            )
+                                          ],
                                         )),
-                                      ),
-                                      Container(
-                                          child: Row(
-                                        children: [
-                                          Container(
-                                            padding:
-                                                const EdgeInsets.only(left: 10),
-                                            child: const Text(
-                                              'Total Amount',
-                                              style: TextStyle(
-                                                  color: Colors.black),
+                                        Container(
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------------------------------------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
+                                        ),
+                                        Container(
+                                            child: Row(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
+                                              child: const Text(
+                                                'Total Amount',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
                                             ),
-                                          ),
-                                          const Spacer(),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                right: 10),
-                                            child: const Text(
-                                              '\$120.00',
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                      Container(
-                                        child: const Center(
-                                            child: Text(
-                                          '----------------------------------------------------------------------------',
-                                          style: TextStyle(color: Colors.black),
+                                            const Spacer(),
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 10),
+                                              child: const Text(
+                                                '\$120.00',
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            )
+                                          ],
                                         )),
-                                      ),
-                                    ],
-                                  )),
+                                        Container(
+                                          child: const Center(
+                                              child: Text(
+                                            '----------------------------------------------------------------------------',
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )),
+                                        ),
+                                      ],
+                                    )),
                           ],
                         ),
                       if (tabIndex == 1)
@@ -606,27 +639,27 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      margin: EdgeInsets.only(top: 25),
-                                      height: 320,
-                                      child: ListView.builder(
-                                        itemCount: _productData.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          print(_productData.length);
-                                          List<ProductData> productDataList =
-                                              _productData[index];
-                                          return Column(
-                                            children: productDataList
-                                                .map((productData) {
-                                              return ProductTile(
-                                                product: productData,
-                                              );
-                                            }).toList(),
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                    // Container(
+                                    //   margin: EdgeInsets.only(top: 25),
+                                    //   height: 320,
+                                    //   child: ListView.builder(
+                                    //     itemCount: _productData.length,
+                                    //     itemBuilder:
+                                    //         (BuildContext context, int index) {
+                                    //       print(_productData.length);
+                                    //       List<ProductData> productDataList =
+                                    //           _productData[index];
+                                    //       return Column(
+                                    //         children: productDataList
+                                    //             .map((productData) {
+                                    //           return ProductTile(
+                                    //             product: productData,
+                                    //           );
+                                    //         }).toList(),
+                                    //       );
+                                    //     },
+                                    //   ),
+                                    // ),
                                     Container(
                                       padding: EdgeInsets.only(left: 10),
                                       child: Container(
@@ -636,26 +669,26 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      height: 320,
-                                      child: ListView.builder(
-                                        itemCount: _productData.length,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          print(_productData.length);
-                                          List<ProductData> productDataList =
-                                              _productData[index];
-                                          return Column(
-                                            children: productDataList
-                                                .map((productData) {
-                                              return ProductTile(
-                                                product: productData,
-                                              );
-                                            }).toList(),
-                                          );
-                                        },
-                                      ),
-                                    ),
+                                    // Container(
+                                    //   height: 320,
+                                    //   child: ListView.builder(
+                                    //     itemCount: _productData.length,
+                                    //     itemBuilder:
+                                    //         (BuildContext context, int index) {
+                                    //       print(_productData.length);
+                                    //       List<ProductData> productDataList =
+                                    //           _productData[index];
+                                    //       return Column(
+                                    //         children: productDataList
+                                    //             .map((productData) {
+                                    //           return ProductTile(
+                                    //             product: productData,
+                                    //           );
+                                    //         }).toList(),
+                                    //       );
+                                    //     },
+                                    //   ),
+                                    // ),
                                     Container(
                                       padding: EdgeInsets.only(left: 10),
                                       child: Container(

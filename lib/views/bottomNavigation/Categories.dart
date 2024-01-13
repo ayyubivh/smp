@@ -305,7 +305,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                   ),
                   Expanded(
-                    child: ListViewWidget(),
+                    child: ListViewWidget(widget.id),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -354,7 +354,8 @@ class _CategoriesState extends State<Categories> {
 }
 
 class ListViewWidget extends StatefulWidget {
-  ListViewWidget();
+  final String id;
+  ListViewWidget(this.id);
 
   @override
   State<ListViewWidget> createState() => _ListViewWidgetState();
@@ -436,32 +437,38 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                   },
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Container(
-                                    width: 40,
-                                    child: IconButton(
-                                      icon: Icon(Icons.remove),
-                                      onPressed: () {
-                                        // Handle quantity decrease here
-                                      },
-                                    ),
-                                  ),
-                                  Text(
-                                    '1',
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  // Quantity
-                                  Container(
-                                    width: 40,
-                                    child: IconButton(
-                                      icon: Icon(Icons.add),
-                                      onPressed: () {
-                                        // Handle quantity increase here
-                                      },
-                                    ),
-                                  ),
-                                ],
+                              BlocBuilder<ApiBloc, ApiState>(
+                                builder: (context, state) {
+                                  final isCart = state.cartModel?.cart?.products
+                                      ?.any((e) =>
+                                          e.productId?.id == product?.id);
+
+                                  return isCart == false
+                                      ? TextButton(
+                                          onPressed: () {
+                                            BlocProvider.of<ApiBloc>(context)
+                                                .add(ApiEvent.addCart(
+                                              id: product?.id ?? "",
+                                              context: context,
+                                            ));
+                                          },
+                                          child: Text("Add to Cart",
+                                              style: TextStyle(
+                                                  color: Colors.green)),
+                                        )
+                                      : TextButton(
+                                          onPressed: () {
+                                            BlocProvider.of<ApiBloc>(context)
+                                                .add(ApiEvent.removeCart(
+                                              product?.id ?? "",
+                                              context,
+                                            ));
+                                          },
+                                          child: Text("Remove",
+                                              style:
+                                                  TextStyle(color: Colors.red)),
+                                        );
+                                },
                               ),
                             ],
                           ),

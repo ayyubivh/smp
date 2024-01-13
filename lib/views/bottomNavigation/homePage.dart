@@ -29,7 +29,8 @@ class _HomePageviewState extends State<HomePageview> {
   void initState() {
     BlocProvider.of<ApiBloc>(context)
       ..add(const ApiEvent.fetchBanner())
-      ..add(const ApiEvent.fetchCategory());
+      ..add(const ApiEvent.fetchCategory())
+      ..add(ApiEvent.fetchCart());
 
     super.initState();
   }
@@ -367,7 +368,7 @@ class _HomePageviewState extends State<HomePageview> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Categories(
-                                    id: "",
+                                    id: "64e0c8b25e97f7bccd335b52",
                                   )));
                     },
                     child: Container(
@@ -422,7 +423,7 @@ class _HomePageviewState extends State<HomePageview> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => Categories(
-                                            id: "",
+                                            id: "64e0c8b25e97f7bccd335b52",
                                           )));
                             },
                             child: Image.asset("assets/related_product.png")),
@@ -632,7 +633,7 @@ class _HomePageviewState extends State<HomePageview> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => const Categories(
-                                    id: "",
+                                    id: "64e0c8b25e97f7bccd335b52",
                                   )));
                     },
                     child: Container(

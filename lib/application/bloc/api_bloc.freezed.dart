@@ -22,6 +22,11 @@ mixin _$ApiEvent {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +35,11 @@ mixin _$ApiEvent {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +48,11 @@ mixin _$ApiEvent {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,6 +64,11 @@ mixin _$ApiEvent {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +78,11 @@ mixin _$ApiEvent {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +92,11 @@ mixin _$ApiEvent {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,6 +161,11 @@ class _$FetchBannerImpl implements _FetchBanner {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
   }) {
     return fetchBanner();
   }
@@ -142,6 +177,11 @@ class _$FetchBannerImpl implements _FetchBanner {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
   }) {
     return fetchBanner?.call();
   }
@@ -153,6 +193,11 @@ class _$FetchBannerImpl implements _FetchBanner {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchBanner != null) {
@@ -170,6 +215,11 @@ class _$FetchBannerImpl implements _FetchBanner {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
   }) {
     return fetchBanner(this);
   }
@@ -182,6 +232,11 @@ class _$FetchBannerImpl implements _FetchBanner {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
   }) {
     return fetchBanner?.call(this);
   }
@@ -194,6 +249,11 @@ class _$FetchBannerImpl implements _FetchBanner {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchBanner != null) {
@@ -249,6 +309,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
   }) {
     return fetchCategory();
   }
@@ -260,6 +325,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
   }) {
     return fetchCategory?.call();
   }
@@ -271,6 +341,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchCategory != null) {
@@ -288,6 +363,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
   }) {
     return fetchCategory(this);
   }
@@ -300,6 +380,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
   }) {
     return fetchCategory?.call(this);
   }
@@ -312,6 +397,11 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchCategory != null) {
@@ -396,6 +486,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
   }) {
     return fetchProductByCategory(id);
   }
@@ -407,6 +502,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
   }) {
     return fetchProductByCategory?.call(id);
   }
@@ -418,6 +518,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchProductByCategory != null) {
@@ -435,6 +540,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
   }) {
     return fetchProductByCategory(this);
   }
@@ -447,6 +557,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
   }) {
     return fetchProductByCategory?.call(this);
   }
@@ -459,6 +574,11 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchProductByCategory != null) {
@@ -549,6 +669,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
   }) {
     return fetchSubCategoryByCategory(id);
   }
@@ -560,6 +685,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
   }) {
     return fetchSubCategoryByCategory?.call(id);
   }
@@ -571,6 +701,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchSubCategoryByCategory != null) {
@@ -588,6 +723,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
   }) {
     return fetchSubCategoryByCategory(this);
   }
@@ -600,6 +740,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
   }) {
     return fetchSubCategoryByCategory?.call(this);
   }
@@ -612,6 +757,11 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
     required TResult orElse(),
   }) {
     if (fetchSubCategoryByCategory != null) {
@@ -632,6 +782,913 @@ abstract class _FetchSubCategoryByCategory implements ApiEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchCartImplCopyWith<$Res> {
+  factory _$$FetchCartImplCopyWith(
+          _$FetchCartImpl value, $Res Function(_$FetchCartImpl) then) =
+      __$$FetchCartImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchCartImplCopyWithImpl<$Res>
+    extends _$ApiEventCopyWithImpl<$Res, _$FetchCartImpl>
+    implements _$$FetchCartImplCopyWith<$Res> {
+  __$$FetchCartImplCopyWithImpl(
+      _$FetchCartImpl _value, $Res Function(_$FetchCartImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchCartImpl implements _FetchCart {
+  const _$FetchCartImpl();
+
+  @override
+  String toString() {
+    return 'ApiEvent.fetchCart()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchCartImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
+  }) {
+    return fetchCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
+  }) {
+    return fetchCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (fetchCart != null) {
+      return fetchCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
+  }) {
+    return fetchCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
+  }) {
+    return fetchCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (fetchCart != null) {
+      return fetchCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchCart implements ApiEvent {
+  const factory _FetchCart() = _$FetchCartImpl;
+}
+
+/// @nodoc
+abstract class _$$AddCartImplCopyWith<$Res> {
+  factory _$$AddCartImplCopyWith(
+          _$AddCartImpl value, $Res Function(_$AddCartImpl) then) =
+      __$$AddCartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$AddCartImplCopyWithImpl<$Res>
+    extends _$ApiEventCopyWithImpl<$Res, _$AddCartImpl>
+    implements _$$AddCartImplCopyWith<$Res> {
+  __$$AddCartImplCopyWithImpl(
+      _$AddCartImpl _value, $Res Function(_$AddCartImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$AddCartImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      context: null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddCartImpl implements _AddCart {
+  const _$AddCartImpl({required this.id, required this.context});
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ApiEvent.addCart(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddCartImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddCartImplCopyWith<_$AddCartImpl> get copyWith =>
+      __$$AddCartImplCopyWithImpl<_$AddCartImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
+  }) {
+    return addCart(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
+  }) {
+    return addCart?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (addCart != null) {
+      return addCart(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
+  }) {
+    return addCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
+  }) {
+    return addCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (addCart != null) {
+      return addCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddCart implements ApiEvent {
+  const factory _AddCart(
+      {required final String id,
+      required final BuildContext context}) = _$AddCartImpl;
+
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$AddCartImplCopyWith<_$AddCartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IncreaseQuantityImplCopyWith<$Res> {
+  factory _$$IncreaseQuantityImplCopyWith(_$IncreaseQuantityImpl value,
+          $Res Function(_$IncreaseQuantityImpl) then) =
+      __$$IncreaseQuantityImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$IncreaseQuantityImplCopyWithImpl<$Res>
+    extends _$ApiEventCopyWithImpl<$Res, _$IncreaseQuantityImpl>
+    implements _$$IncreaseQuantityImplCopyWith<$Res> {
+  __$$IncreaseQuantityImplCopyWithImpl(_$IncreaseQuantityImpl _value,
+      $Res Function(_$IncreaseQuantityImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$IncreaseQuantityImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IncreaseQuantityImpl implements _IncreaseQuantity {
+  const _$IncreaseQuantityImpl(this.id, this.context);
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ApiEvent.increaseQuantity(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IncreaseQuantityImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IncreaseQuantityImplCopyWith<_$IncreaseQuantityImpl> get copyWith =>
+      __$$IncreaseQuantityImplCopyWithImpl<_$IncreaseQuantityImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
+  }) {
+    return increaseQuantity(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
+  }) {
+    return increaseQuantity?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (increaseQuantity != null) {
+      return increaseQuantity(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
+  }) {
+    return increaseQuantity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
+  }) {
+    return increaseQuantity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (increaseQuantity != null) {
+      return increaseQuantity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IncreaseQuantity implements ApiEvent {
+  const factory _IncreaseQuantity(final String id, final BuildContext context) =
+      _$IncreaseQuantityImpl;
+
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$IncreaseQuantityImplCopyWith<_$IncreaseQuantityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DecreaseQuantityImplCopyWith<$Res> {
+  factory _$$DecreaseQuantityImplCopyWith(_$DecreaseQuantityImpl value,
+          $Res Function(_$DecreaseQuantityImpl) then) =
+      __$$DecreaseQuantityImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$DecreaseQuantityImplCopyWithImpl<$Res>
+    extends _$ApiEventCopyWithImpl<$Res, _$DecreaseQuantityImpl>
+    implements _$$DecreaseQuantityImplCopyWith<$Res> {
+  __$$DecreaseQuantityImplCopyWithImpl(_$DecreaseQuantityImpl _value,
+      $Res Function(_$DecreaseQuantityImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$DecreaseQuantityImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DecreaseQuantityImpl implements _DecreaseQuantity {
+  const _$DecreaseQuantityImpl(this.id, this.context);
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ApiEvent.decreaseQuantity(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DecreaseQuantityImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DecreaseQuantityImplCopyWith<_$DecreaseQuantityImpl> get copyWith =>
+      __$$DecreaseQuantityImplCopyWithImpl<_$DecreaseQuantityImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
+  }) {
+    return decreaseQuantity(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
+  }) {
+    return decreaseQuantity?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (decreaseQuantity != null) {
+      return decreaseQuantity(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
+  }) {
+    return decreaseQuantity(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
+  }) {
+    return decreaseQuantity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (decreaseQuantity != null) {
+      return decreaseQuantity(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DecreaseQuantity implements ApiEvent {
+  const factory _DecreaseQuantity(final String id, final BuildContext context) =
+      _$DecreaseQuantityImpl;
+
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$DecreaseQuantityImplCopyWith<_$DecreaseQuantityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveCartImplCopyWith<$Res> {
+  factory _$$RemoveCartImplCopyWith(
+          _$RemoveCartImpl value, $Res Function(_$RemoveCartImpl) then) =
+      __$$RemoveCartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id, BuildContext context});
+}
+
+/// @nodoc
+class __$$RemoveCartImplCopyWithImpl<$Res>
+    extends _$ApiEventCopyWithImpl<$Res, _$RemoveCartImpl>
+    implements _$$RemoveCartImplCopyWith<$Res> {
+  __$$RemoveCartImplCopyWithImpl(
+      _$RemoveCartImpl _value, $Res Function(_$RemoveCartImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? context = null,
+  }) {
+    return _then(_$RemoveCartImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveCartImpl implements _RemoveCart {
+  const _$RemoveCartImpl(this.id, this.context);
+
+  @override
+  final String id;
+  @override
+  final BuildContext context;
+
+  @override
+  String toString() {
+    return 'ApiEvent.removeCart(id: $id, context: $context)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveCartImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.context, context) || other.context == context));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, context);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveCartImplCopyWith<_$RemoveCartImpl> get copyWith =>
+      __$$RemoveCartImplCopyWithImpl<_$RemoveCartImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function() fetchCart,
+    required TResult Function(String id, BuildContext context) addCart,
+    required TResult Function(String id, BuildContext context) increaseQuantity,
+    required TResult Function(String id, BuildContext context) decreaseQuantity,
+    required TResult Function(String id, BuildContext context) removeCart,
+  }) {
+    return removeCart(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function()? fetchCart,
+    TResult? Function(String id, BuildContext context)? addCart,
+    TResult? Function(String id, BuildContext context)? increaseQuantity,
+    TResult? Function(String id, BuildContext context)? decreaseQuantity,
+    TResult? Function(String id, BuildContext context)? removeCart,
+  }) {
+    return removeCart?.call(id, context);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function()? fetchCart,
+    TResult Function(String id, BuildContext context)? addCart,
+    TResult Function(String id, BuildContext context)? increaseQuantity,
+    TResult Function(String id, BuildContext context)? decreaseQuantity,
+    TResult Function(String id, BuildContext context)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (removeCart != null) {
+      return removeCart(id, context);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchCart value) fetchCart,
+    required TResult Function(_AddCart value) addCart,
+    required TResult Function(_IncreaseQuantity value) increaseQuantity,
+    required TResult Function(_DecreaseQuantity value) decreaseQuantity,
+    required TResult Function(_RemoveCart value) removeCart,
+  }) {
+    return removeCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchCart value)? fetchCart,
+    TResult? Function(_AddCart value)? addCart,
+    TResult? Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult? Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult? Function(_RemoveCart value)? removeCart,
+  }) {
+    return removeCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchCart value)? fetchCart,
+    TResult Function(_AddCart value)? addCart,
+    TResult Function(_IncreaseQuantity value)? increaseQuantity,
+    TResult Function(_DecreaseQuantity value)? decreaseQuantity,
+    TResult Function(_RemoveCart value)? removeCart,
+    required TResult orElse(),
+  }) {
+    if (removeCart != null) {
+      return removeCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveCart implements ApiEvent {
+  const factory _RemoveCart(final String id, final BuildContext context) =
+      _$RemoveCartImpl;
+
+  String get id;
+  BuildContext get context;
+  @JsonKey(ignore: true)
+  _$$RemoveCartImplCopyWith<_$RemoveCartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ApiState {
   bool get isLoading => throw _privateConstructorUsedError;
   BannerModel? get bannerModel => throw _privateConstructorUsedError;
@@ -640,6 +1697,8 @@ mixin _$ApiState {
       throw _privateConstructorUsedError;
   SubCategoryByCategoryModel? get subCategoryByCategoryModel =>
       throw _privateConstructorUsedError;
+  CartModel? get cartModel => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApiStateCopyWith<ApiState> get copyWith =>
@@ -656,12 +1715,15 @@ abstract class $ApiStateCopyWith<$Res> {
       BannerModel? bannerModel,
       CategoryModel? categoryModel,
       ProductByCategoryModel? productByCategoryModel,
-      SubCategoryByCategoryModel? subCategoryByCategoryModel});
+      SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      CartModel? cartModel,
+      int quantity});
 
   $BannerModelCopyWith<$Res>? get bannerModel;
   $CategoryModelCopyWith<$Res>? get categoryModel;
   $ProductByCategoryModelCopyWith<$Res>? get productByCategoryModel;
   $SubCategoryByCategoryModelCopyWith<$Res>? get subCategoryByCategoryModel;
+  $CartModelCopyWith<$Res>? get cartModel;
 }
 
 /// @nodoc
@@ -682,6 +1744,8 @@ class _$ApiStateCopyWithImpl<$Res, $Val extends ApiState>
     Object? categoryModel = freezed,
     Object? productByCategoryModel = freezed,
     Object? subCategoryByCategoryModel = freezed,
+    Object? cartModel = freezed,
+    Object? quantity = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -704,6 +1768,14 @@ class _$ApiStateCopyWithImpl<$Res, $Val extends ApiState>
           ? _value.subCategoryByCategoryModel
           : subCategoryByCategoryModel // ignore: cast_nullable_to_non_nullable
               as SubCategoryByCategoryModel?,
+      cartModel: freezed == cartModel
+          ? _value.cartModel
+          : cartModel // ignore: cast_nullable_to_non_nullable
+              as CartModel?,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -756,6 +1828,18 @@ class _$ApiStateCopyWithImpl<$Res, $Val extends ApiState>
       return _then(_value.copyWith(subCategoryByCategoryModel: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CartModelCopyWith<$Res>? get cartModel {
+    if (_value.cartModel == null) {
+      return null;
+    }
+
+    return $CartModelCopyWith<$Res>(_value.cartModel!, (value) {
+      return _then(_value.copyWith(cartModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -771,7 +1855,9 @@ abstract class _$$ApiStateImplCopyWith<$Res>
       BannerModel? bannerModel,
       CategoryModel? categoryModel,
       ProductByCategoryModel? productByCategoryModel,
-      SubCategoryByCategoryModel? subCategoryByCategoryModel});
+      SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      CartModel? cartModel,
+      int quantity});
 
   @override
   $BannerModelCopyWith<$Res>? get bannerModel;
@@ -781,6 +1867,8 @@ abstract class _$$ApiStateImplCopyWith<$Res>
   $ProductByCategoryModelCopyWith<$Res>? get productByCategoryModel;
   @override
   $SubCategoryByCategoryModelCopyWith<$Res>? get subCategoryByCategoryModel;
+  @override
+  $CartModelCopyWith<$Res>? get cartModel;
 }
 
 /// @nodoc
@@ -799,6 +1887,8 @@ class __$$ApiStateImplCopyWithImpl<$Res>
     Object? categoryModel = freezed,
     Object? productByCategoryModel = freezed,
     Object? subCategoryByCategoryModel = freezed,
+    Object? cartModel = freezed,
+    Object? quantity = null,
   }) {
     return _then(_$ApiStateImpl(
       isLoading: null == isLoading
@@ -821,6 +1911,14 @@ class __$$ApiStateImplCopyWithImpl<$Res>
           ? _value.subCategoryByCategoryModel
           : subCategoryByCategoryModel // ignore: cast_nullable_to_non_nullable
               as SubCategoryByCategoryModel?,
+      cartModel: freezed == cartModel
+          ? _value.cartModel
+          : cartModel // ignore: cast_nullable_to_non_nullable
+              as CartModel?,
+      quantity: null == quantity
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -833,7 +1931,9 @@ class _$ApiStateImpl implements _ApiState {
       required this.bannerModel,
       required this.categoryModel,
       required this.productByCategoryModel,
-      required this.subCategoryByCategoryModel});
+      required this.subCategoryByCategoryModel,
+      required this.cartModel,
+      required this.quantity});
 
   @override
   final bool isLoading;
@@ -845,10 +1945,14 @@ class _$ApiStateImpl implements _ApiState {
   final ProductByCategoryModel? productByCategoryModel;
   @override
   final SubCategoryByCategoryModel? subCategoryByCategoryModel;
+  @override
+  final CartModel? cartModel;
+  @override
+  final int quantity;
 
   @override
   String toString() {
-    return 'ApiState(isLoading: $isLoading, bannerModel: $bannerModel, categoryModel: $categoryModel, productByCategoryModel: $productByCategoryModel, subCategoryByCategoryModel: $subCategoryByCategoryModel)';
+    return 'ApiState(isLoading: $isLoading, bannerModel: $bannerModel, categoryModel: $categoryModel, productByCategoryModel: $productByCategoryModel, subCategoryByCategoryModel: $subCategoryByCategoryModel, cartModel: $cartModel, quantity: $quantity)';
   }
 
   @override
@@ -867,12 +1971,23 @@ class _$ApiStateImpl implements _ApiState {
             (identical(other.subCategoryByCategoryModel,
                     subCategoryByCategoryModel) ||
                 other.subCategoryByCategoryModel ==
-                    subCategoryByCategoryModel));
+                    subCategoryByCategoryModel) &&
+            (identical(other.cartModel, cartModel) ||
+                other.cartModel == cartModel) &&
+            (identical(other.quantity, quantity) ||
+                other.quantity == quantity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, bannerModel,
-      categoryModel, productByCategoryModel, subCategoryByCategoryModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      bannerModel,
+      categoryModel,
+      productByCategoryModel,
+      subCategoryByCategoryModel,
+      cartModel,
+      quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -887,8 +2002,9 @@ abstract class _ApiState implements ApiState {
       required final BannerModel? bannerModel,
       required final CategoryModel? categoryModel,
       required final ProductByCategoryModel? productByCategoryModel,
-      required final SubCategoryByCategoryModel?
-          subCategoryByCategoryModel}) = _$ApiStateImpl;
+      required final SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      required final CartModel? cartModel,
+      required final int quantity}) = _$ApiStateImpl;
 
   @override
   bool get isLoading;
@@ -900,6 +2016,10 @@ abstract class _ApiState implements ApiState {
   ProductByCategoryModel? get productByCategoryModel;
   @override
   SubCategoryByCategoryModel? get subCategoryByCategoryModel;
+  @override
+  CartModel? get cartModel;
+  @override
+  int get quantity;
   @override
   @JsonKey(ignore: true)
   _$$ApiStateImplCopyWith<_$ApiStateImpl> get copyWith =>

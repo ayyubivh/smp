@@ -19,7 +19,7 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
 
   final List<Widget> _tabs = [
     HomePageview(),
-    Categories(id: ""),
+    Categories(id: "64e0c8b25e97f7bccd335b52"),
     Basket(),
     CustomBottomSheet(),
     Tab5(),
