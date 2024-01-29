@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+
+import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
 import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/homePage.dart';
@@ -37,9 +39,9 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   void initState() {
-    BlocProvider.of<ApiBloc>(context)
-      ..add(ApiEvent.fetchProductByCategory(widget.id))
-      ..add(ApiEvent.fetchSubCategoryByCategory(widget.id));
+    BlocProvider.of<CategoryBloc>(context)
+      ..add(CategoryEvent.fetchProductByCategory(widget.id))
+      ..add(CategoryEvent.fetchSubCategoryByCategory(widget.id));
     super.initState();
   }
 
@@ -166,7 +168,7 @@ class _CategoriesState extends State<Categories> {
         ),
         body: Row(
           children: [
-            BlocBuilder<ApiBloc, ApiState>(
+            BlocBuilder<CategoryBloc, CategoryState>(
               builder: (context, state) =>
                   state.isLoading || state.subCategoryByCategoryModel == null
                       ? CircularProgressIndicator()
@@ -364,7 +366,7 @@ class ListViewWidget extends StatefulWidget {
 class _ListViewWidgetState extends State<ListViewWidget> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ApiBloc, ApiState>(
+    return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) {
         final data = state.productByCategoryModel?.data;
 
@@ -437,7 +439,7 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                   },
                                 ),
                               ),
-                              BlocBuilder<ApiBloc, ApiState>(
+                              BlocBuilder<CartBloc, CartState>(
                                 builder: (context, state) {
                                   final isCart = state.cartModel?.cart?.products
                                       ?.any((e) =>
@@ -446,8 +448,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                   return isCart == false
                                       ? TextButton(
                                           onPressed: () {
-                                            BlocProvider.of<ApiBloc>(context)
-                                                .add(ApiEvent.addCart(
+                                            BlocProvider.of<CartBloc>(context)
+                                                .add(CartEvent.addCart(
                                               id: product?.id ?? "",
                                               context: context,
                                             ));
@@ -458,8 +460,8 @@ class _ListViewWidgetState extends State<ListViewWidget> {
                                         )
                                       : TextButton(
                                           onPressed: () {
-                                            BlocProvider.of<ApiBloc>(context)
-                                                .add(ApiEvent.removeCart(
+                                            BlocProvider.of<CartBloc>(context)
+                                                .add(CartEvent.removeCart(
                                               product?.id ?? "",
                                               context,
                                             ));

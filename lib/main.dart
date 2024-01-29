@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/domain/core/di/injectable.dart';
-import 'package:mr_ambarisha_frontend_new/views/Holidays/holiday.dart';
 import 'package:mr_ambarisha_frontend_new/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,8 +12,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection();
 
-  runApp(BlocProvider(
-    create: (context) => getIt<ApiBloc>(),
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (context) => getIt<ShopBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<CartBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<CategoryBloc>(),
+      )
+    ],
     child: const MyApp(),
   ));
 }

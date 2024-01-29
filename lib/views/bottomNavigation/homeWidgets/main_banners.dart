@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
 
 class MainBanner extends StatelessWidget {
   const MainBanner({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ApiBloc, ApiState>(
+    return BlocBuilder<ShopBloc, ShopState>(
       builder: (context, state) {
         if (state.bannerModel != null && state.bannerModel!.banners != null) {
           return ImageSlideshow(

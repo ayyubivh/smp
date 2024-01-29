@@ -189,7 +189,7 @@ mixin _$Categories {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String? get status => throw _privateConstructorUsedError;
   @JsonKey(name: "__v")
   int? get v => throw _privateConstructorUsedError;
 
@@ -209,7 +209,7 @@ abstract class $CategoriesCopyWith<$Res> {
       {@JsonKey(name: "_id") String? id,
       String name,
       String? image,
-      String status,
+      String? status,
       @JsonKey(name: "__v") int? v});
 }
 
@@ -229,7 +229,7 @@ class _$CategoriesCopyWithImpl<$Res, $Val extends Categories>
     Object? id = freezed,
     Object? name = null,
     Object? image = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? v = freezed,
   }) {
     return _then(_value.copyWith(
@@ -245,10 +245,10 @@ class _$CategoriesCopyWithImpl<$Res, $Val extends Categories>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
@@ -269,7 +269,7 @@ abstract class _$$CategoriesImplCopyWith<$Res>
       {@JsonKey(name: "_id") String? id,
       String name,
       String? image,
-      String status,
+      String? status,
       @JsonKey(name: "__v") int? v});
 }
 
@@ -287,7 +287,7 @@ class __$$CategoriesImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = null,
     Object? image = freezed,
-    Object? status = null,
+    Object? status = freezed,
     Object? v = freezed,
   }) {
     return _then(_$CategoriesImpl(
@@ -303,10 +303,10 @@ class __$$CategoriesImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: null == status
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
@@ -336,7 +336,7 @@ class _$CategoriesImpl implements _Categories {
   @override
   final String? image;
   @override
-  final String status;
+  final String? status;
   @override
   @JsonKey(name: "__v")
   final int? v;
@@ -381,7 +381,7 @@ abstract class _Categories implements Categories {
       {@JsonKey(name: "_id") required final String? id,
       required final String name,
       required final String? image,
-      required final String status,
+      required final String? status,
       @JsonKey(name: "__v") required final int? v}) = _$CategoriesImpl;
 
   factory _Categories.fromJson(Map<String, dynamic> json) =
@@ -395,7 +395,7 @@ abstract class _Categories implements Categories {
   @override
   String? get image;
   @override
-  String get status;
+  String? get status;
   @override
   @JsonKey(name: "__v")
   int? get v;

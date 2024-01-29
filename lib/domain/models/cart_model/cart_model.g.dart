@@ -37,7 +37,7 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       subtotalAmount: json['subtotalAmount'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      v: json['__v'] as int?,
+      v: (json['__v'] as num?)?.toDouble(),
       totalAmount: json['totalAmount'] as String?,
       couponCode: json['couponCode'] as String?,
     );
@@ -66,8 +66,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       productId: json['productId'] == null
           ? null
           : ProductDetails.fromJson(json['productId'] as Map<String, dynamic>),
-      price: json['price'] as int?,
-      quantity: json['quantity'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
+      quantity: (json['quantity'] as num?)?.toDouble(),
       id: json['_id'] as String?,
     );
 
@@ -83,21 +83,21 @@ _$ProductDetailsImpl _$$ProductDetailsImplFromJson(Map<String, dynamic> json) =>
     _$ProductDetailsImpl(
       id: json['_id'] as String?,
       name: json['name'] as String?,
-      quantity: json['quantity'] as int?,
-      price: json['price'] as int?,
+      quantity: (json['quantity'] as num?)?.toDouble(),
+      price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String?).toList(),
-      discountedPrice: json['discountedPrice'] as int?,
+      discountedPrice: (json['discountedPrice'] as num?)?.toDouble(),
       category: json['category'] as String?,
       subcategory: json['subcategory'] as String?,
-      stock: json['stock'] as int?,
+      stock: (json['stock'] as num?)?.toDouble(),
       details:
           (json['details'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      numOfReviews: json['numOfReviews'] as int?,
+      numOfReviews: (json['numOfReviews'] as num?)?.toDouble(),
       reviews: json['reviews'] as List<dynamic>?,
       createdAt: json['createdAt'] as String?,
-      v: json['__v'] as int?,
+      v: (json['__v'] as num?)?.toDouble(),
       type: json['type'] as String?,
     );
 
@@ -123,10 +123,10 @@ Map<String, dynamic> _$$ProductDetailsImplToJson(
     };
 
 _$TotalsImpl _$$TotalsImplFromJson(Map<String, dynamic> json) => _$TotalsImpl(
-      subtotal: json['subtotal'] as int,
-      tax: json['tax'] as int,
+      subtotal: (json['subtotal'] as num).toDouble(),
+      tax: (json['tax'] as num).toDouble(),
       shipping: json['shipping'],
-      total: json['total'] as int,
+      total: (json['total'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$TotalsImplToJson(_$TotalsImpl instance) =>

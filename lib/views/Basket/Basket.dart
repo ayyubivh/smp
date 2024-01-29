@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 
 import '../wallet/wallet_history.dart';
 import 'basketmodel.dart';
@@ -57,7 +57,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    BlocProvider.of<ApiBloc>(context).add(const ApiEvent.fetchCart());
+    BlocProvider.of<CartBloc>(context).add(const CartEvent.fetchCart());
 
     super.initState();
     _tabController = TabController(
@@ -169,7 +169,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                       if (tabIndex == 0)
                         Column(
                           children: [
-                            BlocBuilder<ApiBloc, ApiState>(
+                            BlocBuilder<CartBloc, CartState>(
                               builder: (context, state) {
                                 return Container(
                                   height: 300,
@@ -189,7 +189,8 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                         return ProductTile(
                                           product: product,
                                           quantity: state.cartModel?.cart
-                                                  ?.products?[index].quantity ??
+                                                  ?.products?[index].quantity
+                                                  ?.toInt() ??
                                               0,
                                         );
                                       },
@@ -402,7 +403,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                               //   },
                               // ),
                               if (tabIndex == 0)
-                                BlocBuilder<ApiBloc, ApiState>(
+                                BlocBuilder<CartBloc, CartState>(
                                   builder: (context, state) {
                                     final data = state.cartModel;
                                     final subTotal = data?.totals?.subtotal;

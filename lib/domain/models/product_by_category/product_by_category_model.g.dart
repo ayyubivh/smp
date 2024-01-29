@@ -28,11 +28,11 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String,
       name: json['name'] as String,
       quantity: json['quantity'] as int,
-      price: json['price'] as int,
+      price: (json['price'] as num?)?.toDouble(),
       description: json['description'] as String,
       images:
           (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      discountedPrice: json['discountedPrice'] as int,
+      discountedPrice: (json['discountedPrice'] as num).toDouble(),
       category: json['category'] as String,
       subcategory: json['subcategory'] as String,
       stock: json['stock'] as int,

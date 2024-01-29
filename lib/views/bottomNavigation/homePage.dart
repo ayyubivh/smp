@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+
+import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/views/Profile/edit_profile.dart';
@@ -27,11 +30,10 @@ class HomePageview extends StatefulWidget {
 class _HomePageviewState extends State<HomePageview> {
   @override
   void initState() {
-    BlocProvider.of<ApiBloc>(context)
-      ..add(const ApiEvent.fetchBanner())
-      ..add(const ApiEvent.fetchCategory())
-      ..add(ApiEvent.fetchCart());
-
+    BlocProvider.of<CartBloc>(context)..add(CartEvent.fetchCart());
+    BlocProvider.of<ShopBloc>(context).add(ShopEvent.fetchBanner());
+    BlocProvider.of<CategoryBloc>(context)
+        .add(const CategoryEvent.fetchCategory());
     super.initState();
   }
 
@@ -198,10 +200,6 @@ class _HomePageviewState extends State<HomePageview> {
                           return Stack(
                             alignment: Alignment.center,
                             children: [
-                              Image.asset(
-                                "assets/lockimages.png",
-                                fit: BoxFit.cover,
-                              ),
                               index == 0
                                   ? Positioned(
                                       top: 25.h,

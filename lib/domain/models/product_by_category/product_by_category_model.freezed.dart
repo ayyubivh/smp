@@ -192,10 +192,10 @@ mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<String> get images => throw _privateConstructorUsedError;
-  int get discountedPrice => throw _privateConstructorUsedError;
+  double get discountedPrice => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get subcategory => throw _privateConstructorUsedError;
   int get stock => throw _privateConstructorUsedError;
@@ -221,10 +221,10 @@ abstract class $ProductCopyWith<$Res> {
       {@JsonKey(name: "_id") String id,
       String name,
       int quantity,
-      int price,
+      double? price,
       String description,
       List<String> images,
-      int discountedPrice,
+      double discountedPrice,
       String category,
       String subcategory,
       int stock,
@@ -252,7 +252,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? id = null,
     Object? name = null,
     Object? quantity = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? description = null,
     Object? images = null,
     Object? discountedPrice = null,
@@ -279,10 +279,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -294,7 +294,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       discountedPrice: null == discountedPrice
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -346,10 +346,10 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {@JsonKey(name: "_id") String id,
       String name,
       int quantity,
-      int price,
+      double? price,
       String description,
       List<String> images,
-      int discountedPrice,
+      double discountedPrice,
       String category,
       String subcategory,
       int stock,
@@ -375,7 +375,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? quantity = null,
-    Object? price = null,
+    Object? price = freezed,
     Object? description = null,
     Object? images = null,
     Object? discountedPrice = null,
@@ -402,10 +402,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double?,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -417,7 +417,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       discountedPrice: null == discountedPrice
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -493,7 +493,7 @@ class _$ProductImpl implements _Product {
   @override
   final int quantity;
   @override
-  final int price;
+  final double? price;
   @override
   final String description;
   final List<String> _images;
@@ -505,7 +505,7 @@ class _$ProductImpl implements _Product {
   }
 
   @override
-  final int discountedPrice;
+  final double discountedPrice;
   @override
   final String category;
   @override
@@ -617,10 +617,10 @@ abstract class _Product implements Product {
       {@JsonKey(name: "_id") required final String id,
       required final String name,
       required final int quantity,
-      required final int price,
+      required final double? price,
       required final String description,
       required final List<String> images,
-      required final int discountedPrice,
+      required final double discountedPrice,
       required final String category,
       required final String subcategory,
       required final int stock,
@@ -641,13 +641,13 @@ abstract class _Product implements Product {
   @override
   int get quantity;
   @override
-  int get price;
+  double? get price;
   @override
   String get description;
   @override
   List<String> get images;
   @override
-  int get discountedPrice;
+  double get discountedPrice;
   @override
   String get category;
   @override

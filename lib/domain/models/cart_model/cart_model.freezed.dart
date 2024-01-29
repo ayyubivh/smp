@@ -243,7 +243,7 @@ mixin _$Cart {
   @JsonKey(name: 'updatedAt')
   String? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: '__v')
-  int? get v => throw _privateConstructorUsedError;
+  double? get v => throw _privateConstructorUsedError;
   @JsonKey(name: 'totalAmount')
   String? get totalAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'couponCode')
@@ -272,7 +272,7 @@ abstract class $CartCopyWith<$Res> {
       @JsonKey(name: 'subtotalAmount') String? subtotalAmount,
       @JsonKey(name: 'createdAt') String? createdAt,
       @JsonKey(name: 'updatedAt') String? updatedAt,
-      @JsonKey(name: '__v') int? v,
+      @JsonKey(name: '__v') double? v,
       @JsonKey(name: 'totalAmount') String? totalAmount,
       @JsonKey(name: 'couponCode') String? couponCode});
 }
@@ -358,7 +358,7 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       totalAmount: freezed == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
@@ -391,7 +391,7 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       @JsonKey(name: 'subtotalAmount') String? subtotalAmount,
       @JsonKey(name: 'createdAt') String? createdAt,
       @JsonKey(name: 'updatedAt') String? updatedAt,
-      @JsonKey(name: '__v') int? v,
+      @JsonKey(name: '__v') double? v,
       @JsonKey(name: 'totalAmount') String? totalAmount,
       @JsonKey(name: 'couponCode') String? couponCode});
 }
@@ -474,7 +474,7 @@ class __$$CartImplCopyWithImpl<$Res>
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       totalAmount: freezed == totalAmount
           ? _value.totalAmount
           : totalAmount // ignore: cast_nullable_to_non_nullable
@@ -557,7 +557,7 @@ class _$CartImpl implements _Cart {
   final String? updatedAt;
   @override
   @JsonKey(name: '__v')
-  final int? v;
+  final double? v;
   @override
   @JsonKey(name: 'totalAmount')
   final String? totalAmount;
@@ -650,7 +650,7 @@ abstract class _Cart implements Cart {
       @JsonKey(name: 'subtotalAmount') required final String? subtotalAmount,
       @JsonKey(name: 'createdAt') required final String? createdAt,
       @JsonKey(name: 'updatedAt') required final String? updatedAt,
-      @JsonKey(name: '__v') required final int? v,
+      @JsonKey(name: '__v') required final double? v,
       @JsonKey(name: 'totalAmount') required final String? totalAmount,
       @JsonKey(name: 'couponCode')
       required final String? couponCode}) = _$CartImpl;
@@ -695,7 +695,7 @@ abstract class _Cart implements Cart {
   String? get updatedAt;
   @override
   @JsonKey(name: '__v')
-  int? get v;
+  double? get v;
   @override
   @JsonKey(name: 'totalAmount')
   String? get totalAmount;
@@ -717,9 +717,9 @@ mixin _$Product {
   @JsonKey(name: 'productId')
   ProductDetails? get productId => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
-  int? get quantity => throw _privateConstructorUsedError;
+  double? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
 
@@ -735,8 +735,8 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'productId') ProductDetails? productId,
-      @JsonKey(name: 'price') int? price,
-      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'price') double? price,
+      @JsonKey(name: 'quantity') double? quantity,
       @JsonKey(name: '_id') String? id});
 
   $ProductDetailsCopyWith<$Res>? get productId;
@@ -768,11 +768,11 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -802,8 +802,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'productId') ProductDetails? productId,
-      @JsonKey(name: 'price') int? price,
-      @JsonKey(name: 'quantity') int? quantity,
+      @JsonKey(name: 'price') double? price,
+      @JsonKey(name: 'quantity') double? quantity,
       @JsonKey(name: '_id') String? id});
 
   @override
@@ -834,11 +834,11 @@ class __$$ProductImplCopyWithImpl<$Res>
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -864,10 +864,10 @@ class _$ProductImpl implements _Product {
   final ProductDetails? productId;
   @override
   @JsonKey(name: 'price')
-  final int? price;
+  final double? price;
   @override
   @JsonKey(name: 'quantity')
-  final int? quantity;
+  final double? quantity;
   @override
   @JsonKey(name: '_id')
   final String? id;
@@ -911,8 +911,8 @@ class _$ProductImpl implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {@JsonKey(name: 'productId') required final ProductDetails? productId,
-      @JsonKey(name: 'price') required final int? price,
-      @JsonKey(name: 'quantity') required final int? quantity,
+      @JsonKey(name: 'price') required final double? price,
+      @JsonKey(name: 'quantity') required final double? quantity,
       @JsonKey(name: '_id') required final String? id}) = _$ProductImpl;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
@@ -922,10 +922,10 @@ abstract class _Product implements Product {
   ProductDetails? get productId;
   @override
   @JsonKey(name: 'price')
-  int? get price;
+  double? get price;
   @override
   @JsonKey(name: 'quantity')
-  int? get quantity;
+  double? get quantity;
   @override
   @JsonKey(name: '_id')
   String? get id;
@@ -946,31 +946,31 @@ mixin _$ProductDetails {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'quantity')
-  int? get quantity => throw _privateConstructorUsedError;
+  double? get quantity => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'images')
   List<String?>? get images => throw _privateConstructorUsedError;
   @JsonKey(name: 'discountedPrice')
-  int? get discountedPrice => throw _privateConstructorUsedError;
+  double? get discountedPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'category')
   String? get category => throw _privateConstructorUsedError;
   @JsonKey(name: 'subcategory')
   String? get subcategory => throw _privateConstructorUsedError;
   @JsonKey(name: 'stock')
-  int? get stock => throw _privateConstructorUsedError;
+  double? get stock => throw _privateConstructorUsedError;
   @JsonKey(name: 'details')
   List<String>? get details => throw _privateConstructorUsedError;
   @JsonKey(name: 'numOfReviews')
-  int? get numOfReviews => throw _privateConstructorUsedError;
+  double? get numOfReviews => throw _privateConstructorUsedError;
   @JsonKey(name: 'reviews')
   List<dynamic>? get reviews => throw _privateConstructorUsedError;
   @JsonKey(name: 'createdAt')
   String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: '__v')
-  int? get v => throw _privateConstructorUsedError;
+  double? get v => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   String? get type => throw _privateConstructorUsedError;
 
@@ -989,19 +989,19 @@ abstract class $ProductDetailsCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: '_id') String? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'price') int? price,
+      @JsonKey(name: 'quantity') double? quantity,
+      @JsonKey(name: 'price') double? price,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'images') List<String?>? images,
-      @JsonKey(name: 'discountedPrice') int? discountedPrice,
+      @JsonKey(name: 'discountedPrice') double? discountedPrice,
       @JsonKey(name: 'category') String? category,
       @JsonKey(name: 'subcategory') String? subcategory,
-      @JsonKey(name: 'stock') int? stock,
+      @JsonKey(name: 'stock') double? stock,
       @JsonKey(name: 'details') List<String>? details,
-      @JsonKey(name: 'numOfReviews') int? numOfReviews,
+      @JsonKey(name: 'numOfReviews') double? numOfReviews,
       @JsonKey(name: 'reviews') List<dynamic>? reviews,
       @JsonKey(name: 'createdAt') String? createdAt,
-      @JsonKey(name: '__v') int? v,
+      @JsonKey(name: '__v') double? v,
       @JsonKey(name: 'type') String? type});
 }
 
@@ -1047,11 +1047,11 @@ class _$ProductDetailsCopyWithImpl<$Res, $Val extends ProductDetails>
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -1063,7 +1063,7 @@ class _$ProductDetailsCopyWithImpl<$Res, $Val extends ProductDetails>
       discountedPrice: freezed == discountedPrice
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -1075,7 +1075,7 @@ class _$ProductDetailsCopyWithImpl<$Res, $Val extends ProductDetails>
       stock: freezed == stock
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       details: freezed == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
@@ -1083,7 +1083,7 @@ class _$ProductDetailsCopyWithImpl<$Res, $Val extends ProductDetails>
       numOfReviews: freezed == numOfReviews
           ? _value.numOfReviews
           : numOfReviews // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       reviews: freezed == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -1095,7 +1095,7 @@ class _$ProductDetailsCopyWithImpl<$Res, $Val extends ProductDetails>
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1115,19 +1115,19 @@ abstract class _$$ProductDetailsImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: '_id') String? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'quantity') int? quantity,
-      @JsonKey(name: 'price') int? price,
+      @JsonKey(name: 'quantity') double? quantity,
+      @JsonKey(name: 'price') double? price,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'images') List<String?>? images,
-      @JsonKey(name: 'discountedPrice') int? discountedPrice,
+      @JsonKey(name: 'discountedPrice') double? discountedPrice,
       @JsonKey(name: 'category') String? category,
       @JsonKey(name: 'subcategory') String? subcategory,
-      @JsonKey(name: 'stock') int? stock,
+      @JsonKey(name: 'stock') double? stock,
       @JsonKey(name: 'details') List<String>? details,
-      @JsonKey(name: 'numOfReviews') int? numOfReviews,
+      @JsonKey(name: 'numOfReviews') double? numOfReviews,
       @JsonKey(name: 'reviews') List<dynamic>? reviews,
       @JsonKey(name: 'createdAt') String? createdAt,
-      @JsonKey(name: '__v') int? v,
+      @JsonKey(name: '__v') double? v,
       @JsonKey(name: 'type') String? type});
 }
 
@@ -1171,11 +1171,11 @@ class __$$ProductDetailsImplCopyWithImpl<$Res>
       quantity: freezed == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -1187,7 +1187,7 @@ class __$$ProductDetailsImplCopyWithImpl<$Res>
       discountedPrice: freezed == discountedPrice
           ? _value.discountedPrice
           : discountedPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -1199,7 +1199,7 @@ class __$$ProductDetailsImplCopyWithImpl<$Res>
       stock: freezed == stock
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       details: freezed == details
           ? _value._details
           : details // ignore: cast_nullable_to_non_nullable
@@ -1207,7 +1207,7 @@ class __$$ProductDetailsImplCopyWithImpl<$Res>
       numOfReviews: freezed == numOfReviews
           ? _value.numOfReviews
           : numOfReviews // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       reviews: freezed == reviews
           ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
@@ -1219,7 +1219,7 @@ class __$$ProductDetailsImplCopyWithImpl<$Res>
       v: freezed == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -1263,10 +1263,10 @@ class _$ProductDetailsImpl implements _ProductDetails {
   final String? name;
   @override
   @JsonKey(name: 'quantity')
-  final int? quantity;
+  final double? quantity;
   @override
   @JsonKey(name: 'price')
-  final int? price;
+  final double? price;
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -1283,7 +1283,7 @@ class _$ProductDetailsImpl implements _ProductDetails {
 
   @override
   @JsonKey(name: 'discountedPrice')
-  final int? discountedPrice;
+  final double? discountedPrice;
   @override
   @JsonKey(name: 'category')
   final String? category;
@@ -1292,7 +1292,7 @@ class _$ProductDetailsImpl implements _ProductDetails {
   final String? subcategory;
   @override
   @JsonKey(name: 'stock')
-  final int? stock;
+  final double? stock;
   final List<String>? _details;
   @override
   @JsonKey(name: 'details')
@@ -1306,7 +1306,7 @@ class _$ProductDetailsImpl implements _ProductDetails {
 
   @override
   @JsonKey(name: 'numOfReviews')
-  final int? numOfReviews;
+  final double? numOfReviews;
   final List<dynamic>? _reviews;
   @override
   @JsonKey(name: 'reviews')
@@ -1323,7 +1323,7 @@ class _$ProductDetailsImpl implements _ProductDetails {
   final String? createdAt;
   @override
   @JsonKey(name: '__v')
-  final int? v;
+  final double? v;
   @override
   @JsonKey(name: 'type')
   final String? type;
@@ -1401,23 +1401,23 @@ class _$ProductDetailsImpl implements _ProductDetails {
 
 abstract class _ProductDetails implements ProductDetails {
   const factory _ProductDetails(
-          {@JsonKey(name: '_id') required final String? id,
-          @JsonKey(name: 'name') required final String? name,
-          @JsonKey(name: 'quantity') required final int? quantity,
-          @JsonKey(name: 'price') required final int? price,
-          @JsonKey(name: 'description') required final String? description,
-          @JsonKey(name: 'images') required final List<String?>? images,
-          @JsonKey(name: 'discountedPrice') required final int? discountedPrice,
-          @JsonKey(name: 'category') required final String? category,
-          @JsonKey(name: 'subcategory') required final String? subcategory,
-          @JsonKey(name: 'stock') required final int? stock,
-          @JsonKey(name: 'details') required final List<String>? details,
-          @JsonKey(name: 'numOfReviews') required final int? numOfReviews,
-          @JsonKey(name: 'reviews') required final List<dynamic>? reviews,
-          @JsonKey(name: 'createdAt') required final String? createdAt,
-          @JsonKey(name: '__v') required final int? v,
-          @JsonKey(name: 'type') required final String? type}) =
-      _$ProductDetailsImpl;
+      {@JsonKey(name: '_id') required final String? id,
+      @JsonKey(name: 'name') required final String? name,
+      @JsonKey(name: 'quantity') required final double? quantity,
+      @JsonKey(name: 'price') required final double? price,
+      @JsonKey(name: 'description') required final String? description,
+      @JsonKey(name: 'images') required final List<String?>? images,
+      @JsonKey(name: 'discountedPrice') required final double? discountedPrice,
+      @JsonKey(name: 'category') required final String? category,
+      @JsonKey(name: 'subcategory') required final String? subcategory,
+      @JsonKey(name: 'stock') required final double? stock,
+      @JsonKey(name: 'details') required final List<String>? details,
+      @JsonKey(name: 'numOfReviews') required final double? numOfReviews,
+      @JsonKey(name: 'reviews') required final List<dynamic>? reviews,
+      @JsonKey(name: 'createdAt') required final String? createdAt,
+      @JsonKey(name: '__v') required final double? v,
+      @JsonKey(name: 'type')
+      required final String? type}) = _$ProductDetailsImpl;
 
   factory _ProductDetails.fromJson(Map<String, dynamic> json) =
       _$ProductDetailsImpl.fromJson;
@@ -1430,10 +1430,10 @@ abstract class _ProductDetails implements ProductDetails {
   String? get name;
   @override
   @JsonKey(name: 'quantity')
-  int? get quantity;
+  double? get quantity;
   @override
   @JsonKey(name: 'price')
-  int? get price;
+  double? get price;
   @override
   @JsonKey(name: 'description')
   String? get description;
@@ -1442,7 +1442,7 @@ abstract class _ProductDetails implements ProductDetails {
   List<String?>? get images;
   @override
   @JsonKey(name: 'discountedPrice')
-  int? get discountedPrice;
+  double? get discountedPrice;
   @override
   @JsonKey(name: 'category')
   String? get category;
@@ -1451,13 +1451,13 @@ abstract class _ProductDetails implements ProductDetails {
   String? get subcategory;
   @override
   @JsonKey(name: 'stock')
-  int? get stock;
+  double? get stock;
   @override
   @JsonKey(name: 'details')
   List<String>? get details;
   @override
   @JsonKey(name: 'numOfReviews')
-  int? get numOfReviews;
+  double? get numOfReviews;
   @override
   @JsonKey(name: 'reviews')
   List<dynamic>? get reviews;
@@ -1466,7 +1466,7 @@ abstract class _ProductDetails implements ProductDetails {
   String? get createdAt;
   @override
   @JsonKey(name: '__v')
-  int? get v;
+  double? get v;
   @override
   @JsonKey(name: 'type')
   String? get type;
@@ -1483,13 +1483,13 @@ Totals _$TotalsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Totals {
   @JsonKey(name: 'subtotal')
-  int get subtotal => throw _privateConstructorUsedError;
+  double get subtotal => throw _privateConstructorUsedError;
   @JsonKey(name: 'tax')
-  int get tax => throw _privateConstructorUsedError;
+  double get tax => throw _privateConstructorUsedError;
   @JsonKey(name: 'shipping')
   dynamic get shipping => throw _privateConstructorUsedError;
   @JsonKey(name: 'total')
-  int get total => throw _privateConstructorUsedError;
+  double get total => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1502,10 +1502,10 @@ abstract class $TotalsCopyWith<$Res> {
       _$TotalsCopyWithImpl<$Res, Totals>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'subtotal') int subtotal,
-      @JsonKey(name: 'tax') int tax,
+      {@JsonKey(name: 'subtotal') double subtotal,
+      @JsonKey(name: 'tax') double tax,
       @JsonKey(name: 'shipping') dynamic shipping,
-      @JsonKey(name: 'total') int total});
+      @JsonKey(name: 'total') double total});
 }
 
 /// @nodoc
@@ -1530,11 +1530,11 @@ class _$TotalsCopyWithImpl<$Res, $Val extends Totals>
       subtotal: null == subtotal
           ? _value.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       tax: null == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -1542,7 +1542,7 @@ class _$TotalsCopyWithImpl<$Res, $Val extends Totals>
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ) as $Val);
   }
 }
@@ -1555,10 +1555,10 @@ abstract class _$$TotalsImplCopyWith<$Res> implements $TotalsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'subtotal') int subtotal,
-      @JsonKey(name: 'tax') int tax,
+      {@JsonKey(name: 'subtotal') double subtotal,
+      @JsonKey(name: 'tax') double tax,
       @JsonKey(name: 'shipping') dynamic shipping,
-      @JsonKey(name: 'total') int total});
+      @JsonKey(name: 'total') double total});
 }
 
 /// @nodoc
@@ -1581,11 +1581,11 @@ class __$$TotalsImplCopyWithImpl<$Res>
       subtotal: null == subtotal
           ? _value.subtotal
           : subtotal // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       tax: null == tax
           ? _value.tax
           : tax // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       shipping: freezed == shipping
           ? _value.shipping
           : shipping // ignore: cast_nullable_to_non_nullable
@@ -1593,7 +1593,7 @@ class __$$TotalsImplCopyWithImpl<$Res>
       total: null == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
     ));
   }
 }
@@ -1612,16 +1612,16 @@ class _$TotalsImpl implements _Totals {
 
   @override
   @JsonKey(name: 'subtotal')
-  final int subtotal;
+  final double subtotal;
   @override
   @JsonKey(name: 'tax')
-  final int tax;
+  final double tax;
   @override
   @JsonKey(name: 'shipping')
   final dynamic shipping;
   @override
   @JsonKey(name: 'total')
-  final int total;
+  final double total;
 
   @override
   String toString() {
@@ -1661,25 +1661,25 @@ class _$TotalsImpl implements _Totals {
 
 abstract class _Totals implements Totals {
   const factory _Totals(
-      {@JsonKey(name: 'subtotal') required final int subtotal,
-      @JsonKey(name: 'tax') required final int tax,
+      {@JsonKey(name: 'subtotal') required final double subtotal,
+      @JsonKey(name: 'tax') required final double tax,
       @JsonKey(name: 'shipping') required final dynamic shipping,
-      @JsonKey(name: 'total') required final int total}) = _$TotalsImpl;
+      @JsonKey(name: 'total') required final double total}) = _$TotalsImpl;
 
   factory _Totals.fromJson(Map<String, dynamic> json) = _$TotalsImpl.fromJson;
 
   @override
   @JsonKey(name: 'subtotal')
-  int get subtotal;
+  double get subtotal;
   @override
   @JsonKey(name: 'tax')
-  int get tax;
+  double get tax;
   @override
   @JsonKey(name: 'shipping')
   dynamic get shipping;
   @override
   @JsonKey(name: 'total')
-  int get total;
+  double get total;
   @override
   @JsonKey(ignore: true)
   _$$TotalsImplCopyWith<_$TotalsImpl> get copyWith =>

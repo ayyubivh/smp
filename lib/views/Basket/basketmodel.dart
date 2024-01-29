@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/domain/models/cart_model/cart_model.dart';
 
 class ProductTile extends StatelessWidget {
@@ -12,7 +12,7 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ApiBloc, ApiState>(
+    return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         return state.isLoading
             ? const Center(child: CircularProgressIndicator())
@@ -35,14 +35,16 @@ class ProductTile extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          product.price.toString(),
-                          style: TextStyle(
+                          "${product.price?.toInt() ?? 0}",
+                          style: const TextStyle(
                               color: Colors.grey,
                               decoration: TextDecoration.lineThrough),
                         ),
                         Text(
-                          '₹${product.discountedPrice} off',
-                          style: TextStyle(color: Colors.green),
+                          '₹${product.discountedPrice?.toInt()} off',
+                          style: const TextStyle(
+                            color: Colors.green,
+                          ),
                         ),
                       ],
                     ),
@@ -57,8 +59,8 @@ class ProductTile extends StatelessWidget {
                         if (quantity == 0) {
                           return;
                         } else {
-                          BlocProvider.of<ApiBloc>(context).add(
-                              ApiEvent.decreaseQuantity(
+                          BlocProvider.of<CartBloc>(context).add(
+                              CartEvent.decreaseQuantity(
                                   product.id ?? "", context));
                         }
                       },
@@ -70,8 +72,8 @@ class ProductTile extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.add),
                       onPressed: () {
-                        BlocProvider.of<ApiBloc>(context).add(
-                            ApiEvent.increaseQuantity(
+                        BlocProvider.of<CartBloc>(context).add(
+                            CartEvent.increaseQuantity(
                                 product.id ?? "", context));
                       },
                     ),

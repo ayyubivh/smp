@@ -20,7 +20,7 @@ class Categories with _$Categories {
     @JsonKey(name: "_id") required String? id,
     required String name,
     required String? image,
-    required String status,
+    required String? status,
     @JsonKey(name: "__v") required int? v,
   }) = _Categories;
   factory Categories.fromJson(Map<String, dynamic> json) =>

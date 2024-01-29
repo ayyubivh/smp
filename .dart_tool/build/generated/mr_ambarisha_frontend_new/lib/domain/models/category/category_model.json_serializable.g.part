@@ -21,7 +21,7 @@ _$CategoriesImpl _$$CategoriesImplFromJson(Map<String, dynamic> json) =>
       id: json['_id'] as String?,
       name: json['name'] as String,
       image: json['image'] as String?,
-      status: json['status'] as String,
+      status: json['status'] as String?,
       v: json['__v'] as int?,
     );
 

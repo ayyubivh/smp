@@ -1,4 +1,4 @@
-#Sat Jan 13 13:43:37 IST 2024
+#Mon Jan 29 20:11:01 IST 2024
 base.0=C\:\\Users\\91963\\Documents\\chulluvil_test\\Ambarisha-Frontend-New-master\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

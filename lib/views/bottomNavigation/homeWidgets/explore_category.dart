@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/bloc/api_bloc.dart';
+
+import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
 
 import '../Categories.dart';
 
 class ExploreCategoryView extends StatelessWidget {
-  ExploreCategoryView({super.key});
+  ExploreCategoryView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ApiBloc, ApiState>(
+    return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) => GridView.builder(
         scrollDirection: Axis.horizontal,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
