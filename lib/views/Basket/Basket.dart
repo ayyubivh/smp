@@ -57,9 +57,8 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    BlocProvider.of<CartBloc>(context).add(const CartEvent.fetchCart());
-
     super.initState();
+    BlocProvider.of<CartBloc>(context).add(const CartEvent.fetchCart());
     _tabController = TabController(
       length: _tabs.length,
       vsync: this,
@@ -119,9 +118,9 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TransactionView()));
+                              builder: (context) => const TransactionView()));
                     },
-                    child: Text(
+                    child: const Text(
                       "₹0.00",
                       style: TextStyle(color: Colors.white),
                     ),
@@ -175,16 +174,17 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                   height: 300,
                                   child: SizedBox(
                                     child: ListView.builder(
-                                      itemCount: state
-                                          .cartModel?.cart?.products?.length,
+                                      itemCount: state.cartModel?.cart?.products
+                                              ?.length ??
+                                          0,
                                       itemBuilder: (context, index) {
                                         if (state.cartModel == null) {
-                                          return SizedBox();
+                                          return const SizedBox();
                                         }
                                         final product = state.cartModel?.cart
                                             ?.products?[index].productId;
                                         if (product == null) {
-                                          return SizedBox();
+                                          return const SizedBox();
                                         }
                                         return ProductTile(
                                           product: product,
@@ -439,7 +439,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                                           left: 240),
                                                   child: Text(
                                                     '$subTotal',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.black),
                                                   ),
                                                 )
@@ -644,11 +644,12 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                 Align(
                                   alignment: Alignment.topLeft,
                                   child: Container(
-                                    padding: EdgeInsets.only(top: 5, left: 10),
+                                    padding:
+                                        const EdgeInsets.only(top: 5, left: 10),
                                     child: Container(
                                       height:
                                           MediaQuery.of(context).size.height,
-                                      child: Text(
+                                      child: const Text(
                                         'Monday, 01 Jul 2023',
                                         style: TextStyle(color: Colors.black),
                                       ),
@@ -680,9 +681,9 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                     //   ),
                                     // ),
                                     Container(
-                                      padding: EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(left: 10),
                                       child: Container(
-                                        child: Text(
+                                        child: const Text(
                                           'Tuesday, 02 Jul 2023',
                                           style: TextStyle(color: Colors.black),
                                         ),
@@ -709,9 +710,9 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                     //   ),
                                     // ),
                                     Container(
-                                      padding: EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(left: 10),
                                       child: Container(
-                                        child: Text(
+                                        child: const Text(
                                           'Wednesday, 03 Jul 2023',
                                           style: TextStyle(color: Colors.black),
                                         ),

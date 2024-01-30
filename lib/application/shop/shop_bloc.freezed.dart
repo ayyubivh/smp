@@ -19,32 +19,38 @@ mixin _$ShopEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBanner,
+    required TResult Function() fetchPopularProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBanner,
+    TResult? Function()? fetchPopularProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBanner,
+    TResult Function()? fetchPopularProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchPopularProducts value) fetchPopularProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchPopularProducts value)? fetchPopularProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchPopularProducts value)? fetchPopularProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -106,6 +112,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchBanner,
+    required TResult Function() fetchPopularProducts,
   }) {
     return fetchBanner();
   }
@@ -114,6 +121,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchBanner,
+    TResult? Function()? fetchPopularProducts,
   }) {
     return fetchBanner?.call();
   }
@@ -122,6 +130,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchBanner,
+    TResult Function()? fetchPopularProducts,
     required TResult orElse(),
   }) {
     if (fetchBanner != null) {
@@ -134,6 +143,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchPopularProducts value) fetchPopularProducts,
   }) {
     return fetchBanner(this);
   }
@@ -142,6 +152,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchPopularProducts value)? fetchPopularProducts,
   }) {
     return fetchBanner?.call(this);
   }
@@ -150,6 +161,7 @@ class _$FetchBannerImpl implements _FetchBanner {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchPopularProducts value)? fetchPopularProducts,
     required TResult orElse(),
   }) {
     if (fetchBanner != null) {
@@ -164,9 +176,114 @@ abstract class _FetchBanner implements ShopEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchPopularProductsImplCopyWith<$Res> {
+  factory _$$FetchPopularProductsImplCopyWith(_$FetchPopularProductsImpl value,
+          $Res Function(_$FetchPopularProductsImpl) then) =
+      __$$FetchPopularProductsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchPopularProductsImplCopyWithImpl<$Res>
+    extends _$ShopEventCopyWithImpl<$Res, _$FetchPopularProductsImpl>
+    implements _$$FetchPopularProductsImplCopyWith<$Res> {
+  __$$FetchPopularProductsImplCopyWithImpl(_$FetchPopularProductsImpl _value,
+      $Res Function(_$FetchPopularProductsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchPopularProductsImpl implements _FetchPopularProducts {
+  const _$FetchPopularProductsImpl();
+
+  @override
+  String toString() {
+    return 'ShopEvent.fetchPopularProducts()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchPopularProductsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchBanner,
+    required TResult Function() fetchPopularProducts,
+  }) {
+    return fetchPopularProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchBanner,
+    TResult? Function()? fetchPopularProducts,
+  }) {
+    return fetchPopularProducts?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchBanner,
+    TResult Function()? fetchPopularProducts,
+    required TResult orElse(),
+  }) {
+    if (fetchPopularProducts != null) {
+      return fetchPopularProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchBanner value) fetchBanner,
+    required TResult Function(_FetchPopularProducts value) fetchPopularProducts,
+  }) {
+    return fetchPopularProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchBanner value)? fetchBanner,
+    TResult? Function(_FetchPopularProducts value)? fetchPopularProducts,
+  }) {
+    return fetchPopularProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchBanner value)? fetchBanner,
+    TResult Function(_FetchPopularProducts value)? fetchPopularProducts,
+    required TResult orElse(),
+  }) {
+    if (fetchPopularProducts != null) {
+      return fetchPopularProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchPopularProducts implements ShopEvent {
+  const factory _FetchPopularProducts() = _$FetchPopularProductsImpl;
+}
+
+/// @nodoc
 mixin _$ShopState {
   BannerModel? get bannerModel => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  List<ProductModel>? get popularProductModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ShopStateCopyWith<ShopState> get copyWith =>
@@ -178,7 +295,10 @@ abstract class $ShopStateCopyWith<$Res> {
   factory $ShopStateCopyWith(ShopState value, $Res Function(ShopState) then) =
       _$ShopStateCopyWithImpl<$Res, ShopState>;
   @useResult
-  $Res call({BannerModel? bannerModel, bool isLoading});
+  $Res call(
+      {BannerModel? bannerModel,
+      bool isLoading,
+      List<ProductModel>? popularProductModel});
 
   $BannerModelCopyWith<$Res>? get bannerModel;
 }
@@ -198,6 +318,7 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
   $Res call({
     Object? bannerModel = freezed,
     Object? isLoading = null,
+    Object? popularProductModel = freezed,
   }) {
     return _then(_value.copyWith(
       bannerModel: freezed == bannerModel
@@ -208,6 +329,10 @@ class _$ShopStateCopyWithImpl<$Res, $Val extends ShopState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      popularProductModel: freezed == popularProductModel
+          ? _value.popularProductModel
+          : popularProductModel // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>?,
     ) as $Val);
   }
 
@@ -232,7 +357,10 @@ abstract class _$$ShopStateImplCopyWith<$Res>
       __$$ShopStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BannerModel? bannerModel, bool isLoading});
+  $Res call(
+      {BannerModel? bannerModel,
+      bool isLoading,
+      List<ProductModel>? popularProductModel});
 
   @override
   $BannerModelCopyWith<$Res>? get bannerModel;
@@ -251,6 +379,7 @@ class __$$ShopStateImplCopyWithImpl<$Res>
   $Res call({
     Object? bannerModel = freezed,
     Object? isLoading = null,
+    Object? popularProductModel = freezed,
   }) {
     return _then(_$ShopStateImpl(
       bannerModel: freezed == bannerModel
@@ -261,6 +390,10 @@ class __$$ShopStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      popularProductModel: freezed == popularProductModel
+          ? _value._popularProductModel
+          : popularProductModel // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>?,
     ));
   }
 }
@@ -268,16 +401,30 @@ class __$$ShopStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ShopStateImpl implements _ShopState {
-  const _$ShopStateImpl({required this.bannerModel, required this.isLoading});
+  const _$ShopStateImpl(
+      {required this.bannerModel,
+      required this.isLoading,
+      required final List<ProductModel>? popularProductModel})
+      : _popularProductModel = popularProductModel;
 
   @override
   final BannerModel? bannerModel;
   @override
   final bool isLoading;
+  final List<ProductModel>? _popularProductModel;
+  @override
+  List<ProductModel>? get popularProductModel {
+    final value = _popularProductModel;
+    if (value == null) return null;
+    if (_popularProductModel is EqualUnmodifiableListView)
+      return _popularProductModel;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'ShopState(bannerModel: $bannerModel, isLoading: $isLoading)';
+    return 'ShopState(bannerModel: $bannerModel, isLoading: $isLoading, popularProductModel: $popularProductModel)';
   }
 
   @override
@@ -288,11 +435,14 @@ class _$ShopStateImpl implements _ShopState {
             (identical(other.bannerModel, bannerModel) ||
                 other.bannerModel == bannerModel) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._popularProductModel, _popularProductModel));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, bannerModel, isLoading);
+  int get hashCode => Object.hash(runtimeType, bannerModel, isLoading,
+      const DeepCollectionEquality().hash(_popularProductModel));
 
   @JsonKey(ignore: true)
   @override
@@ -303,13 +453,17 @@ class _$ShopStateImpl implements _ShopState {
 
 abstract class _ShopState implements ShopState {
   const factory _ShopState(
-      {required final BannerModel? bannerModel,
-      required final bool isLoading}) = _$ShopStateImpl;
+          {required final BannerModel? bannerModel,
+          required final bool isLoading,
+          required final List<ProductModel>? popularProductModel}) =
+      _$ShopStateImpl;
 
   @override
   BannerModel? get bannerModel;
   @override
   bool get isLoading;
+  @override
+  List<ProductModel>? get popularProductModel;
   @override
   @JsonKey(ignore: true)
   _$$ShopStateImplCopyWith<_$ShopStateImpl> get copyWith =>

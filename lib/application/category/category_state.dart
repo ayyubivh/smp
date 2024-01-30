@@ -6,6 +6,7 @@ class CategoryState with _$CategoryState {
     required CategoryModel? categoryModel,
     required ProductByCategoryModel? productByCategoryModel,
     required SubCategoryByCategoryModel? subCategoryByCategoryModel,
+    required List<ProductModel>? productsBySubCategory,
     required bool isLoading,
   }) = _CategoryState;
   factory CategoryState.initial() => const CategoryState(
@@ -13,5 +14,6 @@ class CategoryState with _$CategoryState {
         productByCategoryModel: null,
         subCategoryByCategoryModel: null,
         isLoading: false,
+        productsBySubCategory: null,
       );
 }

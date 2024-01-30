@@ -21,6 +21,7 @@ mixin _$CategoryEvent {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function(String id) fetchPrductsBySubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$CategoryEvent {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function(String id)? fetchPrductsBySubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$CategoryEvent {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function(String id)? fetchPrductsBySubCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +48,8 @@ mixin _$CategoryEvent {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchPrductsBySubCategory value)
+        fetchPrductsBySubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +58,8 @@ mixin _$CategoryEvent {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,8 @@ mixin _$CategoryEvent {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,6 +134,7 @@ class _$FetchCategoryImpl implements _FetchCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function(String id) fetchPrductsBySubCategory,
   }) {
     return fetchCategory();
   }
@@ -135,6 +145,7 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function(String id)? fetchPrductsBySubCategory,
   }) {
     return fetchCategory?.call();
   }
@@ -145,6 +156,7 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function(String id)? fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchCategory != null) {
@@ -161,6 +173,8 @@ class _$FetchCategoryImpl implements _FetchCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchPrductsBySubCategory value)
+        fetchPrductsBySubCategory,
   }) {
     return fetchCategory(this);
   }
@@ -172,6 +186,8 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
   }) {
     return fetchCategory?.call(this);
   }
@@ -183,6 +199,8 @@ class _$FetchCategoryImpl implements _FetchCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchCategory != null) {
@@ -266,6 +284,7 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function(String id) fetchPrductsBySubCategory,
   }) {
     return fetchProductByCategory(id);
   }
@@ -276,6 +295,7 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function(String id)? fetchPrductsBySubCategory,
   }) {
     return fetchProductByCategory?.call(id);
   }
@@ -286,6 +306,7 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function(String id)? fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchProductByCategory != null) {
@@ -302,6 +323,8 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchPrductsBySubCategory value)
+        fetchPrductsBySubCategory,
   }) {
     return fetchProductByCategory(this);
   }
@@ -313,6 +336,8 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
   }) {
     return fetchProductByCategory?.call(this);
   }
@@ -324,6 +349,8 @@ class _$FetchProductByCategoryImpl implements _FetchProductByCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchProductByCategory != null) {
@@ -413,6 +440,7 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     required TResult Function() fetchCategory,
     required TResult Function(String id) fetchProductByCategory,
     required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function(String id) fetchPrductsBySubCategory,
   }) {
     return fetchSubCategoryByCategory(id);
   }
@@ -423,6 +451,7 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult? Function()? fetchCategory,
     TResult? Function(String id)? fetchProductByCategory,
     TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function(String id)? fetchPrductsBySubCategory,
   }) {
     return fetchSubCategoryByCategory?.call(id);
   }
@@ -433,6 +462,7 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult Function()? fetchCategory,
     TResult Function(String id)? fetchProductByCategory,
     TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function(String id)? fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchSubCategoryByCategory != null) {
@@ -449,6 +479,8 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
         fetchProductByCategory,
     required TResult Function(_FetchSubCategoryByCategory value)
         fetchSubCategoryByCategory,
+    required TResult Function(_FetchPrductsBySubCategory value)
+        fetchPrductsBySubCategory,
   }) {
     return fetchSubCategoryByCategory(this);
   }
@@ -460,6 +492,8 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult? Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult? Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
   }) {
     return fetchSubCategoryByCategory?.call(this);
   }
@@ -471,6 +505,8 @@ class _$FetchSubCategoryByCategoryImpl implements _FetchSubCategoryByCategory {
     TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
     TResult Function(_FetchSubCategoryByCategory value)?
         fetchSubCategoryByCategory,
+    TResult Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
     required TResult orElse(),
   }) {
     if (fetchSubCategoryByCategory != null) {
@@ -491,11 +527,169 @@ abstract class _FetchSubCategoryByCategory implements CategoryEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchPrductsBySubCategoryImplCopyWith<$Res> {
+  factory _$$FetchPrductsBySubCategoryImplCopyWith(
+          _$FetchPrductsBySubCategoryImpl value,
+          $Res Function(_$FetchPrductsBySubCategoryImpl) then) =
+      __$$FetchPrductsBySubCategoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$FetchPrductsBySubCategoryImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$FetchPrductsBySubCategoryImpl>
+    implements _$$FetchPrductsBySubCategoryImplCopyWith<$Res> {
+  __$$FetchPrductsBySubCategoryImplCopyWithImpl(
+      _$FetchPrductsBySubCategoryImpl _value,
+      $Res Function(_$FetchPrductsBySubCategoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$FetchPrductsBySubCategoryImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchPrductsBySubCategoryImpl implements _FetchPrductsBySubCategory {
+  const _$FetchPrductsBySubCategoryImpl(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'CategoryEvent.fetchPrductsBySubCategory(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchPrductsBySubCategoryImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchPrductsBySubCategoryImplCopyWith<_$FetchPrductsBySubCategoryImpl>
+      get copyWith => __$$FetchPrductsBySubCategoryImplCopyWithImpl<
+          _$FetchPrductsBySubCategoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchCategory,
+    required TResult Function(String id) fetchProductByCategory,
+    required TResult Function(String id) fetchSubCategoryByCategory,
+    required TResult Function(String id) fetchPrductsBySubCategory,
+  }) {
+    return fetchPrductsBySubCategory(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchCategory,
+    TResult? Function(String id)? fetchProductByCategory,
+    TResult? Function(String id)? fetchSubCategoryByCategory,
+    TResult? Function(String id)? fetchPrductsBySubCategory,
+  }) {
+    return fetchPrductsBySubCategory?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchCategory,
+    TResult Function(String id)? fetchProductByCategory,
+    TResult Function(String id)? fetchSubCategoryByCategory,
+    TResult Function(String id)? fetchPrductsBySubCategory,
+    required TResult orElse(),
+  }) {
+    if (fetchPrductsBySubCategory != null) {
+      return fetchPrductsBySubCategory(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchCategory value) fetchCategory,
+    required TResult Function(_FetchProductByCategory value)
+        fetchProductByCategory,
+    required TResult Function(_FetchSubCategoryByCategory value)
+        fetchSubCategoryByCategory,
+    required TResult Function(_FetchPrductsBySubCategory value)
+        fetchPrductsBySubCategory,
+  }) {
+    return fetchPrductsBySubCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchCategory value)? fetchCategory,
+    TResult? Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult? Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult? Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
+  }) {
+    return fetchPrductsBySubCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchCategory value)? fetchCategory,
+    TResult Function(_FetchProductByCategory value)? fetchProductByCategory,
+    TResult Function(_FetchSubCategoryByCategory value)?
+        fetchSubCategoryByCategory,
+    TResult Function(_FetchPrductsBySubCategory value)?
+        fetchPrductsBySubCategory,
+    required TResult orElse(),
+  }) {
+    if (fetchPrductsBySubCategory != null) {
+      return fetchPrductsBySubCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchPrductsBySubCategory implements CategoryEvent {
+  const factory _FetchPrductsBySubCategory(final String id) =
+      _$FetchPrductsBySubCategoryImpl;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$FetchPrductsBySubCategoryImplCopyWith<_$FetchPrductsBySubCategoryImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CategoryState {
   CategoryModel? get categoryModel => throw _privateConstructorUsedError;
   ProductByCategoryModel? get productByCategoryModel =>
       throw _privateConstructorUsedError;
   SubCategoryByCategoryModel? get subCategoryByCategoryModel =>
+      throw _privateConstructorUsedError;
+  List<ProductModel>? get productsBySubCategory =>
       throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
@@ -514,6 +708,7 @@ abstract class $CategoryStateCopyWith<$Res> {
       {CategoryModel? categoryModel,
       ProductByCategoryModel? productByCategoryModel,
       SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      List<ProductModel>? productsBySubCategory,
       bool isLoading});
 
   $CategoryModelCopyWith<$Res>? get categoryModel;
@@ -537,6 +732,7 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
     Object? categoryModel = freezed,
     Object? productByCategoryModel = freezed,
     Object? subCategoryByCategoryModel = freezed,
+    Object? productsBySubCategory = freezed,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -552,6 +748,10 @@ class _$CategoryStateCopyWithImpl<$Res, $Val extends CategoryState>
           ? _value.subCategoryByCategoryModel
           : subCategoryByCategoryModel // ignore: cast_nullable_to_non_nullable
               as SubCategoryByCategoryModel?,
+      productsBySubCategory: freezed == productsBySubCategory
+          ? _value.productsBySubCategory
+          : productsBySubCategory // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -610,6 +810,7 @@ abstract class _$$CategoryStateImplCopyWith<$Res>
       {CategoryModel? categoryModel,
       ProductByCategoryModel? productByCategoryModel,
       SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      List<ProductModel>? productsBySubCategory,
       bool isLoading});
 
   @override
@@ -634,6 +835,7 @@ class __$$CategoryStateImplCopyWithImpl<$Res>
     Object? categoryModel = freezed,
     Object? productByCategoryModel = freezed,
     Object? subCategoryByCategoryModel = freezed,
+    Object? productsBySubCategory = freezed,
     Object? isLoading = null,
   }) {
     return _then(_$CategoryStateImpl(
@@ -649,6 +851,10 @@ class __$$CategoryStateImplCopyWithImpl<$Res>
           ? _value.subCategoryByCategoryModel
           : subCategoryByCategoryModel // ignore: cast_nullable_to_non_nullable
               as SubCategoryByCategoryModel?,
+      productsBySubCategory: freezed == productsBySubCategory
+          ? _value._productsBySubCategory
+          : productsBySubCategory // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -664,7 +870,9 @@ class _$CategoryStateImpl implements _CategoryState {
       {required this.categoryModel,
       required this.productByCategoryModel,
       required this.subCategoryByCategoryModel,
-      required this.isLoading});
+      required final List<ProductModel>? productsBySubCategory,
+      required this.isLoading})
+      : _productsBySubCategory = productsBySubCategory;
 
   @override
   final CategoryModel? categoryModel;
@@ -672,12 +880,23 @@ class _$CategoryStateImpl implements _CategoryState {
   final ProductByCategoryModel? productByCategoryModel;
   @override
   final SubCategoryByCategoryModel? subCategoryByCategoryModel;
+  final List<ProductModel>? _productsBySubCategory;
+  @override
+  List<ProductModel>? get productsBySubCategory {
+    final value = _productsBySubCategory;
+    if (value == null) return null;
+    if (_productsBySubCategory is EqualUnmodifiableListView)
+      return _productsBySubCategory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final bool isLoading;
 
   @override
   String toString() {
-    return 'CategoryState(categoryModel: $categoryModel, productByCategoryModel: $productByCategoryModel, subCategoryByCategoryModel: $subCategoryByCategoryModel, isLoading: $isLoading)';
+    return 'CategoryState(categoryModel: $categoryModel, productByCategoryModel: $productByCategoryModel, subCategoryByCategoryModel: $subCategoryByCategoryModel, productsBySubCategory: $productsBySubCategory, isLoading: $isLoading)';
   }
 
   @override
@@ -693,13 +912,20 @@ class _$CategoryStateImpl implements _CategoryState {
                     subCategoryByCategoryModel) ||
                 other.subCategoryByCategoryModel ==
                     subCategoryByCategoryModel) &&
+            const DeepCollectionEquality()
+                .equals(other._productsBySubCategory, _productsBySubCategory) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, categoryModel,
-      productByCategoryModel, subCategoryByCategoryModel, isLoading);
+  int get hashCode => Object.hash(
+      runtimeType,
+      categoryModel,
+      productByCategoryModel,
+      subCategoryByCategoryModel,
+      const DeepCollectionEquality().hash(_productsBySubCategory),
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -713,6 +939,7 @@ abstract class _CategoryState implements CategoryState {
       {required final CategoryModel? categoryModel,
       required final ProductByCategoryModel? productByCategoryModel,
       required final SubCategoryByCategoryModel? subCategoryByCategoryModel,
+      required final List<ProductModel>? productsBySubCategory,
       required final bool isLoading}) = _$CategoryStateImpl;
 
   @override
@@ -721,6 +948,8 @@ abstract class _CategoryState implements CategoryState {
   ProductByCategoryModel? get productByCategoryModel;
   @override
   SubCategoryByCategoryModel? get subCategoryByCategoryModel;
+  @override
+  List<ProductModel>? get productsBySubCategory;
   @override
   bool get isLoading;
   @override

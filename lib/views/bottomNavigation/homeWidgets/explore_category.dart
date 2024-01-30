@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
+import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
+import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 
 import '../Categories.dart';
 
 class ExploreCategoryView extends StatelessWidget {
-  ExploreCategoryView({
-    super.key,
-  });
+  const ExploreCategoryView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryBloc, CategoryState>(
       builder: (context, state) => GridView.builder(
-        scrollDirection: Axis.horizontal,
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+          crossAxisCount: 5,
+          crossAxisSpacing: 15,
           mainAxisExtent: 100,
-          childAspectRatio: 2 / 3.7,
+          mainAxisSpacing: 15,
         ),
         itemCount: state.categoryModel?.categories?.length ?? 0,
         itemBuilder: (context, index) {
           final data = state.categoryModel?.categories?[index];
           return state.isLoading
-              ? const SizedBox()
+              ? const Loader()
               : InkWell(
                   onTap: () {
                     Navigator.push(
@@ -33,19 +35,24 @@ class ExploreCategoryView extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => Categories(
                                   id: data?.id ?? "",
+                                  name: data?.name ?? '',
                                 )));
                   },
                   child: Column(
                     children: [
-                      Image.network(data?.image ?? ""),
-                      const SizedBox(height: 10),
+                      Utilities().buildCachedNetworkImage(
+                        imageUrl: data?.image,
+                        height: 54.h,
+                        width: 79.w,
+                      ),
+                      kbox10(),
                       Text(
                         data?.name ?? "",
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],
@@ -55,39 +62,4 @@ class ExploreCategoryView extends StatelessWidget {
       ),
     );
   }
-
-  List shopbycategory = [
-    "assets/gerocery1.png",
-    "assets/gerocery2.png",
-    "assets/milk.png",
-    "assets/personlcare.png",
-    "assets/milk.png",
-    "assets/gerocery1.png",
-    "assets/gerocery2.png",
-    "assets/milk.png",
-    "assets/personlcare.png",
-    "assets/milk.png",
-    "assets/gerocery1.png",
-    "assets/gerocery2.png",
-    "assets/milk.png",
-    "assets/personlcare.png",
-    "assets/milk.png",
-  ];
-  List shopbycategorytext = [
-    "Grocery",
-    "Frozen\nFood",
-    "Vegetables",
-    "Personal\nCare",
-    "Milk",
-    "Grocery",
-    "Frozen\nFood",
-    "Vegetables",
-    "Personal\nCare",
-    "Milk",
-    "Grocery",
-    "Frozen\nFood",
-    "Vegetables",
-    "Personal\nCare",
-    "Milk",
-  ];
 }

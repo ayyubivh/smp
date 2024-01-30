@@ -39,7 +39,7 @@ extension GetItInjectableX on _i1.GetIt {
       environmentFilter,
     );
     gh.lazySingleton<_i3.CartRepository>(() => _i4.CartRepositoryImpl());
-    gh.lazySingleton<_i5.CategoryRepository>(() => _i6.ApiRepoImpl());
+    gh.lazySingleton<_i5.CategoryRepository>(() => _i6.CategoryRepoImpl());
     gh.lazySingleton<_i7.ShopRepository>(() => _i8.ShopRepositoryImpl());
     gh.factory<_i9.CartBloc>(() => _i9.CartBloc(gh<_i3.CartRepository>()));
     gh.factory<_i10.CategoryBloc>(

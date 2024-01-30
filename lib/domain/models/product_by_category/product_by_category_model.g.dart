@@ -11,8 +11,9 @@ _$ProductByCategoryModelImpl _$$ProductByCategoryModelImplFromJson(
     _$ProductByCategoryModelImpl(
       success: json['success'] as bool,
       data: (json['data'] as List<dynamic>)
-          .map((e) =>
-              e == null ? null : Product.fromJson(e as Map<String, dynamic>))
+          .map((e) => e == null
+              ? null
+              : ProductModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -23,29 +24,31 @@ Map<String, dynamic> _$$ProductByCategoryModelImplToJson(
       'data': instance.data,
     };
 
-_$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImpl(
-      id: json['_id'] as String,
-      name: json['name'] as String,
-      quantity: json['quantity'] as int,
+_$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
+    _$ProductModelImpl(
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      quantity: json['quantity'] as int?,
       price: (json['price'] as num?)?.toDouble(),
-      description: json['description'] as String,
+      description: json['description'] as String?,
       images:
-          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       discountedPrice: (json['discountedPrice'] as num).toDouble(),
-      category: json['category'] as String,
-      subcategory: json['subcategory'] as String,
-      stock: json['stock'] as int,
+      category: json['category'] as String?,
+      subcategory: json['subcategory'] as String?,
+      stock: json['stock'] as int?,
       details:
           (json['details'] as List<dynamic>?)?.map((e) => e as String).toList(),
       numOfReviews: json['numOfReviews'] as int?,
       reviews: json['reviews'] as List<dynamic>?,
-      createdAt: json['createdAt'] as String,
+      createdAt: json['createdAt'] as String?,
       v: json['__v'] as int?,
       type: json['type'] as String?,
+      isDiscount: json['isDiscount'] as bool?,
+      discount: json['discount'] as int?,
     );
 
-Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
+Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,
@@ -63,4 +66,6 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'createdAt': instance.createdAt,
       '__v': instance.v,
       'type': instance.type,
+      'isDiscount': instance.isDiscount,
+      'discount': instance.discount,
     };

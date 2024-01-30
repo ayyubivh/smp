@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
+import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 import 'package:mr_ambarisha_frontend_new/views/Profile/edit_profile.dart';
 import 'package:mr_ambarisha_frontend_new/views/address/add_address.dart';
 import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/homeWidgets/explore_category.dart';
@@ -30,8 +32,10 @@ class HomePageview extends StatefulWidget {
 class _HomePageviewState extends State<HomePageview> {
   @override
   void initState() {
-    BlocProvider.of<CartBloc>(context)..add(CartEvent.fetchCart());
-    BlocProvider.of<ShopBloc>(context).add(ShopEvent.fetchBanner());
+    BlocProvider.of<CartBloc>(context).add(const CartEvent.fetchCart());
+    BlocProvider.of<ShopBloc>(context)
+      ..add(const ShopEvent.fetchBanner())
+      ..add(const ShopEvent.fetchPopularProducts());
     BlocProvider.of<CategoryBloc>(context)
         .add(const CategoryEvent.fetchCategory());
     super.initState();
@@ -167,11 +171,11 @@ class _HomePageviewState extends State<HomePageview> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 children: [
                   const MainBanner(),
-                  kbox10(),
+                  kbox20(),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -187,49 +191,54 @@ class _HomePageviewState extends State<HomePageview> {
                               color: AppColors.ktextColor)),
                     ],
                   ),
-                  kbox10(),
-                  Container(height: height * 0.4, child: ExploreCategoryView()),
-                  kbox10(),
-                  Container(
-                    color: const Color(0xffFFC542),
-                    height: height * 0.14,
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              index == 0
-                                  ? Positioned(
-                                      top: 25.h,
-                                      child: const Text(
-                                        "Fruits",
-                                        style: TextStyle(color: Colors.black),
-                                      ))
-                                  : Positioned(
-                                      top: 15.h,
-                                      child: Image.asset("assets/lock.png")),
-                              Positioned(
-                                  bottom: 5.h,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xff965CF2),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text("50% OFF",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 12)),
-                                    ),
-                                  )),
-                            ],
-                          );
-                        },
-                        separatorBuilder: (context, index) => kboxw10(),
-                        itemCount: 10),
-                  ),
+                  kbox20(),
+                  SizedBox(
+                      height: height * 0.4, child: const ExploreCategoryView()),
+                  kbox20(),
+                  // Container(
+                  //   color: const Color(0xffFFC542),
+                  //   height: height * 0.14,
+                  //   child: ListView.separated(
+                  //       scrollDirection: Axis.horizontal,
+                  //       shrinkWrap: true,
+                  //       itemBuilder: (context, index) {
+                  //         return Stack(
+                  //           alignment: Alignment.center,
+                  //           children: [
+                  //             Image.asset(
+                  //               "assets/lockimages.png",
+                  //               fit: BoxFit.cover,
+                  //             ),
+                  //             index == 0
+                  //                 ? Positioned(
+                  //                     top: 25.h,
+                  //                     child: const Text(
+                  //                       "Fruits",
+                  //                       style: TextStyle(color: Colors.black),
+                  //                     ))
+                  //                 : Positioned(
+                  //                     top: 15.h,
+                  //                     child: Image.asset("assets/lock.png")),
+                  //             Positioned(
+                  //                 bottom: 5.h,
+                  //                 child: Container(
+                  //                   decoration: BoxDecoration(
+                  //                       color: const Color(0xff965CF2),
+                  //                       borderRadius: BorderRadius.circular(8)),
+                  //                   child: const Padding(
+                  //                     padding: EdgeInsets.all(8.0),
+                  //                     child: Text("50% OFF",
+                  //                         style: TextStyle(
+                  //                             color: Colors.white,
+                  //                             fontSize: 12)),
+                  //                   ),
+                  //                 )),
+                  //           ],
+                  //         );
+                  //       },
+                  //       separatorBuilder: (context, index) => kboxw10(),
+                  //       itemCount: 10),
+                  // ),
                   kbox10(),
                   SizedBox(
                     height: height * 0.062,
@@ -295,8 +304,9 @@ class _HomePageviewState extends State<HomePageview> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Categories(
+                                builder: (context) => const Categories(
                                       id: "",
+                                      name: '',
                                     )));
                       },
                       child: ListView.separated(
@@ -326,21 +336,29 @@ class _HomePageviewState extends State<HomePageview> {
                     ],
                   ),
                   kbox10(),
-                  GestureDetector(
-                    onTap: () {
-                      _downloadstatement(context);
-                    },
-                    child: Container(
-                      color: const Color.fromARGB(255, 191, 240, 236),
-                      height: height * 0.42,
-                      child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return kpopuler(index, height * 0.42);
-                          },
-                          separatorBuilder: (context, index) => kboxw10(),
-                          itemCount: popuimag.length),
+                  BlocBuilder<ShopBloc, ShopState>(
+                    builder: (context, state) => GestureDetector(
+                      onTap: () {
+                        _downloadstatement(context);
+                      },
+                      child: Container(
+                        color: const Color.fromARGB(255, 191, 240, 236),
+                        height: height * 0.42,
+                        child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              final data = state.popularProductModel;
+                              if (data == null) {
+                                return const Loader();
+                              } else {
+                                return _popularDealWidget(
+                                    data[index], height * 0.42);
+                              }
+                            },
+                            separatorBuilder: (context, index) => kboxw10(),
+                            itemCount: state.popularProductModel?.length ?? 0),
+                      ),
                     ),
                   ),
                   kbox10(),
@@ -365,8 +383,9 @@ class _HomePageviewState extends State<HomePageview> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Categories(
+                              builder: (context) => const Categories(
                                     id: "64e0c8b25e97f7bccd335b52",
+                                    name: '',
                                   )));
                     },
                     child: Container(
@@ -420,8 +439,9 @@ class _HomePageviewState extends State<HomePageview> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Categories(
+                                      builder: (context) => const Categories(
                                             id: "64e0c8b25e97f7bccd335b52",
+                                            name: '',
                                           )));
                             },
                             child: Image.asset("assets/related_product.png")),
@@ -489,16 +509,16 @@ class _HomePageviewState extends State<HomePageview> {
                   kbox10(),
                   GestureDetector(
                     onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(20))),
-                        builder: (BuildContext context) {
-                          return ProductDetailsSheet(
-                              item[0]); // Show details for the first product
-                        },
-                      );
+                      // showModalBottomSheet(
+                      //   context: context,
+                      //   shape: const RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.vertical(
+                      //           top: Radius.circular(20))),
+                      //   builder: (BuildContext context) {
+                      //     return ProductDetailsSheet(
+                      //         item[0]); // Show details for the first product
+                      //   },
+                      // );
                     },
                     child: Container(
                       color: const Color(0xffFCCF6F),
@@ -632,6 +652,7 @@ class _HomePageviewState extends State<HomePageview> {
                           MaterialPageRoute(
                               builder: (context) => const Categories(
                                     id: "64e0c8b25e97f7bccd335b52",
+                                    name: '',
                                   )));
                     },
                     child: Container(
@@ -1347,7 +1368,10 @@ class _HomePageviewState extends State<HomePageview> {
     );
   }
 
-  kpopuler(index, h) {
+  Widget _popularDealWidget(
+    ProductModel data,
+    h,
+  ) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ClipRRect(
@@ -1371,9 +1395,9 @@ class _HomePageviewState extends State<HomePageview> {
                             decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(20)),
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsets.all(7.0),
-                              child: Text("50% OFF",
+                              child: Text("${data.discount ?? 0}% OFF",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
@@ -1410,8 +1434,10 @@ class _HomePageviewState extends State<HomePageview> {
                   ),
                   // SizedBox(height: h*0.1,),
                   SizedBox(
-                      height: 100,
-                      child: Image.asset("assets/${popuimag[index]}.png")),
+                    height: 100,
+                    child: Utilities()
+                        .buildCachedNetworkImage(imageUrl: data.images?.first),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

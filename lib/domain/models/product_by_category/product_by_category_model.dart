@@ -7,7 +7,7 @@ part 'product_by_category_model.freezed.dart';
 class ProductByCategoryModel with _$ProductByCategoryModel {
   const factory ProductByCategoryModel({
     required bool success,
-    required List<Product?> data,
+    required List<ProductModel?> data,
   }) = _ProductByCategoryModel;
 
   factory ProductByCategoryModel.fromJson(Map<String, dynamic> json) =>
@@ -15,26 +15,28 @@ class ProductByCategoryModel with _$ProductByCategoryModel {
 }
 
 @freezed
-class Product with _$Product {
-  const factory Product({
-    @JsonKey(name: "_id") required String id,
-    required String name,
-    required int quantity,
+class ProductModel with _$ProductModel {
+  const factory ProductModel({
+    @JsonKey(name: "_id") required String? id,
+    required String? name,
+    required int? quantity,
     required double? price,
-    required String description,
-    required List<String> images,
+    required String? description,
+    required List<String>? images,
     required double discountedPrice,
-    required String category,
-    required String subcategory,
-    required int stock,
+    required String? category,
+    required String? subcategory,
+    required int? stock,
     List<String>? details,
     int? numOfReviews,
     List<dynamic>? reviews,
-    required String createdAt,
+    required String? createdAt,
     @JsonKey(name: "__v") int? v,
     String? type,
-  }) = _Product;
+    bool? isDiscount,
+    int? discount,
+  }) = _ProductModel;
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  factory ProductModel.fromJson(Map<String, dynamic> json) =>
+      _$ProductModelFromJson(json);
 }

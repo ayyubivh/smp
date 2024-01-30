@@ -12,7 +12,7 @@ import 'package:mr_ambarisha_frontend_new/domain/models/sub_category_by_category
 import 'package:mr_ambarisha_frontend_new/infrastructure/api_service.dart';
 
 @LazySingleton(as: CategoryRepository)
-class ApiRepoImpl extends HttpServices implements CategoryRepository {
+class CategoryRepoImpl extends HttpServices implements CategoryRepository {
   @override
   ResultFuture<CategoryModel> fetchCategories() async {
     final response = await get(
@@ -65,6 +65,27 @@ class ApiRepoImpl extends HttpServices implements CategoryRepository {
         final Map<String, dynamic> data = json.decode(response.body);
         print(data);
         final result = SubCategoryByCategoryModel.fromJson(data);
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure("Failed to parse"));
+      }
+    } catch (e) {
+      return Left(MainFailure.clientFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<List<ProductModel>> fetchProductsBySubCategory(String id) async {
+    final response = await get(
+      endPoint: ApiEndPoints.productsBySubCategory + id,
+    );
+
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = json.decode(response.body)['data'];
+        final List<ProductModel> result =
+            dataList.map((data) => ProductModel.fromJson(data)).toList();
+        print("here the result $result");
         return Right(result);
       } else {
         return const Left(MainFailure.serverFailure("Failed to parse"));

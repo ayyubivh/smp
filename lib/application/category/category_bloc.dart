@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -17,6 +19,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     on<_FetchCategory>(_fetchCategory);
     on<_FetchProductByCategory>(_fetchProductByCategory);
     on<_FetchSubCategoryByCategory>(_fetchSubCategoryByCategory);
+    on<_FetchPrductsBySubCategory>(_fetchPrductsBySubCategory);
   }
   _fetchCategory(_FetchCategory event, Emitter<CategoryState> emit) async {
     emit(state.copyWith(isLoading: true));
@@ -61,6 +64,23 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
         (failure) => emit(state.copyWith(isLoading: false)),
         (data) => emit(
           state.copyWith(subCategoryByCategoryModel: data, isLoading: false),
+        ),
+      );
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  _fetchPrductsBySubCategory(
+      _FetchPrductsBySubCategory event, Emitter<CategoryState> emit) async {
+    emit(state.copyWith(isLoading: true));
+    try {
+      final res = await _apiRepository.fetchProductsBySubCategory(event.id);
+
+      res.fold(
+        (failure) => emit(state.copyWith(isLoading: false)),
+        (data) => emit(
+          state.copyWith(productsBySubCategory: data, isLoading: false),
         ),
       );
     } catch (e) {

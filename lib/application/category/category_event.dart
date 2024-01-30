@@ -8,4 +8,6 @@ class CategoryEvent with _$CategoryEvent {
       _FetchProductByCategory;
   const factory CategoryEvent.fetchSubCategoryByCategory(String id) =
       _FetchSubCategoryByCategory;
+  const factory CategoryEvent.fetchPrductsBySubCategory(String id) =
+      _FetchPrductsBySubCategory;
 }

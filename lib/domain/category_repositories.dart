@@ -13,4 +13,6 @@ abstract class CategoryRepository {
   //for getting subcategory by category
   ResultFuture<SubCategoryByCategoryModel> fetchSubCategoryByCategory(
       String id);
+  //for getting product by subcategory
+  ResultFuture<List<ProductModel>> fetchProductsBySubCategory(String id);
 }

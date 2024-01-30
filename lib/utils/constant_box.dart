@@ -9,6 +9,12 @@ kbox10() {
   );
 }
 
+kbox15() {
+  return SizedBox(
+    height: 10.h,
+  );
+}
+
 kbox5() {
   return SizedBox(
     height: 5.h,
