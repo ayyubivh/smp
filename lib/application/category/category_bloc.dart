@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mr_ambarisha_frontend_new/domain/category_repositories.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/category/category_model.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/sub_category_by_category/sub_category_by_category_model.dart';
+import 'package:mr_ambarisha_frontend_new/domain/category/category_repositories.dart';
+import '../../domain/category/model/category/category_model.dart';
+import '../../domain/category/model/sub_category_by_category/sub_category_by_category_model.dart';
+import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 
 part 'category_event.dart';
 part 'category_state.dart';

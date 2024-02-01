@@ -3,10 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/banner/banner_model.dart';
-import 'package:mr_ambarisha_frontend_new/domain/shop_repository.dart';
-
-import '../../domain/models/product_by_category/product_by_category_model.dart';
+import 'package:mr_ambarisha_frontend_new/domain/shop/shop_repository.dart';
+import '../../domain/shop/models/banner/banner_model.dart';
+import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 
 part 'shop_event.dart';
 part 'shop_state.dart';

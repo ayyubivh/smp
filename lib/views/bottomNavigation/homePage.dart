@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
@@ -19,6 +18,7 @@ import 'package:mr_ambarisha_frontend_new/views/subscription_celender/daily.dart
 import 'package:mr_ambarisha_frontend_new/views/subscription_celender/weekend.dart';
 import 'package:mr_ambarisha_frontend_new/views/subscription_celender/weekly.dart';
 
+import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 import '../subscription_celender/subscription_celender.dart';
 import 'Categories.dart';
 
@@ -341,28 +341,23 @@ class _HomePageviewState extends State<HomePageview> {
                   ),
                   kbox10(),
                   BlocBuilder<ShopBloc, ShopState>(
-                    builder: (context, state) => GestureDetector(
-                      onTap: () {
-                        _downloadstatement(context);
-                      },
-                      child: Container(
-                        color: const Color.fromARGB(255, 191, 240, 236),
-                        height: height * 0.42,
-                        child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              final data = state.popularProductModel;
-                              if (data == null) {
-                                return const Loader();
-                              } else {
-                                return _popularDealWidget(
-                                    data[index], height * 0.42);
-                              }
-                            },
-                            separatorBuilder: (context, index) => kboxw10(),
-                            itemCount: state.popularProductModel?.length ?? 0),
-                      ),
+                    builder: (context, state) => Container(
+                      color: const Color.fromARGB(255, 191, 240, 236),
+                      height: height * 0.42,
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            final data = state.popularProductModel;
+                            if (data == null) {
+                              return const Loader();
+                            } else {
+                              return _popularDealWidget(
+                                  data[index], height * 0.42);
+                            }
+                          },
+                          separatorBuilder: (context, index) => kboxw10(),
+                          itemCount: state.popularProductModel?.length ?? 0),
                     ),
                   ),
                   kbox10(),
@@ -1460,123 +1455,129 @@ class _HomePageviewState extends State<HomePageview> {
     ProductModel data,
     h,
   ) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          // width: 230,
-          color: const Color(0xffEDF2F5),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Padding(
-                              padding: EdgeInsets.all(7.0),
-                              child: Text("${data.discount ?? 0}% OFF",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      fontSize: 15)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: h * 0.05,
-                          ),
-                          Container(
-                            height: 40,
-                            width: 30,
-                            decoration: const BoxDecoration(
-                                color: Color.fromARGB(15, 35, 31, 31),
-                                shape: BoxShape.rectangle),
-                            child: const Padding(
+    return GestureDetector(
+      onTap: () {
+        // print(data.id);
+        _downloadstatement(context);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            // width: 230,
+            color: const Color(0xffEDF2F5),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Padding(
                                 padding: EdgeInsets.all(7.0),
-                                child: Icon(
-                                  Icons.circle,
-                                  size: 12,
-                                  color: Colors.green,
-                                )),
-                          ),
-                        ],
-                      ),
-                      kboxw20(),
-                      kboxw50(),
-                      kboxw50(),
-                      const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      )
-                    ],
-                  ),
-                  // SizedBox(height: h*0.1,),
-                  SizedBox(
-                    height: 100,
-                    child: Utilities()
-                        .buildCachedNetworkImage(imageUrl: data.images?.first),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Column(
-                        children: [
-                          Text("Available(in stock)",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffA9A9A9),
-                                  fontSize: 16)),
-                          Text("Fresh organic apricot",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black,
-                                  fontSize: 18)),
-                          Row(
-                            children: [
-                              Text("₹170.00  ",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.lineThrough,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                      fontSize: 13)),
-                              Text("₹ 10 OFF",
-                                  style: TextStyle(
-                                      decoration: TextDecoration.lineThrough,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.grey,
-                                      fontSize: 13)),
-                            ],
-                          ),
-                          Text("(900 to 1100grm)",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black,
-                                  fontSize: 14)),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset("assets/Calendar.png"),
-                          SizedBox(
-                            height: h * 0.05,
-                          ),
-                          Image.asset("assets/minus.png"),
-                        ],
-                      )
-                    ],
-                  ),
-                ]),
+                                child: Text("${data.discount ?? 0}% OFF",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                        fontSize: 15)),
+                              ),
+                            ),
+                            SizedBox(
+                              height: h * 0.05,
+                            ),
+                            Container(
+                              height: 40,
+                              width: 30,
+                              decoration: const BoxDecoration(
+                                  color: Color.fromARGB(15, 35, 31, 31),
+                                  shape: BoxShape.rectangle),
+                              child: const Padding(
+                                  padding: EdgeInsets.all(7.0),
+                                  child: Icon(
+                                    Icons.circle,
+                                    size: 12,
+                                    color: Colors.green,
+                                  )),
+                            ),
+                          ],
+                        ),
+                        kboxw20(),
+                        kboxw50(),
+                        kboxw50(),
+                        const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                      ],
+                    ),
+                    // SizedBox(height: h*0.1,),
+                    SizedBox(
+                      height: 100,
+                      child: Utilities().buildCachedNetworkImage(
+                          imageUrl: data.images?.first),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Column(
+                          children: [
+                            Text("Available(in stock)",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xffA9A9A9),
+                                    fontSize: 16)),
+                            Text("Fresh organic apricot",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                    fontSize: 18)),
+                            Row(
+                              children: [
+                                Text("₹170.00  ",
+                                    style: TextStyle(
+                                        decoration: TextDecoration.lineThrough,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                        fontSize: 13)),
+                                Text("₹ 10 OFF",
+                                    style: TextStyle(
+                                        decoration: TextDecoration.lineThrough,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.grey,
+                                        fontSize: 13)),
+                              ],
+                            ),
+                            Text("(900 to 1100grm)",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black,
+                                    fontSize: 14)),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.asset("assets/Calendar.png"),
+                            SizedBox(
+                              height: h * 0.05,
+                            ),
+                            Image.asset("assets/minus.png"),
+                          ],
+                        )
+                      ],
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/cart_model/cart_model.dart';
+
+import '../../domain/cart/model/cart_model.dart';
 
 class ProductTile extends StatelessWidget {
   final ProductDetails product;

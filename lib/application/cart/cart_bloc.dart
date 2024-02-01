@@ -2,9 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mr_ambarisha_frontend_new/domain/cart_repository.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/banner/banner_model.dart';
-import 'package:mr_ambarisha_frontend_new/domain/models/cart_model/cart_model.dart';
+import '../../domain/cart/cart_repository.dart';
+import '../../domain/cart/model/cart_model.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

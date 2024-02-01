@@ -17,4 +17,10 @@ class ApiEndPoints {
       'product/product/by/type/everydayessential';
   static const String demand = 'product/product/by/type/demand';
   static const String weekendSale = 'product/product/by/type/weekendsale';
+
+  //auth
+  static const String register = "register";
+  static const String login = 'login';
+  static const String verifyOtp = 'verify/otp';
+  static const String verifyLogin = 'verify/login';
 }
