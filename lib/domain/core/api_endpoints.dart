@@ -11,4 +11,10 @@ class ApiEndPoints {
   static const String increaseCart = "cart/increase/";
   static const String removeCart = "cart/remove/";
   static const String popularProducts = 'product/product/by/type/popular';
+  static const String everyDayEssential =
+      'product/product/by/type/everydayessential';
+  static const String dailyDayEssential =
+      'product/product/by/type/everydayessential';
+  static const String demand = 'product/product/by/type/demand';
+  static const String weekendSale = 'product/product/by/type/weekendsale';
 }

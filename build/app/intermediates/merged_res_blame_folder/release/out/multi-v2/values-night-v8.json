@@ -4,7 +4,7 @@
             "outputFile": "com.example.mr_ambarisha_frontend_new.app-mergeReleaseResources-12:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\91963\\Documents\\chulluvil_test\\Ambarisha-Frontend-New-master\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\91963\\Documents\\new_folder\\Ambarisha-Frontend-New-master\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

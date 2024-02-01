@@ -1,13 +1,39 @@
 <libraries>
   <library
-      name="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
-      name="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
-      jars="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\smart_auth\.transforms\9a192444fe66ebebe5a2854d742b1055\transformed\out\jars\classes.jar"
+      name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:sqflite::release"
+      jars="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\sqflite\.transforms\7b3382d43d000a09cec6038934dd6ae8\transformed\out\jars\classes.jar"
+      resolved="com.tekartik.sqflite:sqflite:unspecified"
+      folder="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\sqflite\.transforms\7b3382d43d000a09cec6038934dd6ae8\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:path_provider_android::release"
+      jars="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\path_provider_android\.transforms\fb2023a3062b09c9582c640b20bcd845\transformed\out\jars\classes.jar"
+      resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
+      folder="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\path_provider_android\.transforms\fb2023a3062b09c9582c640b20bcd845\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
+      jars="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\smart_auth\.transforms\816839b2a72043571b05cdc8dd5baa4f\transformed\out\jars\classes.jar"
       resolved="fman.ge.smart_auth:smart_auth:unspecified"
-      folder="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\smart_auth\.transforms\9a192444fe66ebebe5a2854d742b1055\transformed\out"
+      folder="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\smart_auth\.transforms\816839b2a72043571b05cdc8dd5baa4f\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -75,17 +101,9 @@
       jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\io.flutter\x86_64_release\1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf\d39d23f73cafa195ff2d552cde6884f9998f3f31\x86_64_release-1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf.jar"
       resolved="io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf"/>
   <library
-      name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
-      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.7.10\d2abf9e77736acc4450dc4a3f707fa2c10f5099d\kotlin-stdlib-1.7.10.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.7.10"/>
-  <library
-      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
-      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.7.10\bac80c520d0a9e3f3673bc2658c6ed02ef45a76a\kotlin-stdlib-common-1.7.10.jar"
-      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10"/>
-  <library
-      name="org.jetbrains:annotations:13.0@jar"
-      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"
-      resolved="org.jetbrains:annotations:13.0"/>
+      name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
+      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-java8\2.2.0\cd3478503da69b1a7e0319bd2d1389943db9b364\lifecycle-common-java8-2.2.0.jar"
+      resolved="androidx.lifecycle:lifecycle-common-java8:2.2.0"/>
   <library
       name="androidx.fragment:fragment:1.1.0@aar"
       jars="C:\Users\91963\.gradle\caches\transforms-3\9354257804af8250f2ffb7c22e2892d5\transformed\fragment-1.1.0\jars\classes.jar"
@@ -99,10 +117,6 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
-  <library
-      name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
-      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\androidx.lifecycle\lifecycle-common-java8\2.2.0\cd3478503da69b1a7e0319bd2d1389943db9b364\lifecycle-common-java8-2.2.0.jar"
-      resolved="androidx.lifecycle:lifecycle-common-java8:2.2.0"/>
   <library
       name="androidx.viewpager:viewpager:1.0.0@aar"
       jars="C:\Users\91963\.gradle\caches\transforms-3\f156363817d5f71529d60b6716392550\transformed\viewpager-1.0.0\jars\classes.jar"
@@ -272,9 +286,21 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.annotation:annotation:1.2.0@jar"
-      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\androidx.annotation\annotation\1.2.0\57136ff68ee784c6e19db34ed4a175338fadfde1\annotation-1.2.0.jar"
-      resolved="androidx.annotation:annotation:1.2.0"/>
+      name="androidx.annotation:annotation-jvm:1.7.1@jar"
+      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\androidx.annotation\annotation-jvm\1.7.1\920472d40adcdef5e18708976b3e314f9a636fcd\annotation-jvm-1.7.1.jar"
+      resolved="androidx.annotation:annotation-jvm:1.7.1"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.7.10\d2abf9e77736acc4450dc4a3f707fa2c10f5099d\kotlin-stdlib-1.7.10.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib:1.7.10"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
+      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib-common\1.7.10\bac80c520d0a9e3f3673bc2658c6ed02ef45a76a\kotlin-stdlib-common-1.7.10.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10"/>
+  <library
+      name="org.jetbrains:annotations:13.0@jar"
+      jars="C:\Users\91963\.gradle\caches\modules-2\files-2.1\org.jetbrains\annotations\13.0\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\annotations-13.0.jar"
+      resolved="org.jetbrains:annotations:13.0"/>
   <library
       name="androidx.annotation:annotation-experimental:1.1.0@aar"
       jars="C:\Users\91963\.gradle\caches\transforms-3\8965c941cf4bee4d72541b965c7c9d39\transformed\jetified-annotation-experimental-1.1.0\jars\classes.jar"

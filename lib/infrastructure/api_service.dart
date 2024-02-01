@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-String kBaseUrl = "https://ambarisha-vercel.vercel.app/api/v1/";
+String kBaseUrl = "https://ambarisha-backend.vercel.app/api/v1/";
 
 class HttpServices {
   Future<http.Response> get({
@@ -73,6 +73,6 @@ class HttpServices {
   }
 
   _getToken() {
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZGY3MDQ2OWUxNTBkOGE3ZDM2NGRjMyIsImlhdCI6MTcwMzY3OTE5M30.gKTlkWUvG5sZVnDi5cX5byVtOxwj-JbpcrHTGrIx81A";
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjhmYzA4ODI0ZTgyMzZhNDk4NjAwNiIsImlhdCI6MTcwNjYyMjAxNn0.bClvxuu4zvcp1poawvsw94nqqksE17hz9aSMPDXNvRg";
   }
 }

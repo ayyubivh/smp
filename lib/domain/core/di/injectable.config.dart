@@ -20,7 +20,7 @@ import 'package:mr_ambarisha_frontend_new/domain/cart_repository.dart' as _i3;
 import 'package:mr_ambarisha_frontend_new/domain/category_repositories.dart'
     as _i5;
 import 'package:mr_ambarisha_frontend_new/domain/shop_repository.dart' as _i7;
-import 'package:mr_ambarisha_frontend_new/infrastructure/cart_repository.dart'
+import 'package:mr_ambarisha_frontend_new/infrastructure/cart_repository_impl.dart'
     as _i4;
 import 'package:mr_ambarisha_frontend_new/infrastructure/category_repository_impl.dart'
     as _i6;

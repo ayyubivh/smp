@@ -34,7 +34,9 @@ class _SplashViewState extends State<SplashView> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
             decoration: const BoxDecoration(
-                color: Colors.white, shape: BoxShape.circle),
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
             child: const Center(
               child: Icon(
                 Icons.arrow_back_ios,

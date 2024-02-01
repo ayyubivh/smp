@@ -1,4 +1,0 @@
-#Wed Jan 17 18:37:13 IST 2024
-base.0=C\:\\Users\\91963\\Documents\\chulluvil_test\\Ambarisha-Frontend-New-master\\build\\app\\intermediates\\dex\\profile\\mergeDexProfile\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex

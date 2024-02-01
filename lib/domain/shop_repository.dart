@@ -7,5 +7,17 @@ abstract class ShopRepository {
   ResultFuture<BannerModel> fetchBanner();
 
   //fetch popular products
-  ResultFuture<List<ProductModel>> fetchPopularProucts();
+  ResultFuture<List<ProductModel>> fetchPopularProducts();
+
+  //fetch every day essential products
+  ResultFuture<List<ProductModel>> fetchEverydayEssentialProducts();
+
+  //fetch daily essential products
+  ResultFuture<List<ProductModel>> fetchDailyEssentialProducts();
+
+  //fetch on demand products
+  ResultFuture<List<ProductModel>> fetchProductsOnDemand();
+
+//fetch weekend sale products
+  ResultFuture<List<ProductModel>> fetchWeekendSaleProducts();
 }

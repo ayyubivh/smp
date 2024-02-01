@@ -15,7 +15,7 @@ class ProductTile extends StatelessWidget {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         return state.isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? const SizedBox()
             : ListTile(
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(product.images?.first ?? ""),

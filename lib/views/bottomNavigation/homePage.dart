@@ -35,7 +35,11 @@ class _HomePageviewState extends State<HomePageview> {
     BlocProvider.of<CartBloc>(context).add(const CartEvent.fetchCart());
     BlocProvider.of<ShopBloc>(context)
       ..add(const ShopEvent.fetchBanner())
-      ..add(const ShopEvent.fetchPopularProducts());
+      ..add(const ShopEvent.fetchPopularProducts())
+      ..add(const ShopEvent.fetchEverydayEssentialProducts())
+      ..add(const ShopEvent.fetchDailyEssentialProducts())
+      ..add(const ShopEvent.fetchDemandProducts())
+      ..add(const ShopEvent.fetchWeekendSaleProducts());
     BlocProvider.of<CategoryBloc>(context)
         .add(const CategoryEvent.fetchCategory());
     super.initState();
@@ -474,20 +478,29 @@ class _HomePageviewState extends State<HomePageview> {
                     child: Container(
                       color: const Color(0xffC6E1D0),
                       height: height * 0.55,
-                      child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                everyDayaessential(
-                                    popuimag[index], height * 0.55)
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, index) => kboxw10(),
-                          itemCount: popuimag.length),
+                      child: BlocBuilder<ShopBloc, ShopState>(
+                        builder: (context, state) {
+                          final data = state.everyDayEssentialProducts;
+                          return data == null
+                              ? const SizedBox()
+                              : ListView.separated(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        everyDayaessential(
+                                            height * 0.55, data[index])
+                                      ],
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) =>
+                                      kboxw10(),
+                                  itemCount: data.length);
+                        },
+                      ),
                     ),
                   ),
                   kbox10(),
@@ -523,111 +536,124 @@ class _HomePageviewState extends State<HomePageview> {
                     child: Container(
                       color: const Color(0xffFCCF6F),
                       height: height * 0.35,
-                      child: ListView.separated(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: const BorderRadius.only(
-                                          topRight: Radius.circular(20),
-                                          bottomLeft: Radius.circular(20),
-                                          bottomRight: Radius.circular(20)),
-                                      border: Border.all(color: Colors.grey)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 5, bottom: 5),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              color: AppColors.ktextColor,
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(4.0),
-                                                child: Text(
-                                                  "New",
-                                                  style: TextStyle(
-                                                      color: Colors.black),
+                      child: BlocBuilder<ShopBloc, ShopState>(
+                        builder: (context, state) {
+                          final data = state.dailyEssentialProducts;
+                          return ListView.separated(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            separatorBuilder: (context, index) => kboxw10(),
+                            itemCount: data?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: const BorderRadius.only(
+                                            topRight: Radius.circular(20),
+                                            bottomLeft: Radius.circular(20),
+                                            bottomRight: Radius.circular(20)),
+                                        border: Border.all(color: Colors.grey)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 5, bottom: 5),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
+                                                color: AppColors.ktextColor,
+                                                child: const Padding(
+                                                  padding: EdgeInsets.all(4.0),
+                                                  child: Text(
+                                                    "New",
+                                                    style: TextStyle(
+                                                        color: Colors.black),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            kboxw60(),
-                                            kboxw60(),
-                                            const Icon(Icons.favorite_border)
-                                          ],
-                                        ),
-                                        SizedBox(
-                                            height: 100,
-                                            width: 200,
-                                            child: Image.asset(
-                                                "assets/${dayessentila[index]}.png")),
-                                        const Text(
-                                          "1 Kg",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
-                                        const Text(
-                                          "Apple",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20,
-                                              color: Colors.black),
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Text("₹170.00  ",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black,
-                                                    fontSize: 13)),
-                                            const Text("₹ 10 OFF",
-                                                style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.grey,
-                                                    fontSize: 13)),
-                                            kboxw30(),
-                                            Image.asset("assets/Calendar.png")
-                                          ],
-                                        ),
-                                        kbox10(),
-                                        Image.asset("assets/plus.png")
-                                      ],
+                                              kboxw60(),
+                                              kboxw60(),
+                                              const Icon(Icons.favorite_border)
+                                            ],
+                                          ),
+                                          SizedBox(
+                                              height: 100,
+                                              width: 200,
+                                              child: Utilities()
+                                                  .buildCachedNetworkImage(
+                                                      imageUrl: data?[index]
+                                                          .images
+                                                          ?.first)),
+                                          const Text(
+                                            "1 Kg",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          ),
+                                          Text(
+                                            "${data?[index].name}",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 20,
+                                                color: Colors.black),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                  "₹${data?[index].discountedPrice}  ",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                      fontSize: 13)),
+                                              const Text("₹ 10 OFF",
+                                                  style: TextStyle(
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.grey,
+                                                      fontSize: 13)),
+                                              kboxw30(),
+                                              Image.asset("assets/Calendar.png")
+                                            ],
+                                          ),
+                                          kbox10(),
+                                          Image.asset("assets/plus.png")
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
-                          },
-                          separatorBuilder: (context, index) => kboxw10(),
-                          itemCount: dayessentila.length),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ),
                   ),
                   kbox10(),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Everyday Essentials",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: 22,
-                              color: Colors.black)),
-                      Text("Show all",
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontSize: 16,
-                              color: AppColors.ktextColor)),
-                    ],
-                  ),
-                  kbox10(),
-                  everday2(height),
+                  // const Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     Text("Everyday Essentials",
+                  //         style: TextStyle(
+                  //             fontWeight: FontWeight.w900,
+                  //             fontSize: 22,
+                  //             color: Colors.black)),
+                  //     Text("Show all",
+                  //         style: TextStyle(
+                  //             decoration: TextDecoration.underline,
+                  //             fontSize: 16,
+                  //             color: AppColors.ktextColor)),
+                  //   ],
+                  // ),
+                  // kbox10(),
+                  // everday2(height),
                   kbox20(),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -663,94 +689,116 @@ class _HomePageviewState extends State<HomePageview> {
                         children: [
                           Container(
                             height: height * 0.35,
-                            child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              shrinkWrap: true,
-                              itemCount: 6,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 220,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
+                            child: BlocBuilder<ShopBloc, ShopState>(
+                              builder: (context, state) {
+                                final data = state.demandProducts;
+                                return data == null
+                                    ? const Loader()
+                                    : ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        shrinkWrap: true,
+                                        itemCount: data.length,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Container(
+                                              width: 220,
                                               decoration: BoxDecoration(
-                                                  color:
-                                                      const Color(0xff7FAD39),
+                                                  color: Colors.white,
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12)),
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(4.0),
-                                                child: Text(
-                                                  "25% OFF",
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      color: Colors.black),
+                                                          20)),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                        decoration: BoxDecoration(
+                                                            color: const Color(
+                                                                0xff7FAD39),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12)),
+                                                        child: const Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  4.0),
+                                                          child: Text(
+                                                            "25% OFF",
+                                                            style: TextStyle(
+                                                                fontSize: 10,
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        )),
+                                                    kbox10(),
+                                                    Utilities()
+                                                        .buildCachedNetworkImage(
+                                                            imageUrl:
+                                                                data[index]
+                                                                    .images
+                                                                    ?.first),
+                                                    kbox10(),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          "${data[index].name}",
+                                                          style: TextStyle(
+                                                              fontSize: 24,
+                                                              color:
+                                                                  Colors.black),
+                                                        ),
+                                                        kboxw30(),
+                                                        const Text(
+                                                          "25/KG",
+                                                          style: TextStyle(
+                                                              fontSize: 17,
+                                                              color:
+                                                                  Colors.black),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Text(
+                                                      "${data[index].description}",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.grey),
+                                                    ),
+                                                    kbox10(),
+                                                    Center(
+                                                      child: Container(
+                                                          width: 130,
+                                                          height: 30,
+                                                          decoration: BoxDecoration(
+                                                              color: const Color(
+                                                                  0xff18BD4F),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12)),
+                                                          child: const Center(
+                                                            child: Text(
+                                                              "SHOP NOW",
+                                                              style: TextStyle(
+                                                                  fontSize: 14,
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                          )),
+                                                    ),
+                                                  ],
                                                 ),
-                                              )),
-                                          kbox10(),
-                                          Image.asset("assets/tmatr.png"),
-                                          kbox10(),
-                                          Row(
-                                            children: [
-                                              const Text(
-                                                "Tomato",
-                                                style: TextStyle(
-                                                    fontSize: 24,
-                                                    color: Colors.black),
                                               ),
-                                              kboxw30(),
-                                              const Text(
-                                                "25/KG",
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    color: Colors.black),
-                                              ),
-                                            ],
-                                          ),
-                                          const Text(
-                                            "It is a long established fact that a reader will be distracted by.",
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.grey),
-                                          ),
-                                          kbox10(),
-                                          Center(
-                                            child: Container(
-                                                width: 130,
-                                                height: 30,
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xff18BD4F),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12)),
-                                                child: const Center(
-                                                  child: Text(
-                                                    "SHOP NOW",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.white),
-                                                  ),
-                                                )),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
+                                            ),
+                                          );
+                                        },
+                                      );
                               },
                             ),
                           )
@@ -820,109 +868,147 @@ class _HomePageviewState extends State<HomePageview> {
                       children: [
                         Container(
                           height: height * 0.43,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            shrinkWrap: true,
-                            itemCount: everyday.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      border: Border.all(
-                                          color: Colors.grey, width: 1)),
-                                  // height: 300,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              color: AppColors.ktextColor,
-                                              child: const Padding(
-                                                padding: EdgeInsets.all(4.0),
-                                                child: Text(
-                                                  "15%Off",
-                                                  style: TextStyle(
-                                                      color: Colors.black),
-                                                ),
+                          child: BlocBuilder<ShopBloc, ShopState>(
+                            builder: (context, state) {
+                              final data = state.weekendSaleProducts;
+                              return data == null
+                                  ? const Loader()
+                                  : ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      shrinkWrap: true,
+                                      itemCount: data.length,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                border: Border.all(
+                                                    color: Colors.grey,
+                                                    width: 1)),
+                                            // height: 300,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        color: AppColors
+                                                            .ktextColor,
+                                                        child: const Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  4.0),
+                                                          child: Text(
+                                                            "15%Off",
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      kboxw60(),
+                                                      kboxw60(),
+                                                      Container(
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                                  color: Color(
+                                                                      0xffD8E6C3),
+                                                                  shape: BoxShape
+                                                                      .circle),
+                                                          child: const Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    8.0),
+                                                            child: Icon(Icons
+                                                                .favorite_border),
+                                                          ))
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                      height: 120,
+                                                      width: 120,
+                                                      child: Utilities()
+                                                          .buildCachedNetworkImage(
+                                                              imageUrl:
+                                                                  data[index]
+                                                                      .images
+                                                                      ?.first)),
+                                                  const Text(
+                                                    "Available(in stock)",
+                                                    style: TextStyle(
+                                                        color: Colors.grey),
+                                                  ),
+                                                  Text(
+                                                    "${data[index].name}",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontSize: 20,
+                                                        color: Colors.black),
+                                                  ),
+                                                  kbox5(),
+                                                  const Text("2 Kg",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: Colors.black,
+                                                          fontSize: 13)),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                          "₹${data[index].discountedPrice}",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.black,
+                                                              fontSize: 13)),
+                                                      const Text("₹ 10 OFF",
+                                                          style: TextStyle(
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .lineThrough,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color:
+                                                                  Colors.grey,
+                                                              fontSize: 13)),
+                                                      kboxw50(),
+                                                      Image.asset(
+                                                          "assets/Calendar.png")
+                                                    ],
+                                                  ),
+                                                  kbox20(),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Image.asset(
+                                                          "assets/minus.png"),
+                                                      kboxw60(),
+                                                      kboxw30(),
+                                                      Image.asset(
+                                                          "assets/cart.png")
+                                                    ],
+                                                  )
+                                                ],
                                               ),
                                             ),
-                                            kboxw60(),
-                                            kboxw60(),
-                                            Container(
-                                                decoration: const BoxDecoration(
-                                                    color: Color(0xffD8E6C3),
-                                                    shape: BoxShape.circle),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(8.0),
-                                                  child: Icon(
-                                                      Icons.favorite_border),
-                                                ))
-                                          ],
-                                        ),
-                                        SizedBox(
-                                            height: 120,
-                                            width: 120,
-                                            child:
-                                                Image.asset(everyday[index])),
-                                        const Text(
-                                          "Available(in stock)",
-                                          style: TextStyle(color: Colors.grey),
-                                        ),
-                                        const Text(
-                                          "Fresh organic apricot",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 20,
-                                              color: Colors.black),
-                                        ),
-                                        kbox5(),
-                                        const Text("2 Kg",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black,
-                                                fontSize: 13)),
-                                        Row(
-                                          children: [
-                                            const Text("₹170.00  ",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black,
-                                                    fontSize: 13)),
-                                            const Text("₹ 10 OFF",
-                                                style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.grey,
-                                                    fontSize: 13)),
-                                            kboxw50(),
-                                            Image.asset("assets/Calendar.png")
-                                          ],
-                                        ),
-                                        kbox20(),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Image.asset("assets/minus.png"),
-                                            kboxw60(),
-                                            kboxw30(),
-                                            Image.asset("assets/cart.png")
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              );
+                                          ),
+                                        );
+                                      },
+                                    );
                             },
                           ),
                         ),
@@ -1175,102 +1261,104 @@ class _HomePageviewState extends State<HomePageview> {
     );
   }
 
-  everyDayaessential(img, h) {
+  everyDayaessential(h, ProductModel data) {
     return Container(
-        height: h - 50,
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      color: AppColors.ktextColor,
-                      child: const Padding(
-                        padding: EdgeInsets.all(4.0),
-                        child: Text(
-                          "15%Off",
-                          style: TextStyle(color: Colors.white),
-                        ),
+      height: h - 50,
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    color: AppColors.ktextColor,
+                    child: Padding(
+                      padding: EdgeInsets.all(4.0),
+                      child: Text(
+                        "${data?.discount ?? '0'}%Off",
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    kboxw60(),
-                    kboxw60(),
-                    Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0xffD8E6C3), shape: BoxShape.circle),
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.favorite_border),
-                        ))
-                  ],
-                ),
-                SizedBox(
-                    height: 150,
-                    width: 120,
-                    child: Image.asset("assets/fresh.png")),
-                const Text(
-                  "Available(in stock)",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const Text(
-                  "Fresh organic apricot",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
                   ),
+                  kboxw60(),
+                  kboxw60(),
+                  Container(
+                      decoration: const BoxDecoration(
+                          color: Color(0xffD8E6C3), shape: BoxShape.circle),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.favorite_border),
+                      ))
+                ],
+              ),
+              SizedBox(
+                  height: 150,
+                  width: 120,
+                  child: Utilities()
+                      .buildCachedNetworkImage(imageUrl: data?.images?.first)),
+              const Text(
+                "Available(in stock)",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Text(
+                data?.name.toString() ?? '',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
                 ),
-                SizedBox(
-                  height: h * 0.02,
-                ),
-                const Text("2 Kg",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black,
-                        fontSize: 13)),
-                SizedBox(
-                  height: h * 0.02,
-                ),
-                Row(
-                  children: [
-                    const Text("₹170.00  ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                            fontSize: 13)),
-                    const Text("₹ 10 OFF",
-                        style: TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey,
-                            fontSize: 13)),
-                    kboxw40(),
-                    Image.asset("assets/Calendar.png")
-                  ],
-                ),
-                SizedBox(
-                  height: h * 0.05,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset("assets/minus.png"),
-                    kboxw60(),
-                    kboxw30(),
-                    Image.asset("assets/cart.png")
-                  ],
-                )
-              ],
-            ),
+              ),
+              SizedBox(
+                height: h * 0.02,
+              ),
+              const Text("2 Kg",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 13)),
+              SizedBox(
+                height: h * 0.02,
+              ),
+              Row(
+                children: [
+                  Text("₹${data?.price}.00  ",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                          fontSize: 13)),
+                  const Text("₹ 10 OFF",
+                      style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey,
+                          fontSize: 13)),
+                  kboxw40(),
+                  Image.asset("assets/Calendar.png")
+                ],
+              ),
+              SizedBox(
+                height: h * 0.05,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset("assets/minus.png"),
+                  kboxw60(),
+                  kboxw30(),
+                  Image.asset("assets/cart.png")
+                ],
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   dealwidget(index, h) {
@@ -1681,7 +1769,6 @@ class _HomePageviewState extends State<HomePageview> {
     "Milk & More"
   ];
   List oaderagain = ["oadr", "oader2", "oader3", "oader4"];
-  List dayessentila = ["apple", "annas", "lemon", "apple"];
   List oaderagaintext1 = ["Fruits", "Chicken", "Fish", "Dairy"];
   List oaderagaintext2 = ["1126 Items", "142 Items", "50 Items", "98 Items"];
   List popuimag = ["bnana", "bnana2", "bnana", "bnana2"];

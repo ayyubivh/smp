@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
 
 import '../wallet/wallet_history.dart';
 import 'basketmodel.dart';
@@ -64,7 +65,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
       vsync: this,
     );
     _tabController.addListener(() {
-      setState(() {}); // Update the UI when the tab changes
+      setState(() {});
     });
   }
 
@@ -173,28 +174,36 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                 return Container(
                                   height: 300,
                                   child: SizedBox(
-                                    child: ListView.builder(
-                                      itemCount: state.cartModel?.cart?.products
-                                              ?.length ??
-                                          0,
-                                      itemBuilder: (context, index) {
-                                        if (state.cartModel == null) {
-                                          return const SizedBox();
-                                        }
-                                        final product = state.cartModel?.cart
-                                            ?.products?[index].productId;
-                                        if (product == null) {
-                                          return const SizedBox();
-                                        }
-                                        return ProductTile(
-                                          product: product,
-                                          quantity: state.cartModel?.cart
-                                                  ?.products?[index].quantity
-                                                  ?.toInt() ??
-                                              0,
-                                        );
-                                      },
-                                    ),
+                                    child: state.isLoading
+                                        ? const Loader()
+                                        : ListView.builder(
+                                            itemCount: state.cartModel?.cart
+                                                    ?.products?.length ??
+                                                0,
+                                            itemBuilder: (context, index) {
+                                              if (state.cartModel == null) {
+                                                return const SizedBox();
+                                              }
+                                              final product = state
+                                                  .cartModel
+                                                  ?.cart
+                                                  ?.products?[index]
+                                                  .productId;
+                                              if (product == null) {
+                                                return const SizedBox();
+                                              }
+                                              return ProductTile(
+                                                product: product,
+                                                quantity: state
+                                                        .cartModel
+                                                        ?.cart
+                                                        ?.products?[index]
+                                                        .quantity
+                                                        ?.toInt() ??
+                                                    0,
+                                              );
+                                            },
+                                          ),
                                   ),
                                 );
                               },
@@ -438,7 +447,7 @@ class _BasketState extends State<Basket> with TickerProviderStateMixin {
                                                       const EdgeInsets.only(
                                                           left: 240),
                                                   child: Text(
-                                                    '$subTotal',
+                                                    '${subTotal?.toInt()}',
                                                     style: const TextStyle(
                                                         color: Colors.black),
                                                   ),

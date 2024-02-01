@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/domain/models/product_by_category/product_by_category_model.dart';
 import 'package:mr_ambarisha_frontend_new/infrastructure/category_repository_impl.dart';
+import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
 import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
@@ -291,35 +293,39 @@ class _CategoriesState extends State<Categories> {
                 //   child: ListViewWidget(widget.id),
                 // ),
                 GestureDetector(
+                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Basket()));
                   },
-                  child: Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Colors.pinkAccent),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 10),
-                          child: const Text(
-                            '1 Item | ₹ 90',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                  child: BlocBuilder<CartBloc, CartState>(
+                    builder: (context, state) {
+                      final data = state.cartModel?.cart;
+                      return Container(
+                        height: 50,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Colors.pinkAccent),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                '${data?.products?.length} Item | ₹ ${state.cartModel?.totals?.subtotal.toInt()}',
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const Spacer(),
+                            const Text('view Cart',
+                                style: TextStyle(color: Colors.white)),
+                            kboxw10(),
+                            const Icon(Icons.shopping_bag),
+                            kboxw10(),
+                          ],
                         ),
-                        const Spacer(),
-                        TextButton(
-                            onPressed: () {},
-                            child: const Text('view Cart',
-                                style: TextStyle(color: Colors.white))),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.shopping_bag))
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 )
               ],
@@ -464,19 +470,19 @@ class _CategoriesState extends State<Categories> {
 class GridViewWidget extends StatelessWidget {
   final List<ProductModel> products;
 
-  GridViewWidget(this.products, {super.key});
+  const GridViewWidget(this.products, {super.key});
 
-  final List<Product> item = [
-    Product(
-      name: 'Product 1',
-      image: 'https://picsum.photos/200/300',
-      rating: 4.5,
-      price: 25.0,
-      discount: 10.0,
-      description: 'Description of Product 1',
-    ),
-    // Add more products here
-  ];
+  // final List<Product> item = [
+  //   Product(
+  //     name: 'Product 1',
+  //     image: 'https://picsum.photos/200/300',
+  //     rating: 4.5,
+  //     price: 25.0,
+  //     discount: 10.0,
+  //     description: 'Description of Product 1',
+  //   ),
+  //   // Add more products here
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -571,7 +577,7 @@ class GridViewWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(2.0),
                   child: Center(
                     child: Text(
-                      product.price.toString(),
+                      product.price?.toInt().toString() ?? '0',
                       style: const TextStyle(color: Colors.black, fontSize: 10),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -592,32 +598,75 @@ class GridViewWidget extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Row(
-                      children: [
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              // Handle quantity decrease here
-                            },
-                          ),
-                        ),
-                        const Text(
-                          '1',
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        // Quantity
-                        Container(
-                          width: 40,
-                          child: IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              // Handle quantity increase here
-                            },
-                          ),
-                        ),
-                      ],
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        final isCart = state.cartModel?.cart?.products?.any(
+                            (e) => e.productId!.id!.contains(product.id!));
+
+                        final cartIndex = state.cartModel?.cart?.products
+                            ?.indexWhere((element) =>
+                                element.productId?.id == product.id);
+
+                        return Row(
+                          children: [
+                            SizedBox(
+                              width: 40,
+                              child: IconButton(
+                                icon: const Icon(Icons.remove),
+                                onPressed: () {
+                                  if (isCart == true) {
+                                    if (state
+                                            .cartModel!
+                                            .cart!
+                                            .products![cartIndex ?? 0]
+                                            .quantity! <=
+                                        1) {
+                                      BlocProvider.of<CartBloc>(context).add(
+                                          CartEvent.removeCart(
+                                              product.id ?? "", context));
+                                    }
+                                    BlocProvider.of<CartBloc>(context).add(
+                                        CartEvent.decreaseQuantity(
+                                            product.id ?? "", context));
+                                  } else {
+                                    Utilities.showSnackBar(
+                                        context, "product not found");
+                                  }
+                                },
+                              ),
+                            ),
+                            Text(
+                              isCart ?? false
+                                  ? state.cartModel!.cart!
+                                          .products![cartIndex ?? 0].quantity
+                                          ?.toInt()
+                                          .toString() ??
+                                      ''
+                                  : '0',
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            // Quantity
+                            SizedBox(
+                              width: 40,
+                              child: IconButton(
+                                icon: const Icon(Icons.add),
+                                onPressed: () {
+                                  if (isCart == true) {
+                                    BlocProvider.of<CartBloc>(context).add(
+                                        CartEvent.increaseQuantity(
+                                            product.id ?? "", context));
+                                  } else {
+                                    BlocProvider.of<CartBloc>(context).add(
+                                        CartEvent.addCart(
+                                            id: product.id ?? "",
+                                            context: context));
+                                  }
+                                },
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -719,49 +768,91 @@ class ProductDetailsSheet extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
               const SizedBox(height: 16.0),
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.remove),
-                    onPressed: () {
-                      // Handle quantity decrease
-                    },
-                  ),
-                  const Text(
-                    '1',
-                    style: TextStyle(color: Colors.black),
-                  ), // Quantity
-                  IconButton(
-                    icon: const Icon(Icons.add),
-                    onPressed: () {
-                      // Handle quantity increase
-                    },
-                  ),
-                  const Spacer(),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Basket()));
-                    },
-                    child: Container(
-                      width: 120.0, // Adjust the size as needed
-                      height: 60.0, // Adjust the size as needed
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(25)),
-                      child: const Center(
-                        child: Text(
-                          'Add to Cart',
-                          style: TextStyle(
-                            color: Colors
-                                .black, // You can change the text color as needed
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  final isCart = state.cartModel?.cart?.products
+                      ?.any((e) => e.productId!.id!.contains(item.id!));
+
+                  final cartIndex = state.cartModel?.cart?.products?.indexWhere(
+                      (element) => element.productId?.id == item.id);
+                  return Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: () {
+                          if (isCart == true) {
+                            if (state.cartModel!.cart!.products![cartIndex ?? 0]
+                                    .quantity! <=
+                                1) {
+                              BlocProvider.of<CartBloc>(context).add(
+                                  CartEvent.removeCart(item.id ?? "", context));
+                            }
+                            BlocProvider.of<CartBloc>(context).add(
+                                CartEvent.decreaseQuantity(
+                                    item.id ?? "", context));
+                          } else {
+                            Utilities.showSnackBar(
+                                context, "product not found");
+                          }
+                        },
+                      ),
+                      Text(
+                        isCart ?? false
+                            ? state.cartModel!.cart!.products![cartIndex ?? 0]
+                                    .quantity
+                                    ?.toInt()
+                                    .toString() ??
+                                ''
+                            : '0',
+                        style: TextStyle(color: Colors.black),
+                      ), // Quantity
+                      IconButton(
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          if (isCart == true) {
+                            BlocProvider.of<CartBloc>(context).add(
+                                CartEvent.increaseQuantity(
+                                    item.id ?? "", context));
+                          } else {
+                            BlocProvider.of<CartBloc>(context).add(
+                                CartEvent.addCart(
+                                    id: item.id ?? "", context: context));
+                          }
+                        },
+                      ),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () {
+                          isCart ?? false
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Basket()))
+                              : BlocProvider.of<CartBloc>(context).add(
+                                  CartEvent.addCart(
+                                      id: item.id ?? "", context: context));
+                        },
+                        child: Container(
+                          width: 120.0, // Adjust the size as needed
+                          height: 60.0, // Adjust the size as needed
+                          decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(25)),
+                          child: Center(
+                            child: Text(
+                              isCart ?? false ? 'view cart' : 'Add to Cart',
+                              style: TextStyle(
+                                color: Colors
+                                    .black, // You can change the text color as needed
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  )
-                ],
+                      )
+                    ],
+                  );
+                },
               ),
             ],
           ),

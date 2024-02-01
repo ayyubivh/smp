@@ -20,8 +20,9 @@ BannerModel _$BannerModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BannerModel {
+  int? get status => throw _privateConstructorUsedError;
   bool? get success => throw _privateConstructorUsedError;
-  List<Banner>? get banners => throw _privateConstructorUsedError;
+  List<Banner>? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $BannerModelCopyWith<$Res> {
           BannerModel value, $Res Function(BannerModel) then) =
       _$BannerModelCopyWithImpl<$Res, BannerModel>;
   @useResult
-  $Res call({bool? success, List<Banner>? banners});
+  $Res call({int? status, bool? success, List<Banner>? data});
 }
 
 /// @nodoc
@@ -51,17 +52,22 @@ class _$BannerModelCopyWithImpl<$Res, $Val extends BannerModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = freezed,
     Object? success = freezed,
-    Object? banners = freezed,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
       success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
-      banners: freezed == banners
-          ? _value.banners
-          : banners // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<Banner>?,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$BannerModelImplCopyWith<$Res>
       __$$BannerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool? success, List<Banner>? banners});
+  $Res call({int? status, bool? success, List<Banner>? data});
 }
 
 /// @nodoc
@@ -89,17 +95,22 @@ class __$$BannerModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? status = freezed,
     Object? success = freezed,
-    Object? banners = freezed,
+    Object? data = freezed,
   }) {
     return _then(_$BannerModelImpl(
+      status: freezed == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int?,
       success: freezed == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as bool?,
-      banners: freezed == banners
-          ? _value._banners
-          : banners // ignore: cast_nullable_to_non_nullable
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<Banner>?,
     ));
   }
@@ -109,27 +120,31 @@ class __$$BannerModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BannerModelImpl implements _BannerModel {
   const _$BannerModelImpl(
-      {required this.success, required final List<Banner>? banners})
-      : _banners = banners;
+      {required this.status,
+      required this.success,
+      required final List<Banner>? data})
+      : _data = data;
 
   factory _$BannerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BannerModelImplFromJson(json);
 
   @override
-  final bool? success;
-  final List<Banner>? _banners;
+  final int? status;
   @override
-  List<Banner>? get banners {
-    final value = _banners;
+  final bool? success;
+  final List<Banner>? _data;
+  @override
+  List<Banner>? get data {
+    final value = _data;
     if (value == null) return null;
-    if (_banners is EqualUnmodifiableListView) return _banners;
+    if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'BannerModel(success: $success, banners: $banners)';
+    return 'BannerModel(status: $status, success: $success, data: $data)';
   }
 
   @override
@@ -137,14 +152,15 @@ class _$BannerModelImpl implements _BannerModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BannerModelImpl &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.success, success) || other.success == success) &&
-            const DeepCollectionEquality().equals(other._banners, _banners));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, success, const DeepCollectionEquality().hash(_banners));
+      runtimeType, status, success, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -162,16 +178,19 @@ class _$BannerModelImpl implements _BannerModel {
 
 abstract class _BannerModel implements BannerModel {
   const factory _BannerModel(
-      {required final bool? success,
-      required final List<Banner>? banners}) = _$BannerModelImpl;
+      {required final int? status,
+      required final bool? success,
+      required final List<Banner>? data}) = _$BannerModelImpl;
 
   factory _BannerModel.fromJson(Map<String, dynamic> json) =
       _$BannerModelImpl.fromJson;
 
   @override
+  int? get status;
+  @override
   bool? get success;
   @override
-  List<Banner>? get banners;
+  List<Banner>? get data;
   @override
   @JsonKey(ignore: true)
   _$$BannerModelImplCopyWith<_$BannerModelImpl> get copyWith =>
@@ -184,12 +203,20 @@ Banner _$BannerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Banner {
-  @JsonKey(name: "_id")
+  @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'category')
+  String? get categoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'subCategory')
+  String? get subCategoryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'product')
+  String? get productId => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
-  @JsonKey(name: "__v")
+  bool? get isActive => throw _privateConstructorUsedError;
+  @JsonKey(name: '__v')
   int get v => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -203,11 +230,16 @@ abstract class $BannerCopyWith<$Res> {
       _$BannerCopyWithImpl<$Res, Banner>;
   @useResult
   $Res call(
-      {@JsonKey(name: "_id") String? id,
+      {@JsonKey(name: '_id') String? id,
+      @JsonKey(name: 'category') String? categoryId,
+      @JsonKey(name: 'subCategory') String? subCategoryId,
+      @JsonKey(name: 'product') String? productId,
       String? name,
+      String? description,
       String? image,
       String? type,
-      @JsonKey(name: "__v") int v});
+      bool? isActive,
+      @JsonKey(name: '__v') int v});
 }
 
 /// @nodoc
@@ -224,9 +256,14 @@ class _$BannerCopyWithImpl<$Res, $Val extends Banner>
   @override
   $Res call({
     Object? id = freezed,
+    Object? categoryId = freezed,
+    Object? subCategoryId = freezed,
+    Object? productId = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? image = freezed,
     Object? type = freezed,
+    Object? isActive = freezed,
     Object? v = null,
   }) {
     return _then(_value.copyWith(
@@ -234,9 +271,25 @@ class _$BannerCopyWithImpl<$Res, $Val extends Banner>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subCategoryId: freezed == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -246,6 +299,10 @@ class _$BannerCopyWithImpl<$Res, $Val extends Banner>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
       v: null == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
@@ -262,11 +319,16 @@ abstract class _$$BannerImplCopyWith<$Res> implements $BannerCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "_id") String? id,
+      {@JsonKey(name: '_id') String? id,
+      @JsonKey(name: 'category') String? categoryId,
+      @JsonKey(name: 'subCategory') String? subCategoryId,
+      @JsonKey(name: 'product') String? productId,
       String? name,
+      String? description,
       String? image,
       String? type,
-      @JsonKey(name: "__v") int v});
+      bool? isActive,
+      @JsonKey(name: '__v') int v});
 }
 
 /// @nodoc
@@ -281,9 +343,14 @@ class __$$BannerImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? categoryId = freezed,
+    Object? subCategoryId = freezed,
+    Object? productId = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? image = freezed,
     Object? type = freezed,
+    Object? isActive = freezed,
     Object? v = null,
   }) {
     return _then(_$BannerImpl(
@@ -291,9 +358,25 @@ class __$$BannerImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      categoryId: freezed == categoryId
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subCategoryId: freezed == subCategoryId
+          ? _value.subCategoryId
+          : subCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productId: freezed == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -303,6 +386,10 @@ class __$$BannerImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
+      isActive: freezed == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool?,
       v: null == v
           ? _value.v
           : v // ignore: cast_nullable_to_non_nullable
@@ -315,31 +402,49 @@ class __$$BannerImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BannerImpl implements _Banner {
   const _$BannerImpl(
-      {@JsonKey(name: "_id") required this.id,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'category') required this.categoryId,
+      @JsonKey(name: 'subCategory') required this.subCategoryId,
+      @JsonKey(name: 'product') required this.productId,
       required this.name,
+      required this.description,
       required this.image,
       required this.type,
-      @JsonKey(name: "__v") required this.v});
+      required this.isActive,
+      @JsonKey(name: '__v') required this.v});
 
   factory _$BannerImpl.fromJson(Map<String, dynamic> json) =>
       _$$BannerImplFromJson(json);
 
   @override
-  @JsonKey(name: "_id")
+  @JsonKey(name: '_id')
   final String? id;
   @override
+  @JsonKey(name: 'category')
+  final String? categoryId;
+  @override
+  @JsonKey(name: 'subCategory')
+  final String? subCategoryId;
+  @override
+  @JsonKey(name: 'product')
+  final String? productId;
+  @override
   final String? name;
+  @override
+  final String? description;
   @override
   final String? image;
   @override
   final String? type;
   @override
-  @JsonKey(name: "__v")
+  final bool? isActive;
+  @override
+  @JsonKey(name: '__v')
   final int v;
 
   @override
   String toString() {
-    return 'Banner(id: $id, name: $name, image: $image, type: $type, v: $v)';
+    return 'Banner(id: $id, categoryId: $categoryId, subCategoryId: $subCategoryId, productId: $productId, name: $name, description: $description, image: $image, type: $type, isActive: $isActive, v: $v)';
   }
 
   @override
@@ -348,15 +453,26 @@ class _$BannerImpl implements _Banner {
         (other.runtimeType == runtimeType &&
             other is _$BannerImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.categoryId, categoryId) ||
+                other.categoryId == categoryId) &&
+            (identical(other.subCategoryId, subCategoryId) ||
+                other.subCategoryId == subCategoryId) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
             (identical(other.v, v) || other.v == v));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, image, type, v);
+  int get hashCode => Object.hash(runtimeType, id, categoryId, subCategoryId,
+      productId, name, description, image, type, isActive, v);
 
   @JsonKey(ignore: true)
   @override
@@ -374,25 +490,43 @@ class _$BannerImpl implements _Banner {
 
 abstract class _Banner implements Banner {
   const factory _Banner(
-      {@JsonKey(name: "_id") required final String? id,
+      {@JsonKey(name: '_id') required final String? id,
+      @JsonKey(name: 'category') required final String? categoryId,
+      @JsonKey(name: 'subCategory') required final String? subCategoryId,
+      @JsonKey(name: 'product') required final String? productId,
       required final String? name,
+      required final String? description,
       required final String? image,
       required final String? type,
-      @JsonKey(name: "__v") required final int v}) = _$BannerImpl;
+      required final bool? isActive,
+      @JsonKey(name: '__v') required final int v}) = _$BannerImpl;
 
   factory _Banner.fromJson(Map<String, dynamic> json) = _$BannerImpl.fromJson;
 
   @override
-  @JsonKey(name: "_id")
+  @JsonKey(name: '_id')
   String? get id;
   @override
+  @JsonKey(name: 'category')
+  String? get categoryId;
+  @override
+  @JsonKey(name: 'subCategory')
+  String? get subCategoryId;
+  @override
+  @JsonKey(name: 'product')
+  String? get productId;
+  @override
   String? get name;
+  @override
+  String? get description;
   @override
   String? get image;
   @override
   String? get type;
   @override
-  @JsonKey(name: "__v")
+  bool? get isActive;
+  @override
+  @JsonKey(name: '__v')
   int get v;
   @override
   @JsonKey(ignore: true)

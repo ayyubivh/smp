@@ -11,7 +11,7 @@ class MainBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShopBloc, ShopState>(
       builder: (context, state) {
-        if (state.bannerModel != null && state.bannerModel!.banners != null) {
+        if (state.bannerModel != null && state.bannerModel?.data != null) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ImageSlideshow(
@@ -26,7 +26,7 @@ class MainBanner extends StatelessWidget {
               },
               autoPlayInterval: 3000,
               isLoop: true,
-              children: state.bannerModel!.banners!
+              children: state.bannerModel!.data!
                   .map(
                     (banner) => ClipRRect(
                       borderRadius: BorderRadius.circular(12),

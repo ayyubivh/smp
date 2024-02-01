@@ -1,11 +1,17 @@
 <dependencies>
   <compile
-      roots="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar,C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\android@@:smart_auth::release,io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.window:window-java:1.0.0-beta04@aar,androidx.window:window:1.0.0-beta04@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,io.flutter:armeabi_v7a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:arm64_v8a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,androidx.fragment:fragment:1.1.0@aar,androidx.lifecycle:lifecycle-common-java8:2.2.0@jar,androidx.viewpager:viewpager:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.activity:activity:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.core:core:1.6.0@aar,androidx.core:core:1.6.0@aar,androidx.lifecycle:lifecycle-runtime:2.2.0@aar,androidx.savedstate:savedstate:1.0.0@aar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar,androidx.lifecycle:lifecycle-common:2.2.0@jar,androidx.arch.core:core-runtime:2.0.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar,androidx.annotation:annotation:1.2.0@jar,androidx.annotation:annotation-experimental:1.1.0@aar,androidx.tracing:tracing:1.0.0@aar">
+      roots="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:sqflite::release,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:path_provider_android::release,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:smart_auth::release,io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.window:window-java:1.0.0-beta04@aar,androidx.window:window:1.0.0-beta04@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,io.flutter:armeabi_v7a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:arm64_v8a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.lifecycle:lifecycle-common-java8:2.2.0@jar,androidx.fragment:fragment:1.1.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.loader:loader:1.0.0@aar,androidx.activity:activity:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.core:core:1.6.0@aar,androidx.core:core:1.6.0@aar,androidx.lifecycle:lifecycle-runtime:2.2.0@aar,androidx.savedstate:savedstate:1.0.0@aar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar,androidx.lifecycle:lifecycle-common:2.2.0@jar,androidx.arch.core:core-runtime:2.0.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar,androidx.annotation:annotation-jvm:1.7.1@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,androidx.annotation:annotation-experimental:1.1.0@aar,androidx.tracing:tracing:1.0.0@aar">
     <dependency
-        name="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-        simpleName="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"/>
+        name="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+        simpleName="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"/>
     <dependency
-        name="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:sqflite::release"
+        simpleName="com.tekartik.sqflite:sqflite"/>
+    <dependency
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:path_provider_android::release"
+        simpleName="io.flutter.plugins.pathprovider:path_provider_android"/>
+    <dependency
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
         simpleName="fman.ge.smart_auth:smart_auth"/>
     <dependency
         name="io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar"
@@ -38,20 +44,11 @@
         name="io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar"
         simpleName="io.flutter:x86_64_release"/>
     <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
-        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
-    <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
-        simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>
-    <dependency
-        name="org.jetbrains:annotations:13.0@jar"
-        simpleName="org.jetbrains:annotations"/>
+        name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
+        simpleName="androidx.lifecycle:lifecycle-common-java8"/>
     <dependency
         name="androidx.fragment:fragment:1.1.0@aar"
         simpleName="androidx.fragment:fragment"/>
-    <dependency
-        name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
-        simpleName="androidx.lifecycle:lifecycle-common-java8"/>
     <dependency
         name="androidx.viewpager:viewpager:1.0.0@aar"
         simpleName="androidx.viewpager:viewpager"/>
@@ -98,8 +95,17 @@
         name="androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar"
         simpleName="androidx.lifecycle:lifecycle-viewmodel"/>
     <dependency
-        name="androidx.annotation:annotation:1.2.0@jar"
-        simpleName="androidx.annotation:annotation"/>
+        name="androidx.annotation:annotation-jvm:1.7.1@jar"
+        simpleName="androidx.annotation:annotation-jvm"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
+        simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>
+    <dependency
+        name="org.jetbrains:annotations:13.0@jar"
+        simpleName="org.jetbrains:annotations"/>
     <dependency
         name="androidx.annotation:annotation-experimental:1.1.0@aar"
         simpleName="androidx.annotation:annotation-experimental"/>
@@ -108,12 +114,18 @@
         simpleName="androidx.tracing:tracing"/>
   </compile>
   <package
-      roots="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar,C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\android@@:smart_auth::release,io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.window:window-java:1.0.0-beta04@aar,androidx.window:window:1.0.0-beta04@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,io.flutter:armeabi_v7a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:arm64_v8a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,com.google.android.gms:play-services-auth:20.4.0@aar,com.google.android.gms:play-services-auth-api-phone:18.0.1@aar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,com.google.android.gms:play-services-auth-base:18.0.4@aar,com.google.android.gms:play-services-fido:19.0.0@aar,com.google.android.gms:play-services-base:18.0.1@aar,com.google.android.gms:play-services-tasks:18.0.1@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.1.0@aar,androidx.loader:loader:1.0.0@aar,androidx.lifecycle:lifecycle-common-java8:2.2.0@jar,androidx.viewpager:viewpager:1.0.0@aar,androidx.activity:activity:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.core:core:1.6.0@aar,androidx.core:core:1.6.0@aar,androidx.lifecycle:lifecycle-runtime:2.2.0@aar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar,androidx.savedstate:savedstate:1.0.0@aar,androidx.lifecycle:lifecycle-common:2.2.0@jar,androidx.tracing:tracing:1.0.0@aar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.arch.core:core-runtime:2.0.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar,androidx.annotation:annotation:1.2.0@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,androidx.annotation:annotation-experimental:1.1.0@aar">
+      roots="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:sqflite::release,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:path_provider_android::release,C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:smart_auth::release,io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.window:window-java:1.0.0-beta04@aar,androidx.window:window:1.0.0-beta04@aar,org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2@jar,org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.2@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10@jar,io.flutter:armeabi_v7a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:arm64_v8a_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar,androidx.lifecycle:lifecycle-common-java8:2.2.0@jar,com.google.android.gms:play-services-auth:20.4.0@aar,com.google.android.gms:play-services-auth-api-phone:18.0.1@aar,com.google.android.gms:play-services-auth-base:18.0.4@aar,com.google.android.gms:play-services-fido:19.0.0@aar,com.google.android.gms:play-services-base:18.0.1@aar,com.google.android.gms:play-services-tasks:18.0.1@aar,com.google.android.gms:play-services-basement:18.1.0@aar,androidx.fragment:fragment:1.1.0@aar,androidx.loader:loader:1.0.0@aar,androidx.viewpager:viewpager:1.0.0@aar,androidx.activity:activity:1.0.0@aar,androidx.customview:customview:1.0.0@aar,androidx.core:core:1.6.0@aar,androidx.core:core:1.6.0@aar,androidx.lifecycle:lifecycle-runtime:2.2.0@aar,androidx.savedstate:savedstate:1.0.0@aar,androidx.lifecycle:lifecycle-livedata:2.0.0@aar,androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar,androidx.lifecycle:lifecycle-common:2.2.0@jar,androidx.tracing:tracing:1.0.0@aar,androidx.arch.core:core-runtime:2.0.0@aar,androidx.arch.core:core-common:2.1.0@jar,androidx.versionedparcelable:versionedparcelable:1.1.1@aar,androidx.collection:collection:1.1.0@jar,androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar,androidx.annotation:annotation-jvm:1.7.1@jar,org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar,org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar,org.jetbrains:annotations:13.0@jar,androidx.annotation:annotation-experimental:1.1.0@aar">
     <dependency
-        name="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-        simpleName="__local_aars__:C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"/>
+        name="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+        simpleName="__local_aars__:C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\app\intermediates\flutter\release\libs.jar"/>
     <dependency
-        name="C:\Users\91963\Documents\chulluvil_test\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:sqflite::release"
+        simpleName="com.tekartik.sqflite:sqflite"/>
+    <dependency
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:path_provider_android::release"
+        simpleName="io.flutter.plugins.pathprovider:path_provider_android"/>
+    <dependency
+        name="C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android@@:smart_auth::release"
         simpleName="fman.ge.smart_auth:smart_auth"/>
     <dependency
         name="io.flutter:flutter_embedding_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar"
@@ -146,14 +158,14 @@
         name="io.flutter:x86_64_release:1.0.0-b20183e04096094bcc37d9cde2a4b96f5cc684cf@jar"
         simpleName="io.flutter:x86_64_release"/>
     <dependency
+        name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
+        simpleName="androidx.lifecycle:lifecycle-common-java8"/>
+    <dependency
         name="com.google.android.gms:play-services-auth:20.4.0@aar"
         simpleName="com.google.android.gms:play-services-auth"/>
     <dependency
         name="com.google.android.gms:play-services-auth-api-phone:18.0.1@aar"
         simpleName="com.google.android.gms:play-services-auth-api-phone"/>
-    <dependency
-        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
-        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
     <dependency
         name="com.google.android.gms:play-services-auth-base:18.0.4@aar"
         simpleName="com.google.android.gms:play-services-auth-base"/>
@@ -176,9 +188,6 @@
         name="androidx.loader:loader:1.0.0@aar"
         simpleName="androidx.loader:loader"/>
     <dependency
-        name="androidx.lifecycle:lifecycle-common-java8:2.2.0@jar"
-        simpleName="androidx.lifecycle:lifecycle-common-java8"/>
-    <dependency
         name="androidx.viewpager:viewpager:1.0.0@aar"
         simpleName="androidx.viewpager:viewpager"/>
     <dependency
@@ -194,14 +203,14 @@
         name="androidx.lifecycle:lifecycle-runtime:2.2.0@aar"
         simpleName="androidx.lifecycle:lifecycle-runtime"/>
     <dependency
+        name="androidx.savedstate:savedstate:1.0.0@aar"
+        simpleName="androidx.savedstate:savedstate"/>
+    <dependency
         name="androidx.lifecycle:lifecycle-livedata:2.0.0@aar"
         simpleName="androidx.lifecycle:lifecycle-livedata"/>
     <dependency
         name="androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar"
         simpleName="androidx.lifecycle:lifecycle-livedata-core"/>
-    <dependency
-        name="androidx.savedstate:savedstate:1.0.0@aar"
-        simpleName="androidx.savedstate:savedstate"/>
     <dependency
         name="androidx.lifecycle:lifecycle-common:2.2.0@jar"
         simpleName="androidx.lifecycle:lifecycle-common"/>
@@ -209,23 +218,26 @@
         name="androidx.tracing:tracing:1.0.0@aar"
         simpleName="androidx.tracing:tracing"/>
     <dependency
-        name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
-        simpleName="androidx.versionedparcelable:versionedparcelable"/>
-    <dependency
-        name="androidx.collection:collection:1.1.0@jar"
-        simpleName="androidx.collection:collection"/>
-    <dependency
         name="androidx.arch.core:core-runtime:2.0.0@aar"
         simpleName="androidx.arch.core:core-runtime"/>
     <dependency
         name="androidx.arch.core:core-common:2.1.0@jar"
         simpleName="androidx.arch.core:core-common"/>
     <dependency
+        name="androidx.versionedparcelable:versionedparcelable:1.1.1@aar"
+        simpleName="androidx.versionedparcelable:versionedparcelable"/>
+    <dependency
+        name="androidx.collection:collection:1.1.0@jar"
+        simpleName="androidx.collection:collection"/>
+    <dependency
         name="androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar"
         simpleName="androidx.lifecycle:lifecycle-viewmodel"/>
     <dependency
-        name="androidx.annotation:annotation:1.2.0@jar"
-        simpleName="androidx.annotation:annotation"/>
+        name="androidx.annotation:annotation-jvm:1.7.1@jar"
+        simpleName="androidx.annotation:annotation-jvm"/>
+    <dependency
+        name="org.jetbrains.kotlin:kotlin-stdlib:1.7.10@jar"
+        simpleName="org.jetbrains.kotlin:kotlin-stdlib"/>
     <dependency
         name="org.jetbrains.kotlin:kotlin-stdlib-common:1.7.10@jar"
         simpleName="org.jetbrains.kotlin:kotlin-stdlib-common"/>

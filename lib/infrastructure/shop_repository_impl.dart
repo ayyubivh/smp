@@ -21,7 +21,7 @@ class ShopRepositoryImpl extends HttpServices implements ShopRepository {
     try {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final Map<String, dynamic> data = json.decode(response.body);
-        print(data);
+
         final result = BannerModel.fromJson(data);
         return Right(result);
       } else {
@@ -33,9 +33,97 @@ class ShopRepositoryImpl extends HttpServices implements ShopRepository {
   }
 
   @override
-  ResultFuture<List<ProductModel>> fetchPopularProucts() async {
+  ResultFuture<List<ProductModel>> fetchPopularProducts() async {
     final response = await get(
       endPoint: ApiEndPoints.popularProducts,
+    );
+
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = json.decode(response.body)['products'];
+
+        final List<ProductModel> result =
+            dataList.map((data) => ProductModel.fromJson(data)).toList();
+
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure("Failed to parse"));
+      }
+    } catch (e) {
+      return Left(MainFailure.clientFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<List<ProductModel>> fetchEverydayEssentialProducts() async {
+    final response = await get(
+      endPoint: ApiEndPoints.everyDayEssential,
+    );
+
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = json.decode(response.body)['products'];
+
+        final List<ProductModel> result =
+            dataList.map((data) => ProductModel.fromJson(data)).toList();
+        print("here the result $result");
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure("Failed to parse"));
+      }
+    } catch (e) {
+      return Left(MainFailure.clientFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<List<ProductModel>> fetchDailyEssentialProducts() async {
+    final response = await get(
+      endPoint: ApiEndPoints.dailyDayEssential,
+    );
+
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = json.decode(response.body)['products'];
+
+        final List<ProductModel> result =
+            dataList.map((data) => ProductModel.fromJson(data)).toList();
+        print("here the result $result");
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure("Failed to parse"));
+      }
+    } catch (e) {
+      return Left(MainFailure.clientFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<List<ProductModel>> fetchProductsOnDemand() async {
+    final response = await get(
+      endPoint: ApiEndPoints.demand,
+    );
+
+    try {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> dataList = json.decode(response.body)['products'];
+
+        final List<ProductModel> result =
+            dataList.map((data) => ProductModel.fromJson(data)).toList();
+        print("here the result $result");
+        return Right(result);
+      } else {
+        return const Left(MainFailure.serverFailure("Failed to parse"));
+      }
+    } catch (e) {
+      return Left(MainFailure.clientFailure(e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<List<ProductModel>> fetchWeekendSaleProducts() async {
+    final response = await get(
+      endPoint: ApiEndPoints.weekendSale,
     );
 
     try {
