@@ -31,6 +31,7 @@ ADDED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\and
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml:1:1-35:12
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml:1:1-35:12
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml:1:1-35:12
+MERGED from [:shared_preferences_android] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:sqflite] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
 MERGED from [:smart_auth] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\smart_auth\intermediates\merged_manifest\release\AndroidManifest.xml:2:1-9:12
@@ -83,6 +84,8 @@ uses-sdk
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences_android] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\shared_preferences_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:sqflite] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:sqflite] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\sqflite\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] C:\Users\91963\Documents\new_folder\Ambarisha-Frontend-New-master\build\path_provider_android\intermediates\merged_manifest\release\AndroidManifest.xml:5:5-7:41

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
 import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 
+import '../../../application/bloc/category/category_bloc.dart';
 import '../Categories.dart';
 
 class ExploreCategoryView extends StatelessWidget {

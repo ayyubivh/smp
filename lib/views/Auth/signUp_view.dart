@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/auth/auth_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
+import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
+import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 import 'package:mr_ambarisha_frontend_new/views/Auth/otp_verification.dart';
 
+import '../../application/bloc/auth/auth_bloc.dart';
 import '../../utils/constant_box.dart';
 
 class SignUpView extends StatefulWidget {
@@ -35,147 +37,166 @@ class _SignUpViewState extends State<SignUpView>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.themeColor,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          decoration: const BoxDecoration(
-                              color: Colors.white, shape: BoxShape.circle),
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.arrow_back_ios,
-                                color: Colors.black,
-                                size: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                            height: 70, child: Image.asset("assets/logo.png")),
-                        kboxw30(),
-                      ],
-                    ),
-                    Container(
-                        height: 230.h,
-                        child: Image.asset("assets/signup_image.png")),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.white),
-                      height: 230.h,
-                      // width: 270.w,
-                      padding: const EdgeInsets.all(16.0),
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthError) {
+            Utilities.showSnackBar(context, state.error);
+          } else if (state is LoginSuccess || state is SignUpSuccess) {
+            Get.to(OtpVerifictionView());
+          }
+        },
+        builder: (context, state) => state is Loading
+            ? const Loader()
+            : SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+                  child: Center(
+                    child: SingleChildScrollView(
                       child: Column(
-                        children: [
-                          TabBar(
-                            indicatorWeight: 3,
-                            indicatorColor: const Color(0xff2ED297),
-                            unselectedLabelColor: Colors.grey,
-                            labelColor: Colors.black,
-                            labelStyle: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                            controller: _tabController,
-                            tabs: const [
-                              Tab(text: 'Sign Up'),
-                              Tab(text: 'Sign In'),
-                            ],
-                          ),
-                          Expanded(
-                            child: TabBarView(
-                              controller: _tabController,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SignupForm(),
-                                LoginForm(),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle),
+                                  child: const Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.arrow_back_ios,
+                                        color: Colors.black,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: 70,
+                                    child: Image.asset("assets/logo.png")),
+                                kboxw30(),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
+                            Container(
+                                height: 210.h,
+                                child: Image.asset("assets/signup_image.png")),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Colors.white),
+                              height: 245.h,
+                              // width: 270.w,
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                children: [
+                                  TabBar(
+                                    indicatorWeight: 3,
+                                    indicatorColor: const Color(0xff2ED297),
+                                    unselectedLabelColor: Colors.grey,
+                                    labelColor: Colors.black,
+                                    labelStyle: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600),
+                                    controller: _tabController,
+                                    tabs: const [
+                                      Tab(text: 'Sign Up'),
+                                      Tab(text: 'Sign In'),
+                                    ],
+                                  ),
+                                  Expanded(
+                                    child: TabBarView(
+                                      controller: _tabController,
+                                      children: [
+                                        SignupForm(),
+                                        LoginForm(),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            kbox20(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Flexible(
+                                  // Wrap the Text widget in Flexible
+                                  child: Container(
+                                    width: 100,
+                                    height: 1,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const Text(
+                                  " Or sign up with ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Flexible(
+                                  // Wrap the Text widget in Flexible
+                                  child: Container(
+                                    width: 100,
+                                    height: 1,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                            kbox10(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Center(
+                                        child: Image.asset(
+                                            "assets/googlelogo.png")),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Center(
+                                        child: Image.asset(
+                                            "assets/apple_logo.png")),
+                                  ),
+                                )
+                              ],
+                            ),
+                            kbox10(),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  " Not register yet ?",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  " Create Account ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            )
+                          ]),
                     ),
-                    kbox20(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Flexible(
-                          // Wrap the Text widget in Flexible
-                          child: Container(
-                            width: 100,
-                            height: 1,
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Text(
-                          " Or sign up with ",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                        Flexible(
-                          // Wrap the Text widget in Flexible
-                          child: Container(
-                            width: 100,
-                            height: 1,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                    kbox10(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.white),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Center(
-                                child: Image.asset("assets/googlelogo.png")),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.white),
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Center(
-                                child: Image.asset("assets/apple_logo.png")),
-                          ),
-                        )
-                      ],
-                    ),
-                    kbox10(),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          " Not register yet ?",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w400),
-                        ),
-                        Text(
-                          " Create Account ",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    )
-                  ]),
-            ),
-          ),
-        ),
+                  ),
+                ),
+              ),
       ),
     );
   }
@@ -183,6 +204,7 @@ class _SignUpViewState extends State<SignUpView>
 
 class SignupForm extends StatelessWidget {
   final signUpTextEditingController = TextEditingController();
+  final _fomKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -197,50 +219,65 @@ class SignupForm extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         kbox10(),
-        Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey)),
+        Form(
+          key: _fomKey,
           child: TextFormField(
-              keyboardType: TextInputType.phone,
-              controller: signUpTextEditingController,
-              style: const TextStyle(color: Colors.black),
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                  hintText: "Mobile Number",
-                  suffixIcon: const Icon(Icons.close),
-                  prefixIcon: Container(
-                    width: 55.w,
-                    decoration: const BoxDecoration(),
-                    child: Row(
-                      children: [
-                        const Text(
-                          " +91",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        const Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          width: 1,
-                          color: Colors.grey,
-                          height: 40,
-                        )
-                      ],
-                    ),
+            keyboardType: TextInputType.phone,
+            controller: signUpTextEditingController,
+            style: const TextStyle(color: Colors.black),
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                hintText: "Mobile Number",
+                suffixIcon: const Icon(Icons.close),
+                prefixIcon: Container(
+                  width: 55.w,
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    children: [
+                      const Text(
+                        " +91",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Colors.black,
+                      ),
+                      Container(
+                        width: 1,
+                        color: Colors.grey,
+                        height: 40,
+                      )
+                    ],
                   ),
-                  border: InputBorder.none)),
+                ),
+                border: InputBorder.none),
+            validator: (value) {
+              if (value?.length != 10) {
+                return 'please enter 10 digit';
+              }
+              return null;
+            },
+          ),
         ),
         kbox10(),
         InkWell(
           onTap: () {
             // Get.to(OtpVerifictionView());
-            BlocProvider.of<AuthBloc>(context).add(AuthEvent.signUp(
-                phoneNumber: signUpTextEditingController.text));
+            if (_fomKey.currentState!.validate()) {
+              BlocProvider.of<AuthBloc>(context).add(AuthEvent.signUp(
+                  phoneNumber: signUpTextEditingController.text));
+            }
           },
           child: Container(
             width: 200.w,
@@ -266,6 +303,7 @@ class SignupForm extends StatelessWidget {
 
 class LoginForm extends StatelessWidget {
   final loginTextEditingController = TextEditingController();
+  final _fomKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -281,51 +319,66 @@ class LoginForm extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
         kbox10(),
-        Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.grey)),
+        Form(
+          key: _fomKey,
           child: TextFormField(
-              keyboardType: TextInputType.phone,
-              controller: loginTextEditingController,
-              style: const TextStyle(color: Colors.black),
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                  hintText: "Mobile Number",
-                  suffixIcon: const Icon(Icons.close),
-                  prefixIcon: Container(
-                    width: 55.w,
-                    decoration: const BoxDecoration(),
-                    child: Row(
-                      children: [
-                        const Text(
-                          " +91",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        const Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          width: 1,
-                          color: Colors.grey,
-                          height: 40,
-                        )
-                      ],
-                    ),
+            keyboardType: TextInputType.phone,
+            controller: loginTextEditingController,
+            style: const TextStyle(color: Colors.black),
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: Colors.grey),
+                ),
+                hintText: "Mobile Number",
+                suffixIcon: const Icon(Icons.close),
+                prefixIcon: Container(
+                  width: 55.w,
+                  decoration: const BoxDecoration(),
+                  child: Row(
+                    children: [
+                      const Text(
+                        " +91",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Colors.black,
+                      ),
+                      Container(
+                        width: 1,
+                        color: Colors.grey,
+                        height: 40,
+                      )
+                    ],
                   ),
-                  border: InputBorder.none)),
+                ),
+                border: InputBorder.none),
+            validator: (value) {
+              if (value?.length != 10) {
+                return 'please enter 10 digit';
+              }
+              return null;
+            },
+          ),
         ),
         kbox10(),
         InkWell(
           onTap: () {
             // Get.to(OtpVerifictionView());
 
-            BlocProvider.of<AuthBloc>(context).add(
-                AuthEvent.signIn(phoneNumber: loginTextEditingController.text));
+            if (_fomKey.currentState!.validate()) {
+              BlocProvider.of<AuthBloc>(context).add(AuthEvent.signIn(
+                  phoneNumber: loginTextEditingController.text));
+            }
           },
           child: Container(
             width: 200.w,

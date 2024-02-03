@@ -1,12 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
+
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
 import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
 import 'package:mr_ambarisha_frontend_new/views/Basket/Basket.dart';
+import '../../application/bloc/cart/cart_bloc.dart';
+import '../../application/bloc/category/category_bloc.dart';
 import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 
 class Product {

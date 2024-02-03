@@ -14,38 +14,39 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-AuthUserModel _$AuthUserModelFromJson(Map<String, dynamic> json) {
-  return _AuthUserModel.fromJson(json);
+AuthSignInUserModel _$AuthSignInUserModelFromJson(Map<String, dynamic> json) {
+  return _AuthSignInUserModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$AuthUserModel {
+mixin _$AuthSignInUserModel {
   int? get status => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  String? get data => throw _privateConstructorUsedError;
-  User? get user => throw _privateConstructorUsedError;
+  UserData? get data =>
+      throw _privateConstructorUsedError; // Change User to UserData
+  String? get token => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AuthUserModelCopyWith<AuthUserModel> get copyWith =>
+  $AuthSignInUserModelCopyWith<AuthSignInUserModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AuthUserModelCopyWith<$Res> {
-  factory $AuthUserModelCopyWith(
-          AuthUserModel value, $Res Function(AuthUserModel) then) =
-      _$AuthUserModelCopyWithImpl<$Res, AuthUserModel>;
+abstract class $AuthSignInUserModelCopyWith<$Res> {
+  factory $AuthSignInUserModelCopyWith(
+          AuthSignInUserModel value, $Res Function(AuthSignInUserModel) then) =
+      _$AuthSignInUserModelCopyWithImpl<$Res, AuthSignInUserModel>;
   @useResult
-  $Res call({int? status, String? message, String? data, User? user});
+  $Res call({int? status, String? message, UserData? data, String? token});
 
-  $UserCopyWith<$Res>? get user;
+  $UserDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
-    implements $AuthUserModelCopyWith<$Res> {
-  _$AuthUserModelCopyWithImpl(this._value, this._then);
+class _$AuthSignInUserModelCopyWithImpl<$Res, $Val extends AuthSignInUserModel>
+    implements $AuthSignInUserModelCopyWith<$Res> {
+  _$AuthSignInUserModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,7 +59,7 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
     Object? status = freezed,
     Object? message = freezed,
     Object? data = freezed,
-    Object? user = freezed,
+    Object? token = freezed,
   }) {
     return _then(_value.copyWith(
       status: freezed == status
@@ -72,47 +73,47 @@ class _$AuthUserModelCopyWithImpl<$Res, $Val extends AuthUserModel>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
+              as UserData?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get user {
-    if (_value.user == null) {
+  $UserDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
       return null;
     }
 
-    return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
+    return $UserDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$AuthUserModelImplCopyWith<$Res>
-    implements $AuthUserModelCopyWith<$Res> {
-  factory _$$AuthUserModelImplCopyWith(
-          _$AuthUserModelImpl value, $Res Function(_$AuthUserModelImpl) then) =
-      __$$AuthUserModelImplCopyWithImpl<$Res>;
+abstract class _$$AuthSignInUserModelImplCopyWith<$Res>
+    implements $AuthSignInUserModelCopyWith<$Res> {
+  factory _$$AuthSignInUserModelImplCopyWith(_$AuthSignInUserModelImpl value,
+          $Res Function(_$AuthSignInUserModelImpl) then) =
+      __$$AuthSignInUserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? status, String? message, String? data, User? user});
+  $Res call({int? status, String? message, UserData? data, String? token});
 
   @override
-  $UserCopyWith<$Res>? get user;
+  $UserDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class __$$AuthUserModelImplCopyWithImpl<$Res>
-    extends _$AuthUserModelCopyWithImpl<$Res, _$AuthUserModelImpl>
-    implements _$$AuthUserModelImplCopyWith<$Res> {
-  __$$AuthUserModelImplCopyWithImpl(
-      _$AuthUserModelImpl _value, $Res Function(_$AuthUserModelImpl) _then)
+class __$$AuthSignInUserModelImplCopyWithImpl<$Res>
+    extends _$AuthSignInUserModelCopyWithImpl<$Res, _$AuthSignInUserModelImpl>
+    implements _$$AuthSignInUserModelImplCopyWith<$Res> {
+  __$$AuthSignInUserModelImplCopyWithImpl(_$AuthSignInUserModelImpl _value,
+      $Res Function(_$AuthSignInUserModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,9 +122,9 @@ class __$$AuthUserModelImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? message = freezed,
     Object? data = freezed,
-    Object? user = freezed,
+    Object? token = freezed,
   }) {
-    return _then(_$AuthUserModelImpl(
+    return _then(_$AuthSignInUserModelImpl(
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -135,96 +136,99 @@ class __$$AuthUserModelImplCopyWithImpl<$Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
+              as UserData?,
+      token: freezed == token
+          ? _value.token
+          : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AuthUserModelImpl implements _AuthUserModel {
-  const _$AuthUserModelImpl({this.status, this.message, this.data, this.user});
+class _$AuthSignInUserModelImpl implements _AuthSignInUserModel {
+  const _$AuthSignInUserModelImpl(
+      {this.status, this.message, this.data, this.token});
 
-  factory _$AuthUserModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthUserModelImplFromJson(json);
+  factory _$AuthSignInUserModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthSignInUserModelImplFromJson(json);
 
   @override
   final int? status;
   @override
   final String? message;
   @override
-  final String? data;
+  final UserData? data;
+// Change User to UserData
   @override
-  final User? user;
+  final String? token;
 
   @override
   String toString() {
-    return 'AuthUserModel(status: $status, message: $message, data: $data, user: $user)';
+    return 'AuthSignInUserModel(status: $status, message: $message, data: $data, token: $token)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthUserModelImpl &&
+            other is _$AuthSignInUserModelImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.data, data) || other.data == data) &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.token, token) || other.token == token));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, status, message, data, user);
+  int get hashCode => Object.hash(runtimeType, status, message, data, token);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AuthUserModelImplCopyWith<_$AuthUserModelImpl> get copyWith =>
-      __$$AuthUserModelImplCopyWithImpl<_$AuthUserModelImpl>(this, _$identity);
+  _$$AuthSignInUserModelImplCopyWith<_$AuthSignInUserModelImpl> get copyWith =>
+      __$$AuthSignInUserModelImplCopyWithImpl<_$AuthSignInUserModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AuthUserModelImplToJson(
+    return _$$AuthSignInUserModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _AuthUserModel implements AuthUserModel {
-  const factory _AuthUserModel(
+abstract class _AuthSignInUserModel implements AuthSignInUserModel {
+  const factory _AuthSignInUserModel(
       {final int? status,
       final String? message,
-      final String? data,
-      final User? user}) = _$AuthUserModelImpl;
+      final UserData? data,
+      final String? token}) = _$AuthSignInUserModelImpl;
 
-  factory _AuthUserModel.fromJson(Map<String, dynamic> json) =
-      _$AuthUserModelImpl.fromJson;
+  factory _AuthSignInUserModel.fromJson(Map<String, dynamic> json) =
+      _$AuthSignInUserModelImpl.fromJson;
 
   @override
   int? get status;
   @override
   String? get message;
   @override
-  String? get data;
-  @override
-  User? get user;
+  UserData? get data;
+  @override // Change User to UserData
+  String? get token;
   @override
   @JsonKey(ignore: true)
-  _$$AuthUserModelImplCopyWith<_$AuthUserModelImpl> get copyWith =>
+  _$$AuthSignInUserModelImplCopyWith<_$AuthSignInUserModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+UserData _$UserDataFromJson(Map<String, dynamic> json) {
+  return _UserData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
+mixin _$UserData {
   @JsonKey(name: '_id')
   String? get id => throw _privateConstructorUsedError;
   String? get mobileNumber => throw _privateConstructorUsedError;
@@ -232,23 +236,23 @@ mixin _$User {
   @JsonKey(name: 'currentLocation')
   CurrentLocation? get currentLocation => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
-  bool? get isCity => throw _privateConstructorUsedError;
-  bool? get isState => throw _privateConstructorUsedError;
+  String? get isCity => throw _privateConstructorUsedError;
+  String? get isState => throw _privateConstructorUsedError;
   bool? get isVerified => throw _privateConstructorUsedError;
-  String? get otp => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
   String? get userType => throw _privateConstructorUsedError;
   int? get wallet => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserDataCopyWith<UserData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $UserDataCopyWith<$Res> {
+  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
+      _$UserDataCopyWithImpl<$Res, UserData>;
   @useResult
   $Res call(
       {@JsonKey(name: '_id') String? id,
@@ -256,10 +260,9 @@ abstract class $UserCopyWith<$Res> {
       String? reffralCode,
       @JsonKey(name: 'currentLocation') CurrentLocation? currentLocation,
       String? createdAt,
-      bool? isCity,
-      bool? isState,
+      String? isCity,
+      String? isState,
       bool? isVerified,
-      String? otp,
       String? updatedAt,
       String? userType,
       int? wallet});
@@ -268,9 +271,9 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
+    implements $UserDataCopyWith<$Res> {
+  _$UserDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -288,7 +291,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? isCity = freezed,
     Object? isState = freezed,
     Object? isVerified = freezed,
-    Object? otp = freezed,
     Object? updatedAt = freezed,
     Object? userType = freezed,
     Object? wallet = freezed,
@@ -317,19 +319,15 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       isCity: freezed == isCity
           ? _value.isCity
           : isCity // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       isState: freezed == isState
           ? _value.isState
           : isState // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       isVerified: freezed == isVerified
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      otp: freezed == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as String?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -359,10 +357,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
-      __$$UserImplCopyWithImpl<$Res>;
+abstract class _$$UserDataImplCopyWith<$Res>
+    implements $UserDataCopyWith<$Res> {
+  factory _$$UserDataImplCopyWith(
+          _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
+      __$$UserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -371,10 +370,9 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? reffralCode,
       @JsonKey(name: 'currentLocation') CurrentLocation? currentLocation,
       String? createdAt,
-      bool? isCity,
-      bool? isState,
+      String? isCity,
+      String? isState,
       bool? isVerified,
-      String? otp,
       String? updatedAt,
       String? userType,
       int? wallet});
@@ -384,10 +382,11 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
-    implements _$$UserImplCopyWith<$Res> {
-  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
+class __$$UserDataImplCopyWithImpl<$Res>
+    extends _$UserDataCopyWithImpl<$Res, _$UserDataImpl>
+    implements _$$UserDataImplCopyWith<$Res> {
+  __$$UserDataImplCopyWithImpl(
+      _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -401,12 +400,11 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? isCity = freezed,
     Object? isState = freezed,
     Object? isVerified = freezed,
-    Object? otp = freezed,
     Object? updatedAt = freezed,
     Object? userType = freezed,
     Object? wallet = freezed,
   }) {
-    return _then(_$UserImpl(
+    return _then(_$UserDataImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -430,19 +428,15 @@ class __$$UserImplCopyWithImpl<$Res>
       isCity: freezed == isCity
           ? _value.isCity
           : isCity // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       isState: freezed == isState
           ? _value.isState
           : isState // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       isVerified: freezed == isVerified
           ? _value.isVerified
           : isVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      otp: freezed == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as String?,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -461,8 +455,8 @@ class __$$UserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl implements _User {
-  const _$UserImpl(
+class _$UserDataImpl implements _UserData {
+  const _$UserDataImpl(
       {@JsonKey(name: '_id') this.id,
       this.mobileNumber,
       this.reffralCode,
@@ -471,13 +465,12 @@ class _$UserImpl implements _User {
       this.isCity,
       this.isState,
       this.isVerified,
-      this.otp,
       this.updatedAt,
       this.userType,
       this.wallet});
 
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDataImplFromJson(json);
 
   @override
   @JsonKey(name: '_id')
@@ -492,13 +485,11 @@ class _$UserImpl implements _User {
   @override
   final String? createdAt;
   @override
-  final bool? isCity;
+  final String? isCity;
   @override
-  final bool? isState;
+  final String? isState;
   @override
   final bool? isVerified;
-  @override
-  final String? otp;
   @override
   final String? updatedAt;
   @override
@@ -508,14 +499,14 @@ class _$UserImpl implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, mobileNumber: $mobileNumber, reffralCode: $reffralCode, currentLocation: $currentLocation, createdAt: $createdAt, isCity: $isCity, isState: $isState, isVerified: $isVerified, otp: $otp, updatedAt: $updatedAt, userType: $userType, wallet: $wallet)';
+    return 'UserData(id: $id, mobileNumber: $mobileNumber, reffralCode: $reffralCode, currentLocation: $currentLocation, createdAt: $createdAt, isCity: $isCity, isState: $isState, isVerified: $isVerified, updatedAt: $updatedAt, userType: $userType, wallet: $wallet)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
+            other is _$UserDataImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.mobileNumber, mobileNumber) ||
                 other.mobileNumber == mobileNumber) &&
@@ -529,7 +520,6 @@ class _$UserImpl implements _User {
             (identical(other.isState, isState) || other.isState == isState) &&
             (identical(other.isVerified, isVerified) ||
                 other.isVerified == isVerified) &&
-            (identical(other.otp, otp) || other.otp == otp) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.userType, userType) ||
@@ -549,7 +539,6 @@ class _$UserImpl implements _User {
       isCity,
       isState,
       isVerified,
-      otp,
       updatedAt,
       userType,
       wallet);
@@ -557,33 +546,33 @@ class _$UserImpl implements _User {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
+  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
+      __$$UserDataImplCopyWithImpl<_$UserDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(
+    return _$$UserDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
+abstract class _UserData implements UserData {
+  const factory _UserData(
       {@JsonKey(name: '_id') final String? id,
       final String? mobileNumber,
       final String? reffralCode,
       @JsonKey(name: 'currentLocation') final CurrentLocation? currentLocation,
       final String? createdAt,
-      final bool? isCity,
-      final bool? isState,
+      final String? isCity,
+      final String? isState,
       final bool? isVerified,
-      final String? otp,
       final String? updatedAt,
       final String? userType,
-      final int? wallet}) = _$UserImpl;
+      final int? wallet}) = _$UserDataImpl;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
+  factory _UserData.fromJson(Map<String, dynamic> json) =
+      _$UserDataImpl.fromJson;
 
   @override
   @JsonKey(name: '_id')
@@ -598,13 +587,11 @@ abstract class _User implements User {
   @override
   String? get createdAt;
   @override
-  bool? get isCity;
+  String? get isCity;
   @override
-  bool? get isState;
+  String? get isState;
   @override
   bool? get isVerified;
-  @override
-  String? get otp;
   @override
   String? get updatedAt;
   @override
@@ -613,7 +600,7 @@ abstract class _User implements User {
   int? get wallet;
   @override
   @JsonKey(ignore: true)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

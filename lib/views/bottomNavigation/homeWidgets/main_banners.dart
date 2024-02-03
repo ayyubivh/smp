@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/widget_utils.dart';
+
+import '../../../application/bloc/shop/shop_bloc.dart';
 
 class MainBanner extends StatelessWidget {
   const MainBanner({Key? key});

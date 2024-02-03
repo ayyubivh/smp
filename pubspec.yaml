@@ -48,6 +48,7 @@ dependencies:
   json_serializable: ^6.7.1
   lorem_gen: ^2.0.1
   pinput: ^2.3.0
+  shared_preferences: ^2.2.2
   syncfusion_flutter_calendar: ^23.1.36
   table_calendar: ^3.0.9
 

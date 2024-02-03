@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/auth/auth_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/auth/auth_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/cart/cart_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/category/category_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/cubit/wishlist_cubit.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/token/token_cubit.dart';
 import 'package:mr_ambarisha_frontend_new/domain/core/di/injectable.dart';
 import 'package:mr_ambarisha_frontend_new/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'application/bloc/shop/shop_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +29,12 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => getIt<AuthBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<TokenCubit>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<WishlistCubit>(),
       )
     ],
     child: const MyApp(),

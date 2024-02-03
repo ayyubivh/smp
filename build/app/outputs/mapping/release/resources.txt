@@ -18,6 +18,7 @@ music
 PICTURES
 verticalText
 android.util.LongArray
+FlutterSharedPreferences
 getUncaughtExceptionPreHandler
 SERVICE_DISABLED
 onBackPressed
@@ -27,8 +28,8 @@ GeneratedPluginsRegister
 LANDSCAPE_RIGHT
 java.lang.CharSequence
 LEFT
-_handled
 givenName
+_handled
 com.google.android.gms.auth.api.signi...
 androidx.window.layout.WindowInfoTrac...
 CONNECTION_SUSPENDED_DURING_CALL
@@ -37,8 +38,8 @@ version
 click
 0
 WindowInfoTrackerImpl.kt
-kotlin.jvm.functions.
 left
+kotlin.jvm.functions.
 kotlinx.coroutines.DefaultExecutor
 MODULE_VERSION
 onMenuKeyEvent
@@ -47,8 +48,8 @@ TextInputClient.updateEditingStateWit...
 registerWith
 android.support.dataRemoteInputs
 SystemSoundType.alert
-kotlin.internal.JRE7PlatformImplement...
 REDUCE_MOTION
+kotlin.internal.JRE7PlatformImplement...
 displayName
 DECREASE
 com.google.android.gms.auth.api.crede...
@@ -86,9 +87,9 @@ io.flutter.embedding.android.SplashSc...
 SwitchIntDef
 component
 DRIVE_EXTERNAL_STORAGE_REQUIRED
-SUSPEND
 androidx.lifecycle.BundlableSavedStat...
 java.lang.Module
+SUSPEND
 DEVELOPER_ERROR
 this$0
 splitPairFilters
@@ -201,6 +202,7 @@ android:cancelable
 IS_TEXT_FIELD
 SERVICE_MISSING
 kotlinx.coroutines.internal.StackTrac...
+dev.flutter.pigeon.SharedPreferencesA...
 write
 onStop
 TextInputType.none
@@ -243,8 +245,8 @@ top
 it.parameterTypes
 mNextServedView
 kotlin.Long
-POLL_FAILED
 com.tekartik.sqflite
+POLL_FAILED
 Completing
 java.lang.String
 addressRegion
@@ -303,8 +305,8 @@ _cur
 onResume
 com.google.android.gms.chimera
 java.util.List
-OFFER_SUCCESS
 android.car.EXTENSIONS
+OFFER_SUCCESS
 hybrid
 cn.google
 UNEXPECTED:
@@ -318,8 +320,8 @@ parkedWorkersStack
 RINGTONES
 accountName
 IS_IMAGE
-COMPLETING_ALREADY
 PHONE
+COMPLETING_ALREADY
 systemNavigationBarColor
 PlatformPlugin
 cause
@@ -376,6 +378,7 @@ GoogleApiHandler
 kotlinx.coroutines.scheduler.keep.ali...
 INCREASE
 NO_TARGET
+VGhpcyBpcyB0aGUgcHJlZml4IGZvciBEb3VibGUu
 jar
 ERROR
 state
@@ -406,11 +409,12 @@ android.hardware.type.automotive
 kotlin.collections.ListIterator
 oemFeature.bounds
 dev.flutter.pigeon.PathProviderApi.ge...
+dev.flutter.pigeon.SharedPreferencesA...
 restricted_profile
 CUSTOM_ACTION
 getKeyboardState
-delimiters
 TextInputClient.updateEditingStateWit...
+delimiters
 claimedCallingPackage
 ClientTelemetry.API
 MODULE_ID
@@ -507,6 +511,7 @@ CREATED
 textScaleFactor
 namePrefix
 SHOW
+SharedPreferencesPlugin
 android:view_state
 io.flutter.embedding.android.NormalTheme
 Dispatchers.Main
@@ -558,8 +563,8 @@ oemFeature
 DialogRedirect
 getBounds
 put
-TextInputType.text
 EmptyCoroutineContext
+TextInputType.text
 CPU_ACQUIRED
 ACTION_ARGUMENT_SELECTION_END_INT
 embeddingCallback
@@ -593,6 +598,7 @@ viewFocused
 HEAVY_IMPACT
 light
 kotlin.Short
+dev.flutter.pigeon.SharedPreferencesA...
 showsUserInterface
 common_google_play_services_api_unava...
 com.google.android.gms.auth.api.phone...
@@ -623,8 +629,8 @@ android.widget.SeekBar
 INITIALIZED
 android.hardware.type.watch
 UTF_8
-mContentInsets
 LAZY
+mContentInsets
 KeyEventChannel
 android.support.v13.view.inputmethod....
 PlatformViewWrapper
@@ -688,6 +694,7 @@ SCROLL_UP
 WrongConstant
 com.google.android.gms.dynamite.descr...
 CLOSED_EMPTY
+dev.flutter.pigeon.SharedPreferencesA...
 kotlin.collections.Iterator
 android.support.action.showsUserInter...
 job
@@ -742,8 +749,8 @@ $splitRule
 user_consent
 getModule
 extent
-java.specification.version
 sidecarCompat
+java.specification.version
 resizeColumn
 plugins
 common_google_play_services_sign_in_f...
@@ -757,8 +764,8 @@ ReceiveQueued
 flutter/keyboard
 systemStatusBarContrastEnforced
 androidx.lifecycle.LifecycleDispatche...
-kotlin.reflect.jvm.internal.Reflectio...
 getSuppressed
+kotlin.reflect.jvm.internal.Reflectio...
 PARKING
 FOLD
 DartMessenger
@@ -788,8 +795,8 @@ kotlin.jvm.internal.StringCompanionOb...
 viewType
 logSessionId
 editingValue
-OFFER_FAILED
 getPlatformVersion
+OFFER_FAILED
 invokeSuspend
 isPasswordLoginSupported
 common_google_play_services_resolutio...
@@ -809,10 +816,11 @@ logLevel
 background_mode
 popRoute
 NAMES_ROUTE
-defaultDisplay
 throwableMethods
+defaultDisplay
 common_google_play_services_restricte...
 completion
+dev.flutter.pigeon.SharedPreferencesA...
 clearFocus
 secondaryActivityIntent
 kUp
@@ -825,6 +833,7 @@ INACTIVE
 InlinedApi
 personNamePrefix
 activityComponent.packageName
+VGhpcyBpcyB0aGUgcHJlZml4IGZvciBhIGxpc3Qu
 LICENSE_CHECK_FAILED
 LayoutInflaterCompatHC
 config
@@ -832,6 +841,7 @@ ADD
 MEDIUM_IMPACT
 feature.rect
 missingDelimiterValue
+dev.flutter.pigeon.SharedPreferencesA...
 listener
 BanParcelableUsage
 mFactory2
@@ -843,8 +853,8 @@ ruleComponent.className
 kotlin.Boolean
 hostedDomain
 androidx.transition.FragmentTransitio...
-_queue
 android.bigText
+_queue
 setSidecarCallback
 Override
 DOWNLOADS
@@ -889,6 +899,7 @@ kotlin.collections.Map
 ENQUEUE_FAILED
 cached_engine_group_id
 statusBarColor
+VGhpcyBpcyB0aGUgcHJlZml4IGZvciBCaWdJb...
 java.lang.Boolean
 contentCommitMimeTypes
 continuation
@@ -913,8 +924,8 @@ resizeLeft
 pushRouteInformation
 resize
 TextEditingDelta
-TextInputAction.next
 DEFAULT
+TextInputAction.next
 setInitialRoute
 deleteCredential
 DROP_OLDEST
@@ -949,6 +960,7 @@ TextInput.finishAutofillContext
 SPELLOUT
 surface
 com.google.android.clockwork.home.UPD...
+dev.flutter.pigeon.SharedPreferencesA...
 arch_disk_io_%d
 _bounds
 com.google.android.gms.auth.api.signi...
@@ -957,9 +969,9 @@ it
 PlatformChannel
 RESOLUTION_REQUIRED
 params
+UNDECIDED
 FlutterView
 announce
-UNDECIDED
 SET_PRIMARY_NAV
 resolving_error
 TextInputType.address
@@ -981,8 +993,8 @@ GACSignInLoader
 file
 RIGHT
 isIdTokenRequested
-CancellableContinuation
 placeholderIntent
+CancellableContinuation
 android.summaryText
 mServedView
 androidThreadPriority
@@ -1010,8 +1022,8 @@ scopes
 mH
 VIRTUAL_DISPLAY_PLATFORM_VIEW
 loadingUnitId
-newIndent
 IS_SLIDER
+newIndent
 resizeUpLeftDownRight
 KeyboardManager
 RESUMED
@@ -1114,9 +1126,9 @@ EMAIL_ADDRESS
 java.lang.Long
 metaState
 java.util.Map
-INTERNAL
 TextInputPlugin
 Disconnected.
+INTERNAL
 android:support:next_request_index
 INTERRUPTED
 height
@@ -1136,8 +1148,8 @@ CONDITION_FALSE
 RESOLUTION_ACTIVITY_NOT_FOUND
 com.google.android.gms.auth.api.phone...
 com.google.android.gms.signin.interna...
-statusCode
 commonPool
+statusCode
 IS_IN_MUTUALLY_EXCLUSIVE_GROUP
 activity
 sLock
@@ -1147,13 +1159,13 @@ mContext
 long
 SAFE_PARCELABLE_NULL_STRING
 SystemUiMode.immersive
-HALF_OPENED
 kotlinx.coroutines.channels.defaultBu...
+HALF_OPENED
 classes_to_restore
 activity.windowManager.currentWindowM...
 $this$$receiver
-key
 email
+key
 kotlin.Enum.Companion
 com.google.android.gms.auth.api.signi...
 RESOURCE
@@ -1255,8 +1267,8 @@ SystemUiMode.leanBack
 filters
 androidx.core.app.NotificationCompat$...
 HAS_IMPLICIT_SCROLLING
-onWindowLayoutChangeListenerRemoved
 Dispatchers.Main.immediate
+onWindowLayoutChangeListenerRemoved
 dev.flutter.pigeon.PathProviderApi.ge...
 getAttributionTag
 splitRules
@@ -1319,8 +1331,8 @@ gender
 market://details
 java.lang.Double
 columns
-range
 resizeRow
+range
 usesVirtualDisplay
 flutter/spellcheck
 IS_TOGGLED
@@ -1395,8 +1407,8 @@ io.flutter.InitialRoute
 controlState
 transition_animation_scale
 SERVICE_INVALID
-sequence
 keyCode
+sequence
 Active
 postalAddress
 telephoneNumberDevice
@@ -1455,6 +1467,7 @@ com.google.android.inputmethod.latin
 emit
 SCROLL_DOWN
 AccessibilityBridge
+dev.flutter.pigeon.SharedPreferencesA...
 Marking id:accessibility_action_clickable_span:2131034112 used because it matches string pool constant acc
 Marking id:accessibility_custom_action_0:2131034113 used because it matches string pool constant acc
 Marking id:accessibility_custom_action_1:2131034114 used because it matches string pool constant acc

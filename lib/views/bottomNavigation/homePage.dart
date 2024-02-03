@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/category/category_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/shop/shop_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/cubit/wishlist_cubit.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
@@ -18,6 +16,9 @@ import 'package:mr_ambarisha_frontend_new/views/subscription_celender/daily.dart
 import 'package:mr_ambarisha_frontend_new/views/subscription_celender/weekend.dart';
 import 'package:mr_ambarisha_frontend_new/views/subscription_celender/weekly.dart';
 
+import '../../application/bloc/cart/cart_bloc.dart';
+import '../../application/bloc/category/category_bloc.dart';
+import '../../application/bloc/shop/shop_bloc.dart';
 import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 import '../subscription_celender/subscription_celender.dart';
 import 'Categories.dart';
@@ -42,6 +43,7 @@ class _HomePageviewState extends State<HomePageview> {
       ..add(const ShopEvent.fetchWeekendSaleProducts());
     BlocProvider.of<CategoryBloc>(context)
         .add(const CategoryEvent.fetchCategory());
+    BlocProvider.of<WishlistCubit>(context).getWishlist();
     super.initState();
   }
 

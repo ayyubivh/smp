@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
 
+import '../../application/bloc/cart/cart_bloc.dart';
 import '../wallet/wallet_history.dart';
 import 'basketmodel.dart';
 

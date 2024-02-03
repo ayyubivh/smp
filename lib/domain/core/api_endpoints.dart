@@ -23,4 +23,5 @@ class ApiEndPoints {
   static const String login = 'login';
   static const String verifyOtp = 'verify/otp';
   static const String verifyLogin = 'verify/login';
+  static const String wishlistApi = 'product/wishlist/me';
 }

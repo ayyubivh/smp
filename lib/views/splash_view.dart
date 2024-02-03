@@ -5,7 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
+import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/bottom_navigation_view.dart';
+import 'package:mr_ambarisha_frontend_new/views/bottomNavigation/homePage.dart';
 import 'package:mr_ambarisha_frontend_new/views/onboarding/onboarding_view.dart';
+
+import '../application/cubit/token/token_cubit.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -15,12 +19,32 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  late final TokenCubit _tokenCubit;
+
   @override
   void initState() {
-    Timer(Duration(seconds: 2), () {
-      Get.to(IntroScreen());
-    });
+    _tokenCubit = BlocProvider.of<TokenCubit>(context);
+    checkTokenAndNavigate();
     super.initState();
+  }
+
+  Future<void> checkTokenAndNavigate() async {
+    await _tokenCubit.checkToken();
+    _tokenCubit.state.maybeWhen(
+      tokenAvailable: (_) {
+        Get.off(BottomNavigationView());
+      },
+      tokenUnavailable: () {
+        // Navigate to Intro Screen
+        Timer(
+          Duration(seconds: 2),
+          () {
+            Get.off(IntroScreen());
+          },
+        );
+      },
+      orElse: () {},
+    );
   }
 
   @override

@@ -6,25 +6,28 @@ part of 'auth_user_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AuthUserModelImpl _$$AuthUserModelImplFromJson(Map<String, dynamic> json) =>
-    _$AuthUserModelImpl(
+_$AuthSignInUserModelImpl _$$AuthSignInUserModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$AuthSignInUserModelImpl(
       status: json['status'] as int?,
       message: json['message'] as String?,
-      data: json['data'] as String?,
-      user: json['user'] == null
+      data: json['data'] == null
           ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+          : UserData.fromJson(json['data'] as Map<String, dynamic>),
+      token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$$AuthUserModelImplToJson(_$AuthUserModelImpl instance) =>
+Map<String, dynamic> _$$AuthSignInUserModelImplToJson(
+        _$AuthSignInUserModelImpl instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
       'data': instance.data,
-      'user': instance.user,
+      'token': instance.token,
     };
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
+_$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
+    _$UserDataImpl(
       id: json['_id'] as String?,
       mobileNumber: json['mobileNumber'] as String?,
       reffralCode: json['reffralCode'] as String?,
@@ -33,16 +36,15 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
           : CurrentLocation.fromJson(
               json['currentLocation'] as Map<String, dynamic>),
       createdAt: json['createdAt'] as String?,
-      isCity: json['isCity'] as bool?,
-      isState: json['isState'] as bool?,
+      isCity: json['isCity'] as String?,
+      isState: json['isState'] as String?,
       isVerified: json['isVerified'] as bool?,
-      otp: json['otp'] as String?,
       updatedAt: json['updatedAt'] as String?,
       userType: json['userType'] as String?,
       wallet: json['wallet'] as int?,
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'mobileNumber': instance.mobileNumber,
@@ -52,7 +54,6 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'isCity': instance.isCity,
       'isState': instance.isState,
       'isVerified': instance.isVerified,
-      'otp': instance.otp,
       'updatedAt': instance.updatedAt,
       'userType': instance.userType,
       'wallet': instance.wallet,

@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 String kBaseUrl = "https://ambarisha-backend.vercel.app/api/v1/";
 
@@ -9,11 +9,12 @@ class HttpServices {
     bool isToken = false,
     required String endPoint,
   }) async {
+    final token = await _getToken();
     final response = await http.get(Uri.parse(kBaseUrl + endPoint),
         headers: isToken
             ? {
                 'Content-Type': 'application/json; charset=utf-8',
-                'Authorization': 'Bearer ${_getToken()}',
+                'Authorization': 'Bearer $token',
               }
             : {});
 
@@ -26,12 +27,13 @@ class HttpServices {
     required Map body,
   }) async {
     try {
+      final token = await _getToken();
       final response = await http.post(Uri.parse(kBaseUrl + endPoint),
           body: jsonEncode(body),
           headers: isToken
               ? {
                   'Content-Type': 'application/json; charset=utf-8',
-                  'Authorization': 'Bearer ${_getToken()}',
+                  'Authorization': 'Bearer $token',
                 }
               : {});
       return response;
@@ -45,11 +47,12 @@ class HttpServices {
     bool isToken = false,
   }) async {
     try {
+      final token = await _getToken();
       final response = await http.put(Uri.parse(kBaseUrl + endPoint),
           headers: isToken
               ? {
                   // 'Content-Type': 'application/x-www-form-urlencoded',
-                  'Authorization': 'Bearer ${_getToken()}',
+                  'Authorization': 'Bearer $token',
                 }
               : {});
       return response;
@@ -62,17 +65,21 @@ class HttpServices {
     required String endPoint,
     bool isToken = false,
   }) async {
+    final token = await _getToken();
     final response = await http.delete(Uri.parse(kBaseUrl + endPoint),
         headers: isToken
             ? {
                 // 'Content-Type': 'application/json; charset=utf-8',
-                'Authorization': 'Bearer ${_getToken()}',
+                'Authorization': 'Bearer $token',
               }
             : {});
     return response;
   }
 
-  _getToken() {
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YjhmYzA4ODI0ZTgyMzZhNDk4NjAwNiIsImlhdCI6MTcwNjYyMjAxNn0.bClvxuu4zvcp1poawvsw94nqqksE17hz9aSMPDXNvRg";
+  Future<String> _getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('userToken');
+    print(token.toString());
+    return token.toString();
   }
 }

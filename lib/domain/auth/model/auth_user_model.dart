@@ -1,38 +1,39 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 part 'auth_user_model.g.dart';
 part 'auth_user_model.freezed.dart';
 
 @freezed
-class AuthUserModel with _$AuthUserModel {
-  const factory AuthUserModel({
+class AuthSignInUserModel with _$AuthSignInUserModel {
+  const factory AuthSignInUserModel({
     int? status,
     String? message,
-    String? data,
-    User? user,
-  }) = _AuthUserModel;
+    UserData? data, // Change User to UserData
+    String? token,
+  }) = _AuthSignInUserModel;
 
-  factory AuthUserModel.fromJson(Map<String, dynamic> json) =>
-      _$AuthUserModelFromJson(json);
+  factory AuthSignInUserModel.fromJson(Map<String, dynamic> json) =>
+      _$AuthSignInUserModelFromJson(json);
 }
 
 @freezed
-class User with _$User {
-  const factory User({
+class UserData with _$UserData {
+  const factory UserData({
     @JsonKey(name: '_id') String? id,
     String? mobileNumber,
     String? reffralCode,
     @JsonKey(name: 'currentLocation') CurrentLocation? currentLocation,
     String? createdAt,
-    bool? isCity,
-    bool? isState,
+    String? isCity,
+    String? isState,
     bool? isVerified,
-    String? otp,
     String? updatedAt,
     String? userType,
     int? wallet,
-  }) = _User;
+  }) = _UserData;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
 }
 
 @freezed
