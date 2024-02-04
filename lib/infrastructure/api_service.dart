@@ -45,10 +45,12 @@ class HttpServices {
   Future<http.Response> put({
     required String endPoint,
     bool isToken = false,
+    Map? body,
   }) async {
     try {
       final token = await _getToken();
       final response = await http.put(Uri.parse(kBaseUrl + endPoint),
+          body: jsonEncode(body),
           headers: isToken
               ? {
                   // 'Content-Type': 'application/x-www-form-urlencoded',

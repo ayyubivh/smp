@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mr_ambarisha_frontend_new/application/cubit/cubit/wishlist_cubit.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/address/address_bloc.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/profile/profile_cubit.dart';
 import 'package:mr_ambarisha_frontend_new/utils/app_colors.dart';
 import 'package:mr_ambarisha_frontend_new/utils/constant_box.dart';
 import 'package:mr_ambarisha_frontend_new/utils/loader.dart';
@@ -19,6 +20,7 @@ import 'package:mr_ambarisha_frontend_new/views/subscription_celender/weekly.dar
 import '../../application/bloc/cart/cart_bloc.dart';
 import '../../application/bloc/category/category_bloc.dart';
 import '../../application/bloc/shop/shop_bloc.dart';
+import '../../application/cubit/wishlist/wishlist_cubit.dart';
 import '../../domain/shop/models/product_by_category/product_by_category_model.dart';
 import '../subscription_celender/subscription_celender.dart';
 import 'Categories.dart';
@@ -44,6 +46,10 @@ class _HomePageviewState extends State<HomePageview> {
     BlocProvider.of<CategoryBloc>(context)
         .add(const CategoryEvent.fetchCategory());
     BlocProvider.of<WishlistCubit>(context).getWishlist();
+    BlocProvider.of<AddressBloc>(context)
+      ..add(const AddressEvent.fetchCities())
+      ..add(AddressEvent.fetchAddress());
+    BlocProvider.of<ProfileCubit>(context).getProfile();
     super.initState();
   }
 
@@ -593,7 +599,7 @@ class _HomePageviewState extends State<HomePageview> {
                                           ),
                                           Text(
                                             "${data?[index].name}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: 20,
                                                 color: Colors.black),
@@ -602,7 +608,7 @@ class _HomePageviewState extends State<HomePageview> {
                                             children: [
                                               Text(
                                                   "₹${data?[index].discountedPrice}  ",
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       color: Colors.black,
@@ -746,10 +752,11 @@ class _HomePageviewState extends State<HomePageview> {
                                                       children: [
                                                         Text(
                                                           "${data[index].name}",
-                                                          style: TextStyle(
-                                                              fontSize: 24,
-                                                              color:
-                                                                  Colors.black),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 24,
+                                                                  color: Colors
+                                                                      .black),
                                                         ),
                                                         kboxw30(),
                                                         const Text(
@@ -763,7 +770,7 @@ class _HomePageviewState extends State<HomePageview> {
                                                     ),
                                                     Text(
                                                       "${data[index].description}",
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 14,
                                                           color: Colors.grey),
                                                     ),
@@ -945,7 +952,7 @@ class _HomePageviewState extends State<HomePageview> {
                                                   ),
                                                   Text(
                                                     "${data[index].name}",
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
                                                         fontSize: 20,
@@ -962,13 +969,15 @@ class _HomePageviewState extends State<HomePageview> {
                                                     children: [
                                                       Text(
                                                           "₹${data[index].discountedPrice}",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              color:
-                                                                  Colors.black,
-                                                              fontSize: 13)),
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      13)),
                                                       const Text("₹ 10 OFF",
                                                           style: TextStyle(
                                                               decoration:
@@ -1276,10 +1285,10 @@ class _HomePageviewState extends State<HomePageview> {
                   Container(
                     color: AppColors.ktextColor,
                     child: Padding(
-                      padding: EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: Text(
                         "${data?.discount ?? '0'}%Off",
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -1305,7 +1314,7 @@ class _HomePageviewState extends State<HomePageview> {
               ),
               Text(
                 data?.name.toString() ?? '',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w700,
@@ -1325,7 +1334,7 @@ class _HomePageviewState extends State<HomePageview> {
               Row(
                 children: [
                   Text("₹${data?.price}.00  ",
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
                           fontSize: 13)),
@@ -1486,9 +1495,9 @@ class _HomePageviewState extends State<HomePageview> {
                                   color: Colors.red,
                                   borderRadius: BorderRadius.circular(20)),
                               child: Padding(
-                                padding: EdgeInsets.all(7.0),
+                                padding: const EdgeInsets.all(7.0),
                                 child: Text("${data.discount ?? 0}% OFF",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         color: Colors.white,
                                         fontSize: 15)),

@@ -24,4 +24,14 @@ class ApiEndPoints {
   static const String verifyOtp = 'verify/otp';
   static const String verifyLogin = 'verify/login';
   static const String wishlistApi = 'product/wishlist/me';
+
+  //address
+  static const String citiesApi = "admin/city/cities";
+  static const String updateLocationApi = "updateLocation";
+  static const String addAddressApi = "address/new";
+  static const String getAddress = 'address/getAddress';
+  static const String editAddressApi = 'address/address/';
+
+  //profile
+  static const String getProfileApi = 'me';
 }

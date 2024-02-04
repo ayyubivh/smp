@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mr_ambarisha_frontend_new/application/bloc/address/address_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/bloc/auth/auth_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/bloc/cart/cart_bloc.dart';
 import 'package:mr_ambarisha_frontend_new/application/bloc/category/category_bloc.dart';
-import 'package:mr_ambarisha_frontend_new/application/cubit/cubit/wishlist_cubit.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/profile/profile_cubit.dart';
 import 'package:mr_ambarisha_frontend_new/application/cubit/token/token_cubit.dart';
+import 'package:mr_ambarisha_frontend_new/application/cubit/wishlist/wishlist_cubit.dart';
 import 'package:mr_ambarisha_frontend_new/domain/core/di/injectable.dart';
 import 'package:mr_ambarisha_frontend_new/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +37,13 @@ void main() async {
       ),
       BlocProvider(
         create: (context) => getIt<WishlistCubit>(),
-      )
+      ),
+      BlocProvider(
+        create: (context) => getIt<AddressBloc>(),
+      ),
+      BlocProvider(
+        create: (context) => getIt<ProfileCubit>(),
+      ),
     ],
     child: const MyApp(),
   ));
